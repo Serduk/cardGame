@@ -7,5 +7,7 @@ package cards.enumsCards;
  * Created by sserdiuk on 7/3/17.
  */
 public enum CardsType {
-    aggressive, defense, bonus
+    aggressive,
+    defense,
+    bonus
 }

@@ -1,3 +1,5 @@
+import cards.SimpleCard;
+import cards.cardsList.TestCardOne;
 import gui.DesktopGui;
 
 /**
@@ -8,5 +10,8 @@ import gui.DesktopGui;
 public class MainRun {
     public static void main(String[] args) {
         new DesktopGui().drawGui();
+        SimpleCard card = new TestCardOne();
+        System.out.println(card);
+        System.out.println((Math.random() * 100));
     }
 }
