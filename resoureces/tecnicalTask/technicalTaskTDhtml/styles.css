@@ -1,0 +1,681 @@
+a:link.mainmenu
+{
+color: #000000;  font-family: Verdana, sans-serif; font-size:11px; padding: 2px 4px 2px 4px; text-decoration: none
+}
+
+a:visited.mainmenu
+{
+color: #000000;  font-family: Verdana, sans-serif; padding: 2px 4px 2px 4px; font-size:11px; text-decoration: none
+}
+
+a:hover.mainmenu
+{
+color: #000000;  font-family: Verdana, sans-serif; padding: 2px 4px 2px 4px; font-size:11px; text-decoration: none; background: #F0EDED;
+}
+a {
+	color : #565656;
+	text-decoration : none;
+}
+
+a:visited {
+	color : #686868;
+	text-decoration : none;
+}
+
+
+a:hover {
+	color : #565656;
+	text-decoration : underline;
+}
+
+a.left_menu {
+	color : #005599;
+	text-decoration : none;
+}
+a:visited.left_menu {
+	color : #005599;
+	text-decoration : none;
+}
+
+
+a:hover.left_menu {
+	color : #005599;
+	text-decoration : underline;
+}
+
+a.side {
+	color : #000000;
+	text-decoration : none;
+}
+
+a:hover.side {
+	color : #000000;
+	text-decoration : underline;
+}
+
+a.white {
+	color : #55aaff;
+	text-decoration : none;
+}
+
+a:hover.white {
+	color : #55aaff;
+	text-decoration : underline;
+}
+
+body {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	margin : 0px;
+	background-color : #bbbbbb;
+
+}
+
+
+form {
+	margin : 0px;
+}
+
+hr {
+	height : 1px;
+	border : 1px solid #eee;
+}
+
+hr.side-hr {
+	height : 1px;
+	border : 1px solid #eee;
+}
+
+td {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+}
+
+pre {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+}
+
+.alt {
+	color : #005599;
+}
+
+.outer-border {
+	
+}
+
+.sub-header {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #000;
+	background-color : #888;
+	border-top : 1px solid #000;
+	border-bottom : 1px solid #000;
+	padding : 5px;
+}
+
+.sub-header ul{
+	margin: 0;
+	padding: 0;
+}
+
+.sub-header ul li{
+	display: inline;
+}
+
+.sub-header ul li.first-link .bullet{
+	display: none;
+}
+
+.full-header {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #bbbbbb;
+	background-color : #bbbbbb;
+	text-align: center;
+	background-image: url(images/shapka_line.jpg);
+	background-repeat: repeat-x;
+}
+
+.footer {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : black;
+	background-color : #bbbbbb;
+	border-top : 0px solid #000;
+	padding : 5px;
+}
+
+.button {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #555;
+	background-color : #f1f1f1;
+	height : 20px;
+	border : 1px solid #ccc;
+	margin-top : 2px;
+}
+
+.bbcode {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #555;
+	background-color : #f1f1f1;
+	border : 1px solid #ccc;
+	margin-top : 2px;
+}
+
+.textbox {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 10px;
+	color : #555;
+	background-color : #f8f8f8;
+	border : 1px solid #ccc;
+}
+
+.main-body {
+	font-size : 11px;
+	color : #444;
+	background-color : #bbbbbb;
+	padding : 4px 4px 5px 4px;
+	margin-top : 15px;
+}
+
+.center {
+	margin : 0 auto;
+}
+
+.side-body {
+	background-color:#BBBBBB;
+	color:#000000;
+	font-size:10px;
+	padding:4px;
+}
+
+.side-body-null {
+	background-color:#BBBBBB;
+	color:#000000;
+	font-size:10px;
+	padding:0;
+}
+
+.main-bg {
+	color : #444;
+	background-color : #bbb;
+	padding : 0px;
+}
+
+.border {
+	border : 0px solid #eee;
+}
+.admin-message {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	text-align : center;
+	color : #555;
+	background-color : #f6f6f6;
+	border : 1px solid #e1e1e1;
+	padding : 3px 4px 5px 4px;
+	margin-bottom : 5px;
+}
+
+.side-left .side-border-right {display: none;}
+.side-right .side-border-left {display: none;}
+
+.side-border-left {
+	color : #777;
+	background-color : #fff;
+}
+
+.side-border-right {
+	color : #777;
+	background-color : #fff;
+}
+
+.news-category {
+	border:0;
+	margin:3px 5px 0 0;
+	float:right;
+}
+
+.news-footer {
+	font-size : 10px;
+	color : #000;
+	background-color : #bbbbbb;
+	border-top : 0px solid #eee;
+	padding : 3px 4px 4px 4px;
+}
+
+.capmain {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 12px;
+	color : red;
+	background-color : #cbcbcb;
+	border-bottom : 0px solid #eee;
+	padding : 2px 4px 4px 4px;
+}
+
+.scapmain {
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-weight : bold;
+	color : #000;
+	background-color : #e2e2e2;
+	border-top : 0px solid #4d4d4d;
+	border-bottom : 0px solid #2d2d2d;
+	padding : 5px;
+	height: 17px;
+}
+
+.tbl-border {
+	color : #000;
+	background-color : #eee;
+}
+
+.tbl {
+	font-size : 11px;
+	color : #000;
+	background-color : #ddd;
+	padding : 4px;
+}
+
+.tbl1 {
+	font-size : 11px;
+	color : #000;
+	background-color : #ddd;
+	padding : 4px;
+}
+
+.tbl2 {
+	font-size : 11px;
+	color : #000;
+	background-color : #ccc;
+	padding : 4px;
+}
+
+.forum-caption {
+	font-size : 11px;
+	font-weight : bold;
+	color : #888;
+	background-color : #f1f1f1;
+	padding : 2px 4px 4px 4px;
+}
+
+.quote {
+	font-size : 11px;
+	color : #000;
+	background-color : #eee;
+	padding : 4px;
+	margin : 0 20px;
+	border : 1px solid #bbb;
+}
+
+.poll {
+	height : 12px;
+	border : 1px solid #bbb;
+}
+
+.comment-name {
+	font-weight : bold;
+	color : #005599;
+}
+
+.shoutboxname {
+	font-weight : bold;
+	color : #005599;
+	background-color : #f6f6f6;
+}
+
+.shoutbox {
+	color : #777;
+	background-color : #f6f6f6;
+}
+
+.shoutboxdate {
+	font-size : 10px;
+	color : #888;
+	background-color : #f6f6f6;
+}
+
+.small {
+	font-size : 10px;
+	font-weight : normal;
+}
+
+.small2 {
+	font-size : 10px;
+	font-weight : normal;
+	color : #555;
+}
+
+.side-small {
+	font-size : 10px;
+	font-weight : normal;
+	color : #555;
+	background-color : #f6f6f6;
+}
+
+.side-label {
+	color : #555;
+	background-color : #f1f1f1;
+	padding : 2px 2px 3px 2px;
+}
+
+/* Vertical Navigation */
+
+#navigation h2 {
+	font-size: 10px;
+	color : #555;
+	background-color: #f1f1f1;
+	margin: 0;
+	padding: 4px;
+}
+	
+#navigation ul {
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+* html #navigation ul li{
+   height: 1%;
+}
+
+#navigation a {
+	display: block;
+	color: #005599;
+	background-color: #f6f6f6;
+	padding: 2px;
+	text-decoration : none;
+}
+
+#navigation a:hover {
+	color: #f6f6f6;
+	background-color: #005599;
+}
+
+/* Page Navigation */
+
+.pagenav {
+	padding: 0.4em;
+	font-size:10px;
+}
+
+.pagenav span {
+	border: 1px solid #e1e1e1;
+	padding: 0.2em 0.4em 0.2em 0.4em;
+	margin: 0.2em;
+}
+
+.pagenav a {
+	border: 1px solid #e1e1e1;
+	padding: 0.2em 0.4em 0.2em 0.4em;
+	margin: 0.2em;
+	text-decoration: none;
+}
+
+.pagenav a:hover {
+	margin: 0.2em;
+}
+div.main_bg_1t {background-image:url(http://order.ereality.ru/themes/order/images/pic_left.gif);height:253px;width:23px;position:relative;right:0;top:0;}
+div.main_bg_2t {background-image:url(http://order.ereality.ru/themes/order/images/pic_middle.gif);height:253px;width:44px;position:relative;right:0;top:0;}
+div.main_bg_3t {background-image:url(http://order.ereality.ru/themes/order/images/pic_right.gif);height:253px;width:27px;position:relative;right:0;top:0;}
+
+div.main_bg_1b {background-image:url(http://order.ereality.ru/themes/order/images/pic_left_bottom.gif);height:133px;width:23px;position:relative;bottom:0;}
+div.main_bg_2b {background-image:url(http://order.ereality.ru/themes/order/images/pic_middle_bottom.gif);height:133px;width:44px;position:relative;right:0;bottom:0;}
+div.main_bg_3b {background-image:url(http://order.ereality.ru/themes/order/images/pic_right_bottom.gif);height:133px;width:27px;position:relative;right:0;bottom:0;}
+
+table.lotery{
+background-image: url(http://order.ereality.ru/images/news_cats/ramka2.png);
+background-repeat: no-repeat;
+background-position:bottom
+}
+
+@font-face {
+    font-family: 'Viking';
+    src: url('http://order.ereality.ru/themes/order/fonts/viking-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Edisson';
+    src: url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.eot');
+    src: url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.svg#edissonregular') format('svg'),
+	url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.woff2') format('woff2'),
+         url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.woff') format('woff'),
+         url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+
+.viking-40{
+  font: 40px 'Viking',Verdana, sans-serif;
+  color: maroon;
+}
+
+
+.edisson-40{
+  font: 40px 'Edisson',Verdana, sans-serif;
+  color: maroon;
+}
+
+
+
+
+.edisson-main{
+  font: 49px 'Edisson',Verdana, sans-serif;
+  color: maroon;
+}
+
+.edisson-list{
+  font: 36px 'Edisson',Verdana, sans-serif;
+  color: maroon;
+}
+
+.edisson-title{
+  font: 34px 'Edisson',Verdana, sans-serif;
+  color: maroon;
+}
+
+@font-face {
+    font-family: 'edissonnew';
+    src: url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.eot');
+    src: url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.svg#edissonregular') format('svg'),
+	url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.eot?#iefix') format('embedded-opentype'),
+         url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.woff2') format('woff2'),
+         url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.woff') format('woff'),
+         url('http://order.ereality.ru/zhen4ek/fonts/edisson-webfont.ttf') format('truetype');
+
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+.edisson-zhen4ek{
+  font: 49px 'edissonnew',Verdana, sans-serif;
+  color: maroon;
+}
+
+
+
+
+.open_panel{
+display: inline-block;
+/* width: auto; */
+background: url('http://order.ereality.ru/zhen4ek/images/open-panel_left.png') repeat-y,url('http://order.ereality.ru/zhen4ek/images/open-panel_right.png') repeat-y 100% 0;
+padding: 0 31px 0 31px;
+text-align: center;
+color: #1c0a0a;
+font-size: 1.1em;
+text-decoration: none;
+position: relative;
+z-index: 5;
+}
+.panel_text {
+/* border: 1px solid black; */
+background: url('http://order.ereality.ru/zhen4ek/images/open-panel_center.png');
+padding: 7px 4px 10px 4px;
+text-decoration: none;
+cursor: pointer;
+position: relative;
+z-index: 4;
+min-width: 145px;
+}
+
+.open_panel:hover{
+background: url('http://order.ereality.ru/zhen4ek/images/open-panel_left_hover.png') repeat-y,url('http://order.ereality.ru/zhen4ek/images/open-panel_right_hover.png') repeat-y 100% 0;
+text-decoration: none;
+}
+.open_panel:hover > .panel_text  {
+background: url('http://order.ereality.ru/zhen4ek/images/open-panel_center_hover.png');
+
+}
+.parent_div {
+position: relative;
+display: inline-block;
+}
+
+.guides {
+position: absolute;
+z-index: 3;
+display: none;
+background: #E7E7E7;
+padding: 6px 2px 8px 2px;
+top: 28px;
+left: 12px;
+border-radius: 0 0 4px 4px;
+text-align: left;
+border-left: 1px rgb(181, 181, 181) solid;
+border-bottom: 1px rgb(181,181, 181) solid;
+border-right: 1px rgb(181, 181, 181) solid;
+width: 180px;
+}
+
+.mainmenu_new{
+display: inline-block;
+/* width: auto; */
+background: url('http://order.ereality.ru/zhen4ek/images/left_menu.png') repeat-y ,url('http://order.ereality.ru/zhen4ek/images/right_menu.png') repeat-y 100% 0;
+padding: 0 25px 0 25px;
+height: 23px;
+text-align: center;
+color: #1c0a0a;
+font-size: 1.1em;
+text-decoration: none;
+position: relative;
+z-index: 5;
+}
+
+a.main_href:visited{
+  color: #1c0a0a;  
+}
+
+.main_href {
+text-decoration: none;
+background: url('http://order.ereality.ru/zhen4ek/images/center_menu.png') repeat-x;
+display: inline-block;
+padding: 5px 4px 6px 4px;
+}
+.mainmenu_new:hover{
+  background: url('http://order.ereality.ru/zhen4ek/images/left_menu.png')repeat-y 0 23px  ,url('http://order.ereality.ru/zhen4ek/images/right_menu.png') repeat-y 100% 23px;
+}
+.mainmenu_new:hover > .main_href{
+background: url('http://order.ereality.ru/zhen4ek/images/center_menu.png') repeat-x 0 -26px;
+text-decoration: none;
+}
+
+.midlle_menu {
+background: #e2e2e2;
+display: inline-block;
+border-radius: 0px;
+padding-left: 10px;
+padding-right: 10px;
+}
+
+.left_midle {
+background: url('http://order.ereality.ru/zhen4ek/images/big-left-right.png');
+width: 49px;
+height: 49px;
+display: inline-block;
+position: relative;
+z-index: 17;
+left: 15px;
+}
+
+.right_midle {
+background: url('http://order.ereality.ru/zhen4ek/images/big-left-right.png');
+width: 49px;
+height: 49px;
+display: inline-block;
+position: relative;
+z-index: 17;
+left: 15px;
+}
+
+.right_midle {
+background: url('http://order.ereality.ru/zhen4ek/images/big-left-right.png') no-repeat -52px 0px;
+width: 49px;
+height: 49px;
+display: inline-block;
+position: relative;
+z-index: 17;
+left: -18px;
+}
+
+.main_div {
+background : #CBCBCB;
+border-radius: 29px;
+display: inline-block;
+}
+
+
+  .main_href2{
+  text-decoration: none;
+  display: inline-block;
+  padding: 5px 4px 6px 4px;
+  text-decoration: none;
+  display: inline-block;
+  padding: 4px 17px 4px 9px;
+  border: 1px rgb(181, 181, 181) solid;
+  border-radius: 14px;
+  background-color: #E4E4E4;
+}
+  .mainmenu_new2{
+  display: inline-block;
+  background: url('http://order.ereality.ru/zhen4ek/images/right_menu2.png') no-repeat;
+  height: 24px;
+  text-align: center;
+  color: #1c0a0a;
+  font-size: 1.1em;
+  text-decoration: none;
+  position: relative;
+  z-index: 5;
+  width: 24px;
+  left: -17px;
+  top: 6px;
+}
+
+
+.cont {
+  display: inline-block;
+}
+.cont:hover > .mainmenu_new2{
+  background: url('http://order.ereality.ru/zhen4ek/images/right_menu2.png') no-repeat 0px -25.5px;
+}
+.cont:hover > .main_href2{
+  background-color: #F2E6E6;
+  text-decoration: none;
+}
+a.main_href2:visited{
+  color: #1c0a0a;  
+}
+
+/*
+input.button[name='relogin'] {
+position: relative;
+top: 5px;
+}*/

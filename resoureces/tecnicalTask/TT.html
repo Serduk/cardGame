@@ -1,0 +1,492 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1251">
+    <title>Total Domination</title>
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link rel="stylesheet" href="./technicalTaskTDhtml/styles.css" type="text/css" media="screen">
+    <link rel="shortcut icon" href="./tecnicalTask/technicalTaskTDhtml/agro10.png"
+          type="image/x-icon">
+    <link rel="shortcut icon" href="./tecnicalTask/technicalTaskTDhtml/agro9.png"
+          type="image/x-icon">
+    <script type="text/javascript" src="./technicalTaskTDhtml/jscript.js"></script>
+    <script type="text/javascript" src="./technicalTaskTDhtml/jquery.js"></script>
+
+    <style type="text/css">:root #content > #right > .dose > .dosesingle,
+:root #content > #center > .dose > .dosesingle
+{display:none !important;}
+
+    </style>
+</head>
+<body>
+<!--pre_article-->
+<table cellpadding="0" cellspacing="0" width="100%">
+    <tbody>
+    <tr>
+        <td class="capmain">Агромаг</td>
+    </tr>
+    <tr>
+        <td class="main-body"><a name="0"></a><img align="left"
+                                                   src="./technicalTaskTDhtml/agro9.png"><img
+                align="right" src="./technicalTaskTDhtml/agro10.png"><strong>Агромаг</strong> – это
+            карточная игра, никак не связанная с игровым процессом (влияние оказывают лишь ставки в
+            игре, уменьшая или увеличивая сумму Вашего <img
+                    src="./technicalTaskTDhtml/silver.gif"><strong>серебра</strong>).<br>
+            Целью игры является понижение жизней противника до нуля, с помощью различных карт.<br>
+            Рассмотрим процесс игры подробнее.<br><br>
+            <strong><i><span
+                    style="color:blue">Общие сведения</span><br>
+                <span
+                        style="color:blue">Игровое поле</span><br>
+                <span
+                        style="color:blue">Процесс игры</span><br>
+                <span
+                        style="color:blue">Рейтинг</span><br>
+                <span
+                        style="color:blue">Обзор карт</span><br></i></strong><br><br><br>
+            <a name="1"></a>
+            <h3>Общие сведения</h3>
+            Во вкладке <strong>"Квесты"</strong> всем игрокам вне зависимости от уровня
+            доступен<strong> "Агромаг"</strong>. <br>
+            <center><img src="./technicalTaskTDhtml/agro3.png"></center>
+            <br>
+            При нажатии открывается новое окно <strong>"Дуэли"</strong>, в котором Вы можете
+            просмотреть список заявок, принять одну из них, либо создать свою заявку. Уровень
+            противника также не имеет значения, и не влияет на игровой процесс.<br>
+            <center><img src="./technicalTaskTDhtml/agro2.png"></center>
+            <br>
+            При создании заявки Вам необходимо выбрать время <strong>тайм-аута</strong>, <strong>размер
+                ставки</strong> (изначально играть со ставками Вы не сможете).<br>
+            По умолчанию тайм-аут равен <strong>1 минуте</strong>, размер ставки –<strong> <img
+                    src="./technicalTaskTDhtml/silver.gif"></strong><strong>0 сер</strong>.<br>
+            <center><img src="./technicalTaskTDhtml/agro4.png"></center>
+            <br>
+            Когда заявка принята (и Ваш противник подтвердил Ваше желание играть с ним), либо
+            создана (после принятия Вашей заявки игроком, Вы должны ее подтвердить), Вы переходите в
+            окно игры.<br>
+            Рассмотрим его подробнее.<br>
+            <a name="2"></a>
+            <h3>Игровое поле</h3>
+            <center><img width="650" src="./technicalTaskTDhtml/agro6.png"></center>
+            <br>
+            <strong><u>1. Параметры игрока</u></strong> <br><br>В начале игры параметры у обоих
+            игроков одинаковые:<br>
+            <table align="center" width="200" border="0">
+                <tbody>
+                <tr>
+                    <td><strong>Жизни: 100 единиц<br>
+                        Атака: 0 единиц<br>
+                        Защита: 0 единиц</strong></td>
+                </tr>
+                </tbody>
+            </table>
+            <br>
+            Параметр <strong>Жизни</strong> не может превышать значение в <strong>150
+                единиц</strong>. <br>
+            Параметр <strong>Атака</strong> повышается при помощи соответствующих карт. При
+            использовании карты на урон, параметр <strong>Атака</strong> добавляется к значению
+            урона, написанному на карте. С каждой использованной картой на урон значение <strong>Атака</strong>
+            уменьшается на <strong>1 ед</strong>.<br>
+            Параметр <strong>Защита</strong> также повышается при помощи карт, и принимает на себя
+            часть урона карты противника (исключение: карты с надписью "Атака сквозь броню"). Иными
+            словами, урон, который Вы получите, будет равен: <em>урон карты + параметр
+                <strong>Атака</strong> противника - Ваш параметр
+                <strong>Защита</strong>.</em><br><br>
+            <strong><u>2. Действие карт</u></strong><br>
+            <table border="0">
+                <tbody>
+                <tr>
+                    <td width="32">
+                        <div align="left"><img
+                                src="./technicalTaskTDhtml/param_icon_2_1_inactive.jpg"></div>
+                    </td>
+                    <td width="692"><strong>Регенерация</strong> - начать регенерацию
+                        (восстановление жизней персонажа) можно с помощью соответствующих карт.
+                        Длительность регенерации зависит от карты.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="left"><img
+                                src="./technicalTaskTDhtml/param_icon_2_3_inactive.jpg"></div>
+                    </td>
+                    <td><strong>Парализация</strong> - на определенное количество ходов (зависит от
+                        карты) персонаж парализуется, лишается возможности совершить ход
+                        (возможность сбросить карту, завершить ход сохраняется).
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="left"><img
+                                src="./technicalTaskTDhtml/param_icon_2_2_inactive.jpg"></div>
+                    </td>
+                    <td><strong>Отражение</strong> - данный параметр активизируется с помощью
+                        соответствующих карт. Его действие заключается в том, что урон, наносимый по
+                        Вам противником, отражается и наносится по нему.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div align="left"><img
+                                src="./technicalTaskTDhtml/param_icon_2_4_inactive.jpg"></div>
+                    </td>
+                    <td><strong>Отравление</strong> - в течение определенного количества ходов
+                        (зависит от карты) уменьшает параметр Жизни. Отравление можно снять.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <strong><u><br>3. Ресурсы, здания</u></strong><br>
+            В игре <strong>4 здания</strong> (типа ресурсов):<br>
+            <img src="./technicalTaskTDhtml/pesok_agro.png"><strong>Оазис (песок)</strong> <br><img
+                    src="./technicalTaskTDhtml/derevo_agro.png"><strong>Лесопилка (дерево)</strong>
+            <br><img src="./technicalTaskTDhtml/ruda_agro.png"><strong>Шахта (руда)</strong>
+            <br><img src="./technicalTaskTDhtml/kulon_agro.png"><strong>Храмы (Кулоны
+                Душ)</strong><br>
+            При использовании карт тратятся ресурсы. При старте количество ресурсов у обоих игроков
+            одинаковое - <strong>5 ед.</strong> каждого вида. По завершении раунда количество всех
+            ресурсов увеличивается на <strong>1</strong>. Если число зданий у игрока больше 1,
+            ресурсы соответственно регенерируются быстрее (2 здания - 2 ресурса по завершению
+            раунда, 3 - 3 и т. д.).<br><br>
+            <strong><u>4. Время до конца хода</u></strong> <br><br>Устанавливается при подаче заявки
+            (тайм-аут).<br><br>
+            <strong><u>5. Набор карт противника</u></strong> <br><br>Невидим для Вашего глаза,
+            открывается лишь тогда, когда игра закончена.<br><br>
+            <strong><u>6. Кнопка хода</u></strong> <br><br>При нажатии без выбора какой-либо карты,
+            пропускается ход.<br><br>
+            <strong><u>7. Ваш набор карт</u></strong> <br><br>Вы можете применить карту, либо
+            сбросить.<br><br>
+            <a name="3"></a>
+            <h3>Процесс игры</h3>
+            Как было сказано выше, игра начинается после того, как заявка принята и подтверждена.
+            Право первого хода разыгрывается <em>случайным образом</em>.<br>
+            Чтобы выбрать карту, необходимо кликнуть по ней. Для отмены выбора следует снова нажать
+            на выбранную карту. Для того чтобы "сходить" выбранной картой, необходимо нажать
+            кнопку<strong> "Ходить"</strong>.<br>
+            <center><img src="./technicalTaskTDhtml/agro7.png"></center>
+            <br>
+            За один ход Вы можете использовать только одну карту. Сброс карты приравнивается к
+            совершению хода.<br>
+            После того, как Вы завершите ход, число единиц ресурсов уменьшится на количество,
+            необходимое для использования этой карты.<br>
+            <a name="4"></a>
+            <h3>Рейтинг</h3>
+            Играя в<strong> Агромаг</strong> при определенном рейтинге можно начать зарабатывать
+            <strong><img src="./technicalTaskTDhtml/silver.gif">серебро</strong>. Рейтинг
+            рассчитывается по формуле: <em>Ваш рейтинг побед – Ваш рейтинг поражения</em>.<br><br>
+            <center><strong><i>Зависимость ставки от рейтинга</i></strong><br>
+                Рейтинг = <strong>0</strong>, Ставка составляет <strong><img
+                        src="./technicalTaskTDhtml/silver.gif">0 серебра</strong><br>
+                Рейтинг = <strong>10</strong>, Ставка составляет <strong><img
+                        src="./technicalTaskTDhtml/silver.gif">1 серебра</strong><br>
+                Рейтинг = <strong>25</strong>, Ставка составляет <strong><img
+                        src="./technicalTaskTDhtml/silver.gif"></strong><strong>5
+                    серебра</strong><br>
+                Рейтинг = <strong>45</strong>, Ставка составляет <strong><img
+                        src="./technicalTaskTDhtml/silver.gif"></strong><strong>10
+                    серебра</strong><br>
+                Рейтинг = <strong>70</strong>, Ставка составляет <strong><img
+                        src="./technicalTaskTDhtml/silver.gif"></strong><strong>25 серебра </strong>
+            </center>
+            <br>
+            Рейтинги игроков можно увидеть<strong><span
+                    style="color:blue">здесь</span></strong>. <br>
+            Свой рейтинг можно увидеть в информации персонажа. Первое число - победы, второе -
+            поражения, третье - ничьи.<br><br>
+            <a name="5"></a>
+            <h3>Обзор карт</h3>
+            <table align="center" width="200" border="0">
+                <tbody>
+                <tr>
+                    <td>
+                        <table align="center" width="200" border="0">
+                            <tbody>
+                            <tr>
+                                <td colspan="3">
+                                    <div align="center"><strong><em>Песок (Оазис)</em></strong>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_2_card_01.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_2_card_02.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_2_card_03.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_2_card_04.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_2_card_05.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_2_card_06.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_2_card_07.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_2_card_08.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_2_card_09.png"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <table width="200" border="0">
+                            <tbody>
+                            <tr>
+                                <td colspan="3">
+                                    <div align="center"><em><strong>Дерево (Лесопилка)</strong></em>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_1_card_01.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_1_card_02.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_1_card_03.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_1_card_04.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_1_card_05.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_1_card_06.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_1_card_07.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_1_card_08.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_1_card_09.png"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>&nbsp;</p>
+            <table align="center" width="200" border="0">
+                <tbody>
+                <tr>
+                    <td>
+                        <table align="center" width="200" border="0">
+                            <tbody>
+                            <tr>
+                                <td colspan="3">
+                                    <div align="center"><em><strong>Руда (Шахта)</strong></em></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_3_card_01.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_3_card_02.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_3_card_03.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_3_card_04.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_3_card_05.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_3_card_06.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_3_card_07.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_3_card_08.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_3_card_09.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <div align="center">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td><img
+                                                        src="./technicalTaskTDhtml/school_3_card_10.png">
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td><img
+                                                        src="./technicalTaskTDhtml/school_3_card_11.png">
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>
+                        <table width="200" border="0">
+                            <tbody>
+                            <tr>
+                                <td colspan="3">
+                                    <div align="center"><em><strong>Кулоны Душ (Храм)</strong></em>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_4_card_01.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_4_card_02.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_4_card_03.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_4_card_04.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_4_card_05.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_4_card_06.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_4_card_07.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_4_card_08.png"></div>
+                                </td>
+                                <td>
+                                    <div align="center"><img
+                                            src="./technicalTaskTDhtml/school_4_card_09.png"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <div align="center">
+                                        <table>
+                                            <tbody>
+                                            <tr>
+                                                <td><img
+                                                        src="./technicalTaskTDhtml/school_4_card_10.png">
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td>&nbsp;</td>
+                                                <td><img
+                                                        src="./technicalTaskTDhtml/school_4_card_11.png">
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div align="center"></div>
+                                    <div align="center"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+</body>
+</html>

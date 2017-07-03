@@ -1,0 +1,15 @@
+/bin/
+/target/
+/out/
+# /runconfigs/*.xml
+/.idea
+*/cardGame.iml
+/.settings/*
+/temp/
+/test-output/
+/src/core/core.iml
+/cardGame.iml
+*/.DS_Store
+.DS_Store
+*/cardGame.iml
+cardGame.iml
