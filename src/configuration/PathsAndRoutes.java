@@ -7,4 +7,5 @@ package configuration;
  * Created by sserdiuk on 7/3/17.
  */
 public final class PathsAndRoutes {
+    public static final String iconIMG = "resources/img/cardsIMG/deck.jpg";
 }
