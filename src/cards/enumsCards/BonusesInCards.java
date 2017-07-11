@@ -6,27 +6,27 @@ package cards.enumsCards;
  * Created by sserdiuk on 7/3/17.
  */
 public enum BonusesInCards {
-    ignoreArmorAttackEnemy,
-    freezeEnemy,
-    poisonEnemy,
-    curseEnemy,
-    disarmEnemy,
-    resourceTakeOffEnemy,
-    steelResourceEnemy,
-    destroyTempleEnemy,
+    IGNORE_ARMOR_ATTACK_ENEMY,
+    FREEZE_ENEMY,
+    POISON_ENEMY,
+    CURSE_ENEMY,
+    DISARM_ENEMY,
+    RESOURCE_TAKE_OFF_ENEMY,
+    STEEL_RESOURCE_ENEMY,
+    DESTROY_TEMPLE_ENEMY,
 
-    armorDecraseEnemy,
+    ARMOR_DECRASE_ENEMY,
     attackBonusMySelf,
-    defenseBonusMySelf,
-    dispelMySelf,
-    buildTempleMySelf,
-    addResourceMySelf,
-    regenerationMySelf,
-    increaseHealth,
+    DEFENSE_BONUS_MY_SELF,
+    DISPEL_MY_SELF,
+    BUILD_TEMPLE_MY_SELF,
+    ADD_RESOURCE_MY_SELF,
+    REGENERATION_MY_SELF,
+    INCREASE_HEALTH,
 
-    destrouTemplForAll,
-    addResourcesForAll,
-    addArmorForAll,
-    destroyArmorForAll,
-    implroveAttackForAll
+    DESTROY_TEMPL_FOR_ALL,
+    ADD_RESOURCES_FOR_ALL,
+    ADD_ARMOR_FOR_ALL,
+    DESTROY_ARMOR_FOR_ALL,
+    IMPLROVE_ATTACK_FOR_ALL
 }

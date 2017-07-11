@@ -1,5 +1,7 @@
 package cards;
 
+import java.util.HashMap;
+
 /**
  * Interface for bonuses on each card
  *
@@ -9,5 +11,5 @@ public interface BonusCardsType {
     /*
     * By default it will be 100% chance to add some bonus or deBuf
     * */
-    void addBonus(String[] bonusType);
+    HashMap<Object, Integer> addBonus(HashMap<Object, Integer> bonusType);
 }

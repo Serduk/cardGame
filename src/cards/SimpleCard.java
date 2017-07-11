@@ -1,14 +1,17 @@
 package cards;
 
+import cards.enumsCards.BonusesInCards;
 import cards.enumsCards.CardsType;
 import cards.enumsCards.ResourceTypes;
+
+import java.util.HashMap;
 
 /**
  * In this class we describe basic properties for All cards
  *
  * Created by sserdiuk on 7/3/17.
  */
-public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseCardsType{
+public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseCardsType {
     protected String pathToCardIMG = "";
 
     protected String resourceTypeNeed = resourceTypeDetector(ResourceTypes.UNDEFINED);
@@ -77,13 +80,22 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
     * */
     protected int chancePercentage = 100;
 
-    /*
-    * Method overrated. and chance for bonuses.
-    * They have some chance to not be added.
-    * User mast change chancePercentage for set another chance
+    /**
+     * Method overrated. and add chance for adding some bonuses.
+     * They have some chance to not be added(%).
+     * User mast change chancePercentage for set another chance
+     *  @param bonusType take Object from enum BonusesInCards and Integer -> bonus size
+     *                  Then parse all keys, and check condition ->  % for adding
+     *
+     *  @return parsed and chacked on % bonuses
+     *
+     * TODO: 1. add parser for all bonuses in map.
+     * TODO: 2. add checker for all bonuses on success implement in game
     * */
     @Override
-    public void addBonus(String[] bonusType) {
+    public HashMap<Object, Integer> addBonus(HashMap<Object, Integer> bonusType) {
+        HashMap<Object, Integer> alreadyParsedBonuses = new HashMap<>();
+
         if (chancePercentage < 100) {
             if ((Math.random() * 100) <= chancePercentage) {
                 System.out.println("Add bonus");
@@ -93,6 +105,18 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
         } else {
             System.out.println("Add bonus");
         }
+
+        return alreadyParsedBonuses;
+    }
+
+    public void addSuccessedBonus(HashMap<Object, Integer> bonusType) {
+
+    }
+
+    public String bonusesType(BonusesInCards bonusesInCards) {
+        String bonusType = bonusesInCards.toString();
+        System.out.println(bonusType);
+        return bonusType;
     }
 
     /*

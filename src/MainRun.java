@@ -1,5 +1,6 @@
 import cards.SimpleCard;
 import cards.cardsList.TestCardOne;
+import cards.enumsCards.BonusesInCards;
 import gui.DesktopGui;
 
 /**
@@ -13,5 +14,6 @@ public class MainRun {
         SimpleCard card = new TestCardOne();
         System.out.println(card);
         System.out.println((Math.random() * 100));
+        new SimpleCard().bonusesType(BonusesInCards.ADD_ARMOR_FOR_ALL);
     }
 }
