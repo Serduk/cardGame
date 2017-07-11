@@ -6,5 +6,9 @@ package cards.enumsCards;
  * Created by sserdiuk on 7/3/17.
  */
 public enum ResourceTypes {
-    fire, water, ice, dirt
+    FIRE,
+    WATER,
+    ICE,
+    DIRT,
+    UNDEFINED
 }

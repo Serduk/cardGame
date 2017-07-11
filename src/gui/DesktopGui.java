@@ -1,6 +1,6 @@
 package gui;
 
-import configuration.NamingAndDiscription;
+import configuration.NamingAndDescription;
 import configuration.PathsAndRoutes;
 
 import javax.swing.*;
@@ -19,8 +19,8 @@ public class DesktopGui {
     JPanel chatPanel;
 
     public void drawGui() {
-        System.out.println(NamingAndDiscription.gameName + " Started");
-        frame = new JFrame(NamingAndDiscription.gameName);
+        System.out.println(NamingAndDescription.gameName + " Started");
+        frame = new JFrame(NamingAndDescription.gameName);
         ImageIcon webIcon = new ImageIcon(PathsAndRoutes.iconIMG);
 
         frame.setIconImage(webIcon.getImage());

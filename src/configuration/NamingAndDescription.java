@@ -7,7 +7,8 @@ package configuration;
  *
  * Created by sserdiuk on 7/3/17.
  */
-public final class NamingAndDiscription {
+public final class NamingAndDescription {
+    public final static String appVersionNum = "0.0.1";
 
     /*
     * GUI:
@@ -19,4 +20,5 @@ public final class NamingAndDiscription {
     public final static String sendMessageButton = "Send Message";
     public final static String resourceAvailableTultipe = "Resources";
     public final static String parametersTultipe = "Parameters";
+    public final static String appVersionTultiope = "App Version";
 }

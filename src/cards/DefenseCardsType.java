@@ -7,4 +7,5 @@ package cards;
  * Created by serdyuk on 7/3/17.
  */
 public interface DefenseCardsType {
+    int cardDefense();
 }

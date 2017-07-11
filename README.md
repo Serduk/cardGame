@@ -2,7 +2,7 @@
 
 Here will be my card game
 
-Lanuage: Java
+Language: Java
 
 Environment: DeckTop (macOS, Linux, Windows)
 
