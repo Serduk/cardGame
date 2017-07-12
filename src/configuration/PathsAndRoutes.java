@@ -8,4 +8,5 @@ package configuration;
  */
 public final class PathsAndRoutes {
     public static final String iconIMG = "resources/img/cardsIMG/deck.jpg";
+    public static final String pathToGameCards = "resources/img/cardsIMG/";
 }

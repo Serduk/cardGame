@@ -9,6 +9,6 @@ public enum ResourceTypes {
     FIRE,
     WATER,
     ICE,
-    DIRT,
+    EARTH,
     UNDEFINED
 }

@@ -1,7 +1,10 @@
 import cards.SimpleCard;
 import cards.cardsList.TestCardOne;
+import cards.cardsList.earthCards.EarthCard1;
 import cards.enumsCards.BonusesInCards;
 import gui.DesktopGui;
+
+import java.util.HashMap;
 
 /**
  * Main class for run Application
@@ -10,10 +13,11 @@ import gui.DesktopGui;
  */
 public class MainRun {
     public static void main(String[] args) {
-        new DesktopGui().drawGui();
+//        new DesktopGui().drawGui();
         SimpleCard card = new TestCardOne();
-        System.out.println(card);
-        System.out.println((Math.random() * 100));
-        new SimpleCard().bonusesType(BonusesInCards.ADD_ARMOR_FOR_ALL);
+        EarthCard1 earthCard1 = new EarthCard1();
+
+//        card.getSuccessfulBonuses();
+        earthCard1.getSuccessfulBonuses();
     }
 }

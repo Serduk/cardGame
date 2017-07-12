@@ -11,5 +11,10 @@ public interface BonusCardsType {
     /*
     * By default it will be 100% chance to add some bonus or deBuf
     * */
-    HashMap<Object, Integer> addBonus(HashMap<Object, Integer> bonusType);
+    void addBonus(HashMap<Object, Integer> bonusType);
+
+    /*
+    * Get successful bonuses, who checked in "addBonus" Method
+    * */
+    HashMap<Object, Integer> getSuccessfulBonuses();
 }
