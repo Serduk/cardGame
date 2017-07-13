@@ -8,7 +8,7 @@ package cards.enumsCards;
 public enum ResourceTypes {
     FIRE,
     WATER,
-    ICE,
+    NATURE,
     EARTH,
     UNDEFINED
 }

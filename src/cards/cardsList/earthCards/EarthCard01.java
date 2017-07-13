@@ -12,9 +12,9 @@ import configuration.PathsAndRoutes;
  *
  * Created by sserdiuk on 7/11/17.
  */
-public class EarthCard1 extends SimpleCard {
+public class EarthCard01 extends SimpleCard {
     {
-        pathToCardIMG = PathsAndRoutes.pathToGameCards + "earth/school_3_card_01.phg";
+        pathToCardIMG = PathsAndRoutes.pathEarthCards + "01.png";
         resourceTypeNeed = resourceTypeDetector(ResourceTypes.EARTH);
         resourceCountNeed = 3;
 
@@ -22,8 +22,6 @@ public class EarthCard1 extends SimpleCard {
 
         bonuses.put(BonusesInCards.ARMOR_ADD_MY_SELF, 3);
         bonuses.put(BonusesInCards.BUILD_TEMPLE_EARTH_MY_SELF, 1);
-
-        chanceForBunusSuccess = 25;
 
         addBonus(bonuses);
     }
