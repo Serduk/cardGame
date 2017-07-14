@@ -1,5 +1,7 @@
 package cards;
 
+import cards.enumsCards.BonusesInCards;
+
 import java.util.HashMap;
 
 /**
@@ -13,12 +15,12 @@ public interface BonusCardsType {
      *
      * @param bonusType take HashMap with Bonus types and Counts
     * */
-    void addBonus(HashMap<Object, Integer> bonusType);
+    void addBonus(HashMap<BonusesInCards, Integer> bonusType);
 
     /**
      * Get successful bonuses, who checked in "addBonus" Method
      *
      * @return successful bonuses, who parsed and checked in addBonus();
     * */
-    HashMap<Object, Integer> getSuccessfulBonuses();
+    HashMap<BonusesInCards, Integer> getSuccessfulBonuses();
 }

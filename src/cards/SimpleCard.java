@@ -40,8 +40,8 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
 
     /*************************************** BONUS CARDS METHODS AND FIELDS Implementation ***********************/
     protected int chanceForBonusSuccess = 100;
-    protected HashMap<Object, Integer> bonuses = new HashMap();
-    private HashMap<Object, Integer> successfulBonuses = new HashMap<>();
+    protected HashMap<BonusesInCards, Integer> bonuses = new HashMap();
+    private HashMap<BonusesInCards, Integer> successfulBonuses = new HashMap<>();
 
     /**
      * Method implemented.
@@ -61,10 +61,10 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
      * TODO: Make method as Protected
     * */
     @Override
-    public void addBonus(HashMap<Object, Integer> bonus) {
+    public void addBonus(HashMap<BonusesInCards, Integer> bonus) {
         System.out.println("CHANGE FOR BONUS SUCCESS " + chanceForBonusSuccess);
         System.out.println("TRY ADDING " + bonus.size() + " BONUSES");
-        for (Map.Entry<Object, Integer> e : bonus.entrySet()) {
+        for (Map.Entry<BonusesInCards, Integer> e : bonus.entrySet()) {
             //to get key
             e.getKey();
             System.out.println(e.getKey());
@@ -92,7 +92,7 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
      * If bonus fail check in addBonus, he will not be added in successfulBonuses
      * */
     @Override
-    public HashMap<Object, Integer> getSuccessfulBonuses() {
+    public HashMap<BonusesInCards, Integer> getSuccessfulBonuses() {
         System.out.println("ADDED " + successfulBonuses.size() + " BONUSES");
         return successfulBonuses;
     }
