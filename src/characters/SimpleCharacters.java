@@ -3,6 +3,7 @@ package characters;
 import cards.enumsCards.BonusesInCards;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Describe all Properties for characters
@@ -10,6 +11,7 @@ import java.util.HashMap;
  *
  * TODO: Solve problems with user cards were us bonus -> Ignore Armor
  * TODO: How parse Cards with Poisons or Freeze, Reflect (Maby add few fields with this, and add all this bonuses to Attack)
+ * TODO: REGENERATION FEATURE, FIX
  * Created by sserdiuk on 7/13/17.
  */
 public class SimpleCharacters {
@@ -20,8 +22,9 @@ public class SimpleCharacters {
     private int poisonedDamage = 0;
     private int poisoneRounds = 0;
 
-    boolean freezAttack = false;
-    boolean ignoreArmorAttack = false;
+    private boolean poisonAttack = false;
+    private boolean freezeAttack = false;
+    private boolean ignoreArmorAttack = false;
 
     private int templeEarth = 1;
     private int templeFire = 1;
@@ -57,6 +60,13 @@ public class SimpleCharacters {
         return attackPower;
     }
 
+    public void setAttackPower(int Modification) {
+        attackPower += Modification;
+        if (attackPower < 0) {
+            attackPower = 0;
+        }
+    }
+
     /**
      * @return total health
      * needed for describing on GUI
@@ -66,6 +76,13 @@ public class SimpleCharacters {
         return health;
     }
 
+    public void setHealth(int Modification) {
+        health += Modification;
+        if (health < 0) {
+            health = 0;
+        }
+    }
+
     /**
      * @return total armor
      * needed for describing on GUI
@@ -73,6 +90,46 @@ public class SimpleCharacters {
      * */
     public int getArmor() {
         return armor;
+    }
+
+    public void setArmor(int Modification) {
+        armor += Modification;
+        if (armor < 0) {
+            armor = 0;
+        }
+    }
+
+    /**
+     * @return boolean for attack ignore Armor or ignore Armor
+     * */
+    public boolean isIgnoreArmorAttack() {
+        return ignoreArmorAttack;
+    }
+
+    public void setIgnoreArmorAttack(boolean setBoolean) {
+        ignoreArmorAttack = setBoolean;
+    }
+
+    /**
+     * @return boolean for attack Freeze or Not Freeze
+     * */
+    public boolean isFreezeAttack() {
+        return freezeAttack;
+    }
+
+    public void setFreezeAttack(boolean setBoolean) {
+        freezeAttack = setBoolean;
+    }
+
+    /**
+     * @return boolean for attack Poisoned or Poisoned
+     * */
+    public boolean isPoisonAttack() {
+        return poisonAttack;
+    }
+
+    public void setPoisonedAttack(boolean setBoolean) {
+        poisonAttack = setBoolean;
     }
 
 /*------------------------------------------- GET TEMPLE DATA -----------------------------------------------------*/
@@ -205,7 +262,7 @@ public class SimpleCharacters {
         return currentResourceCount;
     }
 
-    /*------------------------------------------- ________________ -----------------------------------------------------*/
+    /*---------------------------------------- INCOME BONUSES PARSER ------------------------------------------------*/
     /**
      * Method parse all income bonuses from cards.
      * Check it all.
@@ -219,6 +276,29 @@ public class SimpleCharacters {
      *
      * */
     public void addBonusFromCards(HashMap<BonusesInCards, Integer> bonusList) {
+        for(Map.Entry<BonusesInCards, Integer> entry : bonusList.entrySet()) {
 
+            BonusesInCards key = entry.getKey();
+            int value = entry.getValue();
+
+            String keyParser = key.toString();
+            if (keyParser.contains("BUILD_TEMPLE")) {
+                setTempleCount(key, value);
+            } else if (keyParser.contains("RESOURCE")) {
+                setResourceCount(key, value);
+            } else if (keyParser.contains("ADD_HEALTH")) {
+            setHealth(value);
+            } else if (keyParser.contains("ARMOR_ADD")) {
+                setArmor(value);
+            } else if (keyParser.contains("ATTACK_ADD")) {
+                setAttackPower(value);
+            } else if (keyParser.contains("IGNORE_ARMOR")) {
+                setIgnoreArmorAttack(true);
+            } else if (keyParser.contains("FREEZE_ENEMY")) {
+                setFreezeAttack(true);
+            } else if (keyParser.contains("POISON_ENEMY")) {
+                setPoisonedAttack(true);
+            }
+        }
     }
 }

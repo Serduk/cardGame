@@ -4,6 +4,7 @@ import cards.cardsList.earthCards.EarthCard01;
 import cards.cardsList.fireCards.FireCard01;
 import cards.cardsList.natureCards.NatureCard01;
 import cards.cardsList.waterCards.WaterCard01;
+import characters.SimpleCharacters;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,8 @@ public class MainRun {
         cardCollection.add(new WaterCard01());
         cardCollection.add(new NatureCard01());
 
+        SimpleCharacters character = new SimpleCharacters();
+
 
 
 
@@ -35,5 +38,10 @@ public class MainRun {
         earthCard1.getSuccessfulBonuses();
         System.out.println(cardCollection.get(0).getSuccessfulBonuses());
         System.out.println("SUCCESSFUL BONUSES WILL BE" + earthCard1.getSuccessfulBonuses());
+
+        System.out.println("ARMOR BEFORE = " + character.getArmor());
+        character.addBonusFromCards(earthCard1.getSuccessfulBonuses());
+        System.out.println("ARMOR AFTER = " + character.getArmor());
+        System.out.println("TEMPLE = " + character.getTempleEarth());
     }
 }
