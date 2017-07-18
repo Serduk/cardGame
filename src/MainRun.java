@@ -42,6 +42,10 @@ public class MainRun {
         System.out.println("ARMOR BEFORE = " + character.getArmor());
         character.addBonusFromCards(earthCard1.getSuccessfulBonuses());
         System.out.println("ARMOR AFTER = " + character.getArmor());
-        System.out.println("TEMPLE = " + character.getTempleEarth());
+        System.out.println("EARTH TEMPLE = " + character.getTempleEarth());
+
+        System.out.println("TRY ADDING FROM CARD LIST " + cardCollection.get(1).getSuccessfulBonuses());
+        character.addBonusFromCards(cardCollection.get(1).getSuccessfulBonuses());
+        System.out.println("EARTH TEMPLE = " + character.getTempleEarth());
     }
 }

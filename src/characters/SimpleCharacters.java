@@ -22,6 +22,8 @@ public class SimpleCharacters {
     private int poisonedDamage = 0;
     private int poisoneRounds = 0;
 
+    private int freezeRounds = 0;
+
     private boolean poisonAttack = false;
     private boolean freezeAttack = false;
     private boolean ignoreArmorAttack = false;
@@ -39,7 +41,7 @@ public class SimpleCharacters {
     /**
      * Method Make Attack to Enemy
      * @param cardDamage take attack count from card
-     * then Add attackPower to cardDamage;
+     * then Add attackPower to getCardDamage;
      * Then decrease attack power by one (After each Attack should be lesser by 1)
      * @return total damage (attackPower + Damage From card);
      * */

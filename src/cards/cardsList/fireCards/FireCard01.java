@@ -23,7 +23,7 @@ public class FireCard01 extends SimpleCard {
         bonuses.put(BonusesInCards.BUILD_TEMPLE_EARTH_MY_SELF, 1);
         bonuses.put(BonusesInCards.BUILD_TEMPLE_FIRE_MY_SELF, 1);
         bonuses.put(BonusesInCards.BUILD_TEMPLE_WATER_MY_SELF, 1);
-        bonuses.put(BonusesInCards.BUILD_TEMPLE_EARTH_MY_SELF, 1);
+        bonuses.put(BonusesInCards.BUILD_TEMPLE_NATURE_MY_SELF, 1);
 
         addBonus(bonuses);
     }

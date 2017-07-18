@@ -21,6 +21,23 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
 //    describe type of card: aggressive, defense, bonus, etc
     protected String cardType = cardTypeDetector(CardsType.UNDEFINED);
 
+//    boolean for checking. Has card damage or not. If has -> set bool to true, and set damage in CardLogic class
+    protected boolean hasDamageOnCard = false;
+
+/********************************************* BASIC CARDS PROPERTIES *************************************************/
+
+    public int getResourceCountNeed() {
+        return resourceCountNeed;
+    }
+
+    public boolean getHasDamageOnCard() {
+        return hasDamageOnCard;
+    }
+
+    public String getResourceTypeNeed() {
+        return resourceTypeNeed;
+    }
+
     protected String resourceTypeDetector(ResourceTypes resourceTypes) {
         return resourceTypes.toString().toLowerCase();
     }
@@ -29,17 +46,18 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
         return cardsType.toString().toLowerCase();
     }
 
-    /*************************************** AggressiveCardsType CARDS METHODS AND FIELDS Implementation ***********************/
+/********************************* AggressiveCardsType CARDS METHODS AND FIELDS Implementation ***********************/
     protected int damage = 0;
 
     @Override
-    public int cardDamage() {
+    public int getCardDamage() {
         return damage;
     }
 
 
     /*************************************** BONUS CARDS METHODS AND FIELDS Implementation ***********************/
     protected int chanceForBonusSuccess = 100;
+    protected boolean hasBonus = false;
     protected HashMap<BonusesInCards, Integer> bonuses = new HashMap();
     private HashMap<BonusesInCards, Integer> successfulBonuses = new HashMap<>();
 
@@ -109,6 +127,18 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
         String bonusType = bonusesInCards.toString();
         System.out.println(bonusType);
         return bonusType;
+    }
+
+    /**
+     * Method check HashMap with bonuses
+     * If Card has some bonuses (or som change to get bonus)
+     * @return boolean with existing bonus in card
+     * */
+    public boolean isHasBonus() {
+        if (!successfulBonuses.isEmpty()) {
+            hasBonus = true;
+        }
+        return hasBonus;
     }
 
 /*************************************** DefenseCardsType CARDS METHODS AND FIELDS Implementation ***********************/

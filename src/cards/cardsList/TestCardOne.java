@@ -9,7 +9,7 @@ import cards.SimpleCard;
  */
 public class TestCardOne extends SimpleCard implements AggressiveCardsType {
     @Override
-    public int cardDamage() {
+    public int getCardDamage() {
         return 0;
     }
 }
