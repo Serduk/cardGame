@@ -1,12 +1,7 @@
 import cards.SimpleCard;
-import cards.cardsList.TestCardOne;
-import cards.cardsList.earthCards.EarthCard01;
-import cards.cardsList.fireCards.FireCard01;
-import cards.cardsList.natureCards.NatureCard01;
-import cards.cardsList.waterCards.WaterCard01;
 import characters.SimpleCharacters;
+import logic.CardLogic;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -18,34 +13,28 @@ import java.util.List;
 public class MainRun {
     public static void main(String[] args) {
 //        new DesktopGui().drawGui();
-        SimpleCard card = new TestCardOne();
-        EarthCard01 earthCard1 = new EarthCard01();
-
-        List<SimpleCard> cardCollection = new ArrayList<>();
-        cardCollection.add(new EarthCard01());
-        cardCollection.add(new FireCard01());
-        cardCollection.add(new WaterCard01());
-        cardCollection.add(new NatureCard01());
 
         SimpleCharacters character = new SimpleCharacters();
+        int a = 0;
+        Integer b = 3;
+        a += b;
+        System.out.println("INT + INTEGER " + a);
 
+        CardLogic logic = new CardLogic();
 
+        logic.setMainCardsDeck();
+        logic.getCardsDeckInHand();
+//        logic.showCardsInHands();
+        System.out.println("USER HAS NEXT CARDS: " + logic.showCardsInHands());
 
+        List<SimpleCard> cardsInHands = logic.showCardsInHands();
 
-        cardCollection.get(0).getSuccessfulBonuses();
-
-//        card.getSuccessfulBonuses();
-        earthCard1.getSuccessfulBonuses();
-        System.out.println(cardCollection.get(0).getSuccessfulBonuses());
-        System.out.println("SUCCESSFUL BONUSES WILL BE" + earthCard1.getSuccessfulBonuses());
+        cardsInHands.get(0).getSuccessfulBonuses();
+        System.out.println("SUCCESSFUL BONUSES WILL BE : " + cardsInHands.get(0).getSuccessfulBonuses());
 
         System.out.println("ARMOR BEFORE = " + character.getArmor());
-        character.addBonusFromCards(earthCard1.getSuccessfulBonuses());
+        character.addBonusFromCards(cardsInHands.get(0).getSuccessfulBonuses());
         System.out.println("ARMOR AFTER = " + character.getArmor());
-        System.out.println("EARTH TEMPLE = " + character.getTempleEarth());
-
-        System.out.println("TRY ADDING FROM CARD LIST " + cardCollection.get(1).getSuccessfulBonuses());
-        character.addBonusFromCards(cardCollection.get(1).getSuccessfulBonuses());
-        System.out.println("EARTH TEMPLE = " + character.getTempleEarth());
+        System.out.println("HEALTH AFTER = " + character.getHealth());
     }
 }

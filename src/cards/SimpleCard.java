@@ -77,6 +77,7 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
      *               All Successful bonuses will be add in successfulBonuses
      *
      * TODO: Make method as Protected
+     * TODO: SomeTimes bonuses nod added. Example NatureCard01; need debug
     * */
     @Override
     public void addBonus(HashMap<BonusesInCards, Integer> bonus) {

@@ -9,6 +9,7 @@ import characters.SimpleCharacters;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * Here will be described all logic for cards
@@ -18,7 +19,7 @@ import java.util.List;
  */
 public class CardLogic implements UseCards {
 //    All cards in total Deck
-    List<SimpleCard> cardCollection = new ArrayList<>();
+    List<SimpleCard> cardsCollection = new ArrayList<>();
 //    Cards deck for user
     List<SimpleCard> userCardDeck = new ArrayList<>();
 //    cards deck for enemy
@@ -29,17 +30,45 @@ public class CardLogic implements UseCards {
 //    enemy character class init
     SimpleCharacters characterEnemy = new SimpleCharacters();
 
-//    will be init all cards to total deck
-    public void setCardDeck() {
-        cardCollection.add(new EarthCard01());
-        cardCollection.add(new FireCard01());
-        cardCollection.add(new WaterCard01());
-        cardCollection.add(new NatureCard01());
+
+    private int cardsDeckInUserHandCount = 5;
+    private int mainCardsDeckCollectionSize;
+
+    /**
+     * In this method automatically init all cards
+     * Cards will be added in main deck collection
+     * TODO: Probably move to constructor?
+     * */
+    public void setMainCardsDeck() {
+        cardsCollection.add(new EarthCard01());
+        cardsCollection.add(new FireCard01());
+        cardsCollection.add(new WaterCard01());
+        cardsCollection.add(new NatureCard01());
+
+        mainCardsDeckCollectionSize  = cardsCollection.size();
     }
 
-//    init cards deck for user
+    /**
+     * Init all cards for user.
+     * Create Cards Deck for player
+     * get max deck size for player
+     * get max deck size in total
+     * get random card from MAIN DECK,
+     * and put it to player Deck
+     * */
     public void getCardsDeckInHand() {
-        
+        Random random = new Random();
+        System.out.println("CARDS COLLECTION SIZE IS: " + cardsCollection.size());
+        for (int i = 0; i < cardsDeckInUserHandCount; i++) {
+            int num = random.nextInt(mainCardsDeckCollectionSize);
+
+            System.out.println("GET RANDOM CARD ON INDEX: " + num);
+            userCardDeck.add(cardsCollection.get(num));
+        }
+    }
+
+    public List<SimpleCard> showCardsInHands() {
+        return userCardDeck;
     }
 
 
