@@ -15,16 +15,11 @@ public class MainRun {
 //        new DesktopGui().drawGui();
 
         SimpleCharacters character = new SimpleCharacters();
-        int a = 0;
-        Integer b = 3;
-        a += b;
-        System.out.println("INT + INTEGER " + a);
 
         CardLogic logic = new CardLogic();
 
         logic.setMainCardsDeck();
         logic.getCardsDeckInHand();
-//        logic.showCardsInHands();
         System.out.println("USER HAS NEXT CARDS: " + logic.showCardsInHands());
 
         List<SimpleCard> cardsInHands = logic.showCardsInHands();

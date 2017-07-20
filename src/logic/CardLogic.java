@@ -5,6 +5,7 @@ import cards.cardsList.earthCards.EarthCard01;
 import cards.cardsList.fireCards.FireCard01;
 import cards.cardsList.natureCards.NatureCard01;
 import cards.cardsList.waterCards.WaterCard01;
+import cards.enumsCards.BonusesInCards;
 import characters.SimpleCharacters;
 
 import java.util.ArrayList;
@@ -76,7 +77,10 @@ public class CardLogic implements UseCards {
     @Override
     public void playCard(SimpleCard card) {
         if (card.getHasDamageOnCard()) {
-//            do damage
+            System.out.println("TRY ATTACK. DAMAGE WILL BE : " + character.attack(card.getCardDamage()));
+            character.attack(card.getCardDamage());
+//            TODO: fix data with debufs
+            character.takeDamage(character.attack(card.getCardDamage()), BonusesInCards.ATTACK_ADD_MY_SELF);
         }
         if (card.isHasBonus()) {
             character.addBonusFromCards(card.getSuccessfulBonuses());

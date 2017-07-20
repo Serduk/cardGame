@@ -52,6 +52,22 @@ public class SimpleCharacters {
         }
         return damage;
     }
+
+    /**
+     * Method for work with receiving damage from Attacker
+     * @param damageReceive -> get damage int
+     * @param debuff -> check debufs.
+     *                  ex: Attack may be with poison or freeze
+     *
+     * Firstly: system should check armor count, and recalculate damage with armor
+     *          if debuf has ignore armor -> recalculate clear damage
+     *
+     * TODO: add condition for hasArmor
+     * TODO: Add condition for debuf: ignore armor, poison, freeze, etc
+     * */
+    public void takeDamage(int damageReceive, BonusesInCards debuff) {
+
+    }
 /*------------------------------------------- GET BASE PARAMS -----------------------------------------------------*/
     /**
      * @return total attackPower
