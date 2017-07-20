@@ -21,5 +21,7 @@ public class WaterCard01 extends SimpleCard {
         cardTypeDetector(CardsType.BONUS);
         chanceForBonusSuccess = 100;
         bonuses.put(BonusesInCards.REMOVE_POISON_MY_SELF, 0);
+
+        addBonus(bonuses);
     }
 }

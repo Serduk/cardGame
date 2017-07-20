@@ -19,7 +19,7 @@ public class EarthCard01 extends SimpleCard {
         resourceCountNeed = 3;
 
         cardType = cardTypeDetector(CardsType.BONUS);
-
+        chanceForBonusSuccess = 100;
         bonuses.put(BonusesInCards.ARMOR_ADD_MY_SELF, 3);
         bonuses.put(BonusesInCards.BUILD_TEMPLE_EARTH_MY_SELF, 1);
 

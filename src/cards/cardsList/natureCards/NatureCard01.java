@@ -1,6 +1,5 @@
 package cards.cardsList.natureCards;
 
-import cards.BonusCardsType;
 import cards.SimpleCard;
 import cards.enumsCards.BonusesInCards;
 import cards.enumsCards.CardsType;
@@ -23,5 +22,7 @@ public class NatureCard01 extends SimpleCard {
         chanceForBonusSuccess = 100;
         bonuses.put(BonusesInCards.ADD_HEALTH, 10);
         bonuses.put(BonusesInCards.REMOVE_POISON_MY_SELF, 0);
+
+        addBonus(bonuses);
     }
 }
