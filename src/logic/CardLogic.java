@@ -20,11 +20,11 @@ import java.util.Random;
  */
 public class CardLogic implements UseCards {
 //    All cards in total Deck
-    List<SimpleCard> cardsCollection = new ArrayList<>();
+    private List<SimpleCard> cardsCollection = new ArrayList<>();
 //    Cards deck for user
-    List<SimpleCard> userCardDeck = new ArrayList<>();
+    private List<SimpleCard> userCardDeck = new ArrayList<>();
 //    cards deck for enemy
-    List<SimpleCard> enemyCardDeck = new ArrayList<>();
+    private List<SimpleCard> enemyCardDeck = new ArrayList<>();
 
 //    character class init
     SimpleCharacters character = new SimpleCharacters();
@@ -87,12 +87,16 @@ public class CardLogic implements UseCards {
     @Override
     public void playCard(int card) {
         userCardDeck.get(card);
-        if (userCardDeck.get(card).getHasDamageOnCard()) {
+        if (userCardDeck.get(card).isHasDamageOnCard()) {
             System.out.println("TRY ATTACK. DAMAGE WILL BE : " + character.attack(userCardDeck.get(card).getCardDamage()));
             character.attack(userCardDeck.get(card).getCardDamage());
 //            TODO: fix data with debufs
             character.takeDamage(character.attack(userCardDeck.get(card).getCardDamage()), BonusesInCards.ATTACK_ADD_MY_SELF);
         }
+        if (userCardDeck.get(card).isHasDebufOnCard()) {
+//            TODO: SET DEBUF ON CHARACTER
+        }
+
         if (userCardDeck.get(card).isHasBonus()) {
             character.addBonusFromCards(userCardDeck.get(card).getSuccessfulBonuses());
         }

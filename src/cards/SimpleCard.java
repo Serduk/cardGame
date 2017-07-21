@@ -24,14 +24,21 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
 //    boolean for checking. Has card damage or not. If has -> set bool to true, and set damage in CardLogic class
     protected boolean hasDamageOnCard = false;
 
+//    boolean for checking. Has card debuf or not. if has -> set bool to true, and set debuf in CardLogic
+    protected boolean hasDebufOnCard = false;
+
 /********************************************* BASIC CARDS PROPERTIES *************************************************/
 
     public int getResourceCountNeed() {
         return resourceCountNeed;
     }
 
-    public boolean getHasDamageOnCard() {
+    public boolean isHasDamageOnCard() {
         return hasDamageOnCard;
+    }
+
+    public boolean isHasDebufOnCard() {
+        return hasDebufOnCard;
     }
 
     public String getResourceTypeNeed() {

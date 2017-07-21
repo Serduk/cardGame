@@ -189,7 +189,7 @@ public class SimpleCharacters {
      * @param templeModification send modification for temple counts
      * Modification can add temple or Destroy it
      * */
-    public void setTempleCount(BonusesInCards templeType, int templeModification) {
+    private void setTempleCount(BonusesInCards templeType, int templeModification) {
         switch (templeType) {
             case BUILD_TEMPLE_FIRE_MY_SELF:
                 templeFire = templeCountChecker(templeFire, templeModification);
@@ -239,7 +239,7 @@ public class SimpleCharacters {
      * @param resourceCount send modification for temple counts
      * Modification can add temple or Destroy it
      * */
-    public void setResourceCount(BonusesInCards resourceType, int resourceCount) {
+    private void setResourceCount(BonusesInCards resourceType, int resourceCount) {
         switch (resourceType) {
             case RESOURCE_EARTH:
                 resourceEarthCount = resourceCountChecker(resourceEarthCount, resourceCount);
