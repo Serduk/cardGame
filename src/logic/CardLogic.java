@@ -58,32 +58,70 @@ public class CardLogic implements UseCards {
      * and put it to player Deck
      * */
     public void getCardsDeckInHand() {
-        Random random = new Random();
         System.out.println("CARDS COLLECTION SIZE IS: " + cardsCollection.size());
-        for (int i = 0; i < cardsDeckInUserHandCount; i++) {
-            int num = random.nextInt(mainCardsDeckCollectionSize);
-
-            System.out.println("GET RANDOM CARD ON INDEX: " + num);
-            userCardDeck.add(cardsCollection.get(num));
+//        TODO: Solve problem, which loop will be better in this situation
+        while (userCardDeck.size() < cardsDeckInUserHandCount) {
+            getCardInHandsFromMainDeck();
         }
+//        for (int i = 0; i < cardsDeckInUserHandCount; i++) {
+//            getCardInHandsFromMainDeck();
+//        }
     }
 
+    /**
+     * @return userCardDeck
+     * show all cards in hands of player
+     * */
     public List<SimpleCard> showCardsInHands() {
         return userCardDeck;
     }
 
-
-
+    /**
+     * @param card -> taken from GUI, when user click on card, on GUI
+     *
+     * Method take card with this number in player hands
+     * Check all data in card, and if he has bonus -> add bonuses for player
+     * Also if has damage -> make damage on enemy
+     * Then take another card in hand in same place in hand (replace)
+     * */
     @Override
-    public void playCard(SimpleCard card) {
-        if (card.getHasDamageOnCard()) {
-            System.out.println("TRY ATTACK. DAMAGE WILL BE : " + character.attack(card.getCardDamage()));
-            character.attack(card.getCardDamage());
+    public void playCard(int card) {
+        userCardDeck.get(card);
+        if (userCardDeck.get(card).getHasDamageOnCard()) {
+            System.out.println("TRY ATTACK. DAMAGE WILL BE : " + character.attack(userCardDeck.get(card).getCardDamage()));
+            character.attack(userCardDeck.get(card).getCardDamage());
 //            TODO: fix data with debufs
-            character.takeDamage(character.attack(card.getCardDamage()), BonusesInCards.ATTACK_ADD_MY_SELF);
+            character.takeDamage(character.attack(userCardDeck.get(card).getCardDamage()), BonusesInCards.ATTACK_ADD_MY_SELF);
         }
-        if (card.isHasBonus()) {
-            character.addBonusFromCards(card.getSuccessfulBonuses());
+        if (userCardDeck.get(card).isHasBonus()) {
+            character.addBonusFromCards(userCardDeck.get(card).getSuccessfulBonuses());
         }
+//        TODO: we don't need remove card form list, just replace it and redraw;
+//        userCardDeck.remove(card);
+        replaceCardInHandsFromMainDeck(card);
+    }
+
+    /**
+     * Method try get card random card from main deck,
+     * and put it in character deck
+     * */
+    private void getCardInHandsFromMainDeck() {
+        Random random = new Random();
+        int num = random.nextInt(mainCardsDeckCollectionSize);
+        System.out.println("GET RANDOM CARD ON INDEX: " + num);
+        userCardDeck.add(cardsCollection.get(num));
+    }
+
+    /**
+     * Method replace card in user hands
+     * take one card in main deck and put it in hands on place
+     * @param cardPosition set place in hands
+     * new random card, from main deck, will be placed instead card in hands
+     * */
+    private void replaceCardInHandsFromMainDeck(int cardPosition) {
+        Random random = new Random();
+        int num = random.nextInt(mainCardsDeckCollectionSize);
+        System.out.println("GET RANDOM CARD ON INDEX: " + num);
+        userCardDeck.set(cardPosition, cardsCollection.get(num));
     }
 }

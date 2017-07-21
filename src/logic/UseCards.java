@@ -15,5 +15,5 @@ import java.util.HashMap;
  * Created by sserdiuk on 7/14/17.
  */
 public interface UseCards {
-    void playCard(SimpleCard card);
+    void playCard(int card);
 }
