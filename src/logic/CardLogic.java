@@ -90,11 +90,11 @@ public class CardLogic implements UseCards {
         if (userCardDeck.get(card).isHasDamageOnCard()) {
             System.out.println("TRY ATTACK. DAMAGE WILL BE : " + character.attack(userCardDeck.get(card).getCardDamage()));
             character.attack(userCardDeck.get(card).getCardDamage());
-//            TODO: fix data with debufs
+//            TODO: fix data with debuffs
             character.takeDamage(character.attack(userCardDeck.get(card).getCardDamage()), BonusesInCards.ATTACK_ADD_MY_SELF);
         }
         if (userCardDeck.get(card).isHasDebufOnCard()) {
-//            TODO: SET DEBUF ON CHARACTER
+//            TODO: SET DEBUFF ON CHARACTER
         }
 
         if (userCardDeck.get(card).isHasBonus()) {

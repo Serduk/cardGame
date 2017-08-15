@@ -1,9 +1,5 @@
 package logic;
 
-import cards.SimpleCard;
-import cards.enumsCards.BonusesInCards;
-
-import java.util.HashMap;
 
 /**
  * Method for Using card in game.
