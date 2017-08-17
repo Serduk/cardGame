@@ -100,7 +100,7 @@ public class CardLogic implements UseCards {
         if (userCardDeck.get(card).isHasBonus()) {
             character.addBonusFromCards(userCardDeck.get(card).getSuccessfulBonuses());
         }
-//        TODO: we don't need remove card form list, just replace it and redraw;
+//        TODO: we don't need remove card from list, just replace it and redraw;
 //        userCardDeck.remove(card);
         replaceCardInHandsFromMainDeck(card);
     }
