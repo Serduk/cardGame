@@ -13,9 +13,11 @@ import java.util.List;
  */
 public class MainRun {
     public static void main(String[] args) {
-        new DesktopGui().drawGui();
+        SimpleCharacters character = new SimpleCharacters();
+        SimpleCharacters enemy = new SimpleCharacters();
 
-//        SimpleCharacters character = new SimpleCharacters();
+        new DesktopGui(character, enemy).drawGui();
+
 //
 //        CardLogic logic = new CardLogic();
 //
