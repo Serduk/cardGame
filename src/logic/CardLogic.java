@@ -20,11 +20,11 @@ import java.util.Random;
  */
 public class CardLogic implements UseCards {
 //    All cards in total Deck
-    private List<SimpleCard> cardsCollection = new ArrayList<>();
+    protected List<SimpleCard> cardsCollection = new ArrayList<>();
 //    Cards deck for user
-    private List<SimpleCard> userCardDeck = new ArrayList<>();
+    protected List<SimpleCard> userCardDeck = new ArrayList<>();
 //    cards deck for enemy
-    private List<SimpleCard> enemyCardDeck = new ArrayList<>();
+    protected List<SimpleCard> enemyCardDeck = new ArrayList<>();
 
 //    character class init
     SimpleCharacters character = new SimpleCharacters();
@@ -32,8 +32,8 @@ public class CardLogic implements UseCards {
     SimpleCharacters characterEnemy = new SimpleCharacters();
 
 
-    private int cardsDeckInUserHandCount = 5;
-    private int mainCardsDeckCollectionSize;
+    protected int cardsDeckInUserHandCount = 5;
+    protected int mainCardsDeckCollectionSize;
 
     /**
      * In this method automatically init all cards
@@ -109,7 +109,7 @@ public class CardLogic implements UseCards {
      * Method try get card random card from main deck,
      * and put it in character deck
      * */
-    private void getCardInHandsFromMainDeck() {
+    protected void getCardInHandsFromMainDeck() {
         Random random = new Random();
         int num = random.nextInt(mainCardsDeckCollectionSize);
         System.out.println("GET RANDOM CARD ON INDEX: " + num);
@@ -122,7 +122,7 @@ public class CardLogic implements UseCards {
      * @param cardPosition set place in hands
      * new random card, from main deck, will be placed instead card in hands
      * */
-    private void replaceCardInHandsFromMainDeck(int cardPosition) {
+    protected void replaceCardInHandsFromMainDeck(int cardPosition) {
         Random random = new Random();
         int num = random.nextInt(mainCardsDeckCollectionSize);
         System.out.println("GET RANDOM CARD ON INDEX: " + num);

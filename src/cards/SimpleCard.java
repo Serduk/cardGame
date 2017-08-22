@@ -13,7 +13,7 @@ import java.util.Map;
  * Created by sserdiuk on 7/3/17.
  */
 public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseCardsType {
-    protected String pathToCardIMG = "";
+    public String pathToCardIMG = "";
 
     protected String resourceTypeNeed = resourceTypeDetector(ResourceTypes.UNDEFINED);
     protected int resourceCountNeed;

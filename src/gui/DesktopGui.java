@@ -35,14 +35,17 @@ public class DesktopGui extends CardLogic {
     }
 
     private JFrame frame;
+
     private JPanel gamePanel;
     private JPanel userCardDeckPanel;
-    JPanel chatPanel;
-    JLabel startGame;
+    private JPanel enemyCardDeckPanel;
+    private JPanel chatPanel;
 
-    ArrayList<JButton> userCardDeck;
+    ArrayList<JButton> userCardDeckGUI;
 
     private JButton buttonStartGame;
+    private JButton buttonRefresh;
+    private JButton buttonScore;
     private JButton button2;
 
     private BorderLayout layout;
@@ -67,6 +70,10 @@ public class DesktopGui extends CardLogic {
         button2.addActionListener(new clickOnLabel());
 //        button2.setIcon(icon2);
 
+        /**
+         * Here we will add on panel GUI card deck
+         * */
+        showUserCardsDeck();
 
 
         flowLayout = new FlowLayout();
@@ -75,8 +82,14 @@ public class DesktopGui extends CardLogic {
         layout = new BorderLayout();
         gamePanel = new JPanel(layout);
 
+        for (JButton anUserCardDeckGUI : userCardDeckGUI) {
+            userCardDeckPanel.add(anUserCardDeckGUI);
+        }
+
+
         userCardDeckPanel.add(buttonStartGame);
         userCardDeckPanel.add(button2);
+
 
 //        gamePanel.add(BorderLayout.WEST, buttonStartGame);
 //        gamePanel.add(BorderLayout.EAST, button2);
@@ -101,7 +114,9 @@ public class DesktopGui extends CardLogic {
     private class newGame implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-
+            setMainCardsDeck();
+            showUserCardsDeck();
+            showEnemyCardDeck();
         }
     }
 
@@ -119,11 +134,17 @@ public class DesktopGui extends CardLogic {
      * All cards will be put in ArrayList.
      * All images (routes for cards img) will be taken from basic Card class
      *
-     * TODO: Complete method
-     *
+     * BEFORE USE THIS METHOD: YOU SHOULD USE METHOD setMainCardsDeck(), FOR SETUP MAIN CARD DECK;
      * */
     private void showUserCardsDeck() {
-
+        setMainCardsDeck();
+        getCardsDeckInHand();
+        userCardDeckGUI = new ArrayList<JButton>();
+        for (int i = 0; i < cardsDeckInUserHandCount; i++) {
+            JButton jButton = new JButton(new ImageIcon(showCardsInHands().get(i).pathToCardIMG));
+            userCardDeckGUI.add(jButton);
+        }
+        System.out.println("DESKTOP GUI: USER HAS " + userCardDeckGUI.size() + " Card IMAGES");
     }
 
     /**
@@ -135,5 +156,16 @@ public class DesktopGui extends CardLogic {
      * */
     private void showEnemyCardDeck() {
 
+    }
+
+    /**
+     * Anonymous class for help repaint all actions on card desk
+     * After some actions
+     * */
+    private class Repaint implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frame.repaint();
+        }
     }
 }
