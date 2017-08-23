@@ -42,6 +42,7 @@ public class DesktopGui extends CardLogic {
     private JPanel chatPanel;
 
     ArrayList<JButton> userCardDeckGUI;
+    ArrayList<JButton> enemyCardDeckGUI;
 
     private JButton buttonStartGame;
     private JButton buttonRefresh;
@@ -61,39 +62,47 @@ public class DesktopGui extends CardLogic {
 //        ImageIcon iconScalable = new ImageIcon(new ImageIcon(PathsAndRoutes.iconIMG).getImage().getScaledInstance(10, 10, Image.SCALE_DEFAULT));
 //        JButton buttonScalable = new JButton(iconScalable);
 
-        buttonStartGame = new JButton(webIcon);
-        buttonStartGame.addActionListener(new clickOnLabel());
+        buttonStartGame = new JButton( "new Game", webIcon);
+        buttonStartGame.addActionListener(new NewGame());
 
-//        button2 = new JButton("button2", icon2);
-        button2 = new JButton(icon2);
-        button2.setSize(25, 25);
-        button2.addActionListener(new clickOnLabel());
-//        button2.setIcon(icon2);
+//        button2 = new JButton(icon2);
+//        button2.setSize(25, 25);
+//        button2.addActionListener(new clickOnLabel());
 
-        /**
-         * Here we will add on panel GUI card deck
-         * */
+//        /**
+//         * Here we will add on panel GUI card deck
+//         * */
         showUserCardsDeck();
+        showEnemyCardDeck();
 
 
         flowLayout = new FlowLayout();
         userCardDeckPanel = new JPanel(flowLayout);
+        enemyCardDeckPanel = new JPanel(flowLayout);
 
         layout = new BorderLayout();
         gamePanel = new JPanel(layout);
 
+        /**
+         * Draw Card Deck for user
+         * */
         for (JButton anUserCardDeckGUI : userCardDeckGUI) {
             userCardDeckPanel.add(anUserCardDeckGUI);
         }
 
+        /**
+         * Draw card deck for enemy
+         * */
+        for (JButton anUserCardDeckGUI : enemyCardDeckGUI) {
+            enemyCardDeckPanel.add(anUserCardDeckGUI);
+        }
+
 
         userCardDeckPanel.add(buttonStartGame);
-        userCardDeckPanel.add(button2);
 
 
-//        gamePanel.add(BorderLayout.WEST, buttonStartGame);
-//        gamePanel.add(BorderLayout.EAST, button2);
         gamePanel.add(BorderLayout.SOUTH, userCardDeckPanel);
+        gamePanel.add(BorderLayout.NORTH, enemyCardDeckPanel);
 
         frame.add(gamePanel);
 
@@ -111,12 +120,15 @@ public class DesktopGui extends CardLogic {
      *
      * TODO: Complete Method
      * */
-    private class newGame implements ActionListener {
+    private class NewGame implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             setMainCardsDeck();
             showUserCardsDeck();
             showEnemyCardDeck();
+            for (JButton anUserCardDeckGUI : userCardDeckGUI) {
+                userCardDeckPanel.add(anUserCardDeckGUI);
+            }
         }
     }
 
@@ -142,6 +154,7 @@ public class DesktopGui extends CardLogic {
         userCardDeckGUI = new ArrayList<JButton>();
         for (int i = 0; i < cardsDeckInUserHandCount; i++) {
             JButton jButton = new JButton(new ImageIcon(showCardsInHands().get(i).pathToCardIMG));
+            jButton.addActionListener(new PlayClickedButton(i));
             userCardDeckGUI.add(jButton);
         }
         System.out.println("DESKTOP GUI: USER HAS " + userCardDeckGUI.size() + " Card IMAGES");
@@ -150,12 +163,13 @@ public class DesktopGui extends CardLogic {
     /**
      * This Method will show all enemy cards deck from CardLogic Method
      * All Cards will be shown with Card Sheet
-     *
-     * TODO: Complete Method
-     *
      * */
     private void showEnemyCardDeck() {
-
+        enemyCardDeckGUI = new ArrayList<JButton>();
+        for (int i = 0; i < cardsDeckInUserHandCount; i++) {
+            JButton jButton = new JButton(new ImageIcon(PathsAndRoutes.zeroCard));
+            enemyCardDeckGUI.add(jButton);
+        }
     }
 
     /**
@@ -166,6 +180,20 @@ public class DesktopGui extends CardLogic {
         @Override
         public void actionPerformed(ActionEvent e) {
             frame.repaint();
+        }
+    }
+
+    private class PlayClickedButton implements ActionListener {
+        protected PlayClickedButton(int clickedButtonNum) {
+            this.clickedButtonNum = clickedButtonNum;
+        }
+
+        int clickedButtonNum;
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("CLICKED!");
+            System.out.println("BUTTON NUMBER IS: " + clickedButtonNum);
         }
     }
 }
