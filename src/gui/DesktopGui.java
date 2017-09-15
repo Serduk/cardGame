@@ -41,8 +41,8 @@ public class DesktopGui extends CardLogic {
     private JPanel enemyCardDeckPanel;
     private JPanel chatPanel;
 
-    ArrayList<JButton> userCardDeckGUI;
-    ArrayList<JButton> enemyCardDeckGUI;
+    private ArrayList<JButton> userCardDeckGUI;
+    private ArrayList<JButton> enemyCardDeckGUI;
 
     private JButton buttonStartGame;
     private JButton buttonRefresh;
@@ -86,17 +86,12 @@ public class DesktopGui extends CardLogic {
         /**
          * Draw Card Deck for user
          * */
-        for (JButton anUserCardDeckGUI : userCardDeckGUI) {
-            userCardDeckPanel.add(anUserCardDeckGUI);
-        }
+        drawCardDeckForUser();
 
         /**
          * Draw card deck for enemy
          * */
-        for (JButton anUserCardDeckGUI : enemyCardDeckGUI) {
-            enemyCardDeckPanel.add(anUserCardDeckGUI);
-        }
-
+        drawCardDeckForEnemy();
 
         userCardDeckPanel.add(buttonStartGame);
 
@@ -124,11 +119,14 @@ public class DesktopGui extends CardLogic {
         @Override
         public void actionPerformed(ActionEvent e) {
             setMainCardsDeck();
-            showUserCardsDeck();
             showEnemyCardDeck();
             for (JButton anUserCardDeckGUI : userCardDeckGUI) {
                 userCardDeckPanel.add(anUserCardDeckGUI);
             }
+            showEnemyCardDeck();
+            drawCardDeckForUser();
+            showUserCardsDeck();
+            gamePanel.updateUI();
         }
     }
 
@@ -194,6 +192,24 @@ public class DesktopGui extends CardLogic {
         public void actionPerformed(ActionEvent e) {
             System.out.println("CLICKED!");
             System.out.println("BUTTON NUMBER IS: " + clickedButtonNum);
+        }
+    }
+
+    /**
+     * Method add to user card list all new cards from userCardDeck
+     * */
+    private void drawCardDeckForUser() {
+        for (JButton anUserCardDeckGUI : userCardDeckGUI) {
+            userCardDeckPanel.add(anUserCardDeckGUI);
+        }
+    }
+
+    /**
+     * Method add to enemy card list all new cards from enemyCardDeck
+     * */
+    private void drawCardDeckForEnemy() {
+        for (JButton anUserCardDeckGUI : enemyCardDeckGUI) {
+            enemyCardDeckPanel.add(anUserCardDeckGUI);
         }
     }
 }
