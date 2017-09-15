@@ -113,13 +113,14 @@ public class DesktopGui extends CardLogic {
      * Change screen on Table with Cards
      * Add cards for each player
      *
-     * TODO: Complete Method
+     * TODO: Fix problem with new game cards redisplayng
      * */
     private class NewGame implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             setMainCardsDeck();
             showEnemyCardDeck();
+//            clearUserCardsDeck();
             for (JButton anUserCardDeckGUI : userCardDeckGUI) {
                 userCardDeckPanel.add(anUserCardDeckGUI);
             }
@@ -157,6 +158,20 @@ public class DesktopGui extends CardLogic {
         }
         System.out.println("DESKTOP GUI: USER HAS " + userCardDeckGUI.size() + " Card IMAGES");
     }
+
+    /**
+     * This method will clear all user card deck from Desk
+     * clear ALL user cardsDeck
+     * */
+    private void clearUserCardsDeck() {
+        if (userCardDeckGUI.isEmpty()) {
+            System.out.println("No cards in deck!");
+        } else {
+            userCardDeckGUI.clear();
+            userCardDeckPanel.updateUI();
+        }
+    }
+
 
     /**
      * This Method will show all enemy cards deck from CardLogic Method
