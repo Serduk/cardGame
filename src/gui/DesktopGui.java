@@ -72,8 +72,8 @@ public class DesktopGui extends CardLogic {
 //        /**
 //         * Here we will add on panel GUI card deck
 //         * */
-        showUserCardsDeck();
-        showEnemyCardDeck();
+//        showUserCardsDeck();
+//        showEnemyCardDeck();
 
 
         flowLayout = new FlowLayout();
@@ -86,12 +86,12 @@ public class DesktopGui extends CardLogic {
         /**
          * Draw Card Deck for user
          * */
-        drawCardDeckForUser();
+//        drawCardDeckForUser();
 
         /**
          * Draw card deck for enemy
          * */
-        drawCardDeckForEnemy();
+//        drawCardDeckForEnemy();
 
         userCardDeckPanel.add(buttonStartGame);
 
@@ -118,15 +118,19 @@ public class DesktopGui extends CardLogic {
     private class NewGame implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            clearMainCardsDeck();
+            clearUserCardDeck();
+            clearEnemyCardDeck();
+
             setMainCardsDeck();
             showEnemyCardDeck();
-//            clearUserCardsDeck();
-            for (JButton anUserCardDeckGUI : userCardDeckGUI) {
-                userCardDeckPanel.add(anUserCardDeckGUI);
-            }
-            showEnemyCardDeck();
-            drawCardDeckForUser();
             showUserCardsDeck();
+            drawCardDeckForUser();
+            drawCardDeckForEnemy();
+//            for (JButton anUserCardDeckGUI : userCardDeckGUI) {
+//                userCardDeckPanel.add(anUserCardDeckGUI);
+//            }
+            userCardDeckPanel.updateUI();
             gamePanel.updateUI();
         }
     }
@@ -148,6 +152,7 @@ public class DesktopGui extends CardLogic {
      * BEFORE USE THIS METHOD: YOU SHOULD USE METHOD setMainCardsDeck(), FOR SETUP MAIN CARD DECK;
      * */
     private void showUserCardsDeck() {
+        clearMainCardsDeck();
         setMainCardsDeck();
         getCardsDeckInHand();
         userCardDeckGUI = new ArrayList<JButton>();

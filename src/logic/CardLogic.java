@@ -50,6 +50,27 @@ public class CardLogic implements UseCards {
     }
 
     /**
+     * Method will clear main cards deck collection
+     * */
+    public void clearMainCardsDeck() {
+        cardsCollection.clear();
+    }
+
+    /**
+     * will clear USER cards deck collection
+     * */
+    public void clearUserCardDeck() {
+        userCardDeck.clear();
+    }
+
+    /**
+     * will clear ENEMY cards deck collection
+     * */
+    public void clearEnemyCardDeck() {
+        enemyCardDeck.clear();
+    }
+
+    /**
      * Init all cards for user.
      * Create Cards Deck for player
      * get max deck size for player
@@ -60,6 +81,7 @@ public class CardLogic implements UseCards {
     public void getCardsDeckInHand() {
         System.out.println("CARDS COLLECTION SIZE IS: " + cardsCollection.size());
 //        TODO: Solve problem, which loop will be better in this situation
+        userCardDeck.clear();
         while (userCardDeck.size() < cardsDeckInUserHandCount) {
             getCardInHandsFromMainDeck();
         }
