@@ -15,20 +15,20 @@ import java.util.Random;
 /**
  * Here will be described all logic for cards
  * Adding bonuses to characters and att attack
- *
+ * <p>
  * Created by sserdiuk on 7/13/17.
  */
 public class CardLogic implements UseCards {
-//    All cards in total Deck
+    //    All cards in total Deck
     protected List<SimpleCard> cardsCollection = new ArrayList<>();
-//    Cards deck for user
+    //    Cards deck for user
     protected List<SimpleCard> userCardDeck = new ArrayList<>();
-//    cards deck for enemy
+    //    cards deck for enemy
     protected List<SimpleCard> enemyCardDeck = new ArrayList<>();
 
-//    character class init
+    //    character class init
     SimpleCharacters character = new SimpleCharacters();
-//    enemy character class init
+    //    enemy character class init
     SimpleCharacters characterEnemy = new SimpleCharacters();
 
 
@@ -39,33 +39,33 @@ public class CardLogic implements UseCards {
      * In this method automatically init all cards
      * Cards will be added in main deck collection
      * TODO: Probably move to constructor?
-     * */
+     */
     public void setMainCardsDeck() {
         cardsCollection.add(new EarthCard01());
         cardsCollection.add(new FireCard01());
         cardsCollection.add(new WaterCard01());
         cardsCollection.add(new NatureCard01());
 
-        mainCardsDeckCollectionSize  = cardsCollection.size();
+        mainCardsDeckCollectionSize = cardsCollection.size();
     }
 
     /**
      * Method will clear main cards deck collection
-     * */
+     */
     public void clearMainCardsDeck() {
         cardsCollection.clear();
     }
 
     /**
      * will clear USER cards deck collection
-     * */
+     */
     public void clearUserCardDeck() {
         userCardDeck.clear();
     }
 
     /**
      * will clear ENEMY cards deck collection
-     * */
+     */
     public void clearEnemyCardDeck() {
         enemyCardDeck.clear();
     }
@@ -77,7 +77,7 @@ public class CardLogic implements UseCards {
      * get max deck size in total
      * get random card from MAIN DECK,
      * and put it to player Deck
-     * */
+     */
     public void getCardsDeckInHand() {
         System.out.println("CARDS COLLECTION SIZE IS: " + cardsCollection.size());
 //        TODO: Solve problem, which loop will be better in this situation
@@ -93,19 +93,19 @@ public class CardLogic implements UseCards {
     /**
      * @return userCardDeck
      * show all cards in hands of player
-     * */
+     */
     public List<SimpleCard> showCardsInHands() {
         return userCardDeck;
     }
 
     /**
      * @param card -> taken from GUI, when user click on card, on GUI
-     *
-     * Method take card with this number in player hands
-     * Check all data in card, and if he has bonus -> add bonuses for player
-     * Also if has damage -> make damage on enemy
-     * Then take another card in hand in same place in hand (replace)
-     * */
+     *             <p>
+     *             Method take card with this number in player hands
+     *             Check all data in card, and if he has bonus -> add bonuses for player
+     *             Also if has damage -> make damage on enemy
+     *             Then take another card in hand in same place in hand (replace)
+     */
     @Override
     public void playCard(int card) {
         userCardDeck.get(card);
@@ -130,7 +130,7 @@ public class CardLogic implements UseCards {
     /**
      * Method try get card random card from main deck,
      * and put it in character deck
-     * */
+     */
     protected void getCardInHandsFromMainDeck() {
         Random random = new Random();
         int num = random.nextInt(mainCardsDeckCollectionSize);
@@ -141,9 +141,10 @@ public class CardLogic implements UseCards {
     /**
      * Method replace card in user hands
      * take one card in main deck and put it in hands on place
+     *
      * @param cardPosition set place in hands
-     * new random card, from main deck, will be placed instead card in hands
-     * */
+     *                     new random card, from main deck, will be placed instead card in hands
+     */
     protected void replaceCardInHandsFromMainDeck(int cardPosition) {
         Random random = new Random();
         int num = random.nextInt(mainCardsDeckCollectionSize);

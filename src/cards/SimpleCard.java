@@ -9,7 +9,7 @@ import java.util.Map;
 
 /**
  * In this class we describe basic properties for All cards
- *
+ * <p>
  * Created by sserdiuk on 7/3/17.
  */
 public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseCardsType {
@@ -18,16 +18,16 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
     protected String resourceTypeNeed = resourceTypeDetector(ResourceTypes.UNDEFINED);
     protected int resourceCountNeed;
 
-//    describe type of card: aggressive, defense, bonus, etc
+    //    describe type of card: aggressive, defense, bonus, etc
     protected String cardType = cardTypeDetector(CardsType.UNDEFINED);
 
-//    boolean for checking. Has card damage or not. If has -> set bool to true, and set damage in CardLogic class
+    //    boolean for checking. Has card damage or not. If has -> set bool to true, and set damage in CardLogic class
     protected boolean hasDamageOnCard = false;
 
-//    boolean for checking. Has card debuf or not. if has -> set bool to true, and set debuf in CardLogic
+    //    boolean for checking. Has card debuf or not. if has -> set bool to true, and set debuf in CardLogic
     protected boolean hasDebufOnCard = false;
 
-/********************************************* BASIC CARDS PROPERTIES *************************************************/
+    /********************************************* BASIC CARDS PROPERTIES *************************************************/
 
     public int getResourceCountNeed() {
         return resourceCountNeed;
@@ -53,7 +53,7 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
         return cardsType.toString().toLowerCase();
     }
 
-/********************************* AggressiveCardsType CARDS METHODS AND FIELDS Implementation ***********************/
+    /********************************* AggressiveCardsType CARDS METHODS AND FIELDS Implementation ***********************/
     protected int damage = 0;
 
     @Override
@@ -73,19 +73,20 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
      * Add chance for adding some bonuses.
      * They all (bonuses) have some chance to be added(%).
      * User mast change chanceForBonusSuccess for set another chance in child classes
-     *  @param bonus take Object from enum BonusesInCards and Integer -> bonus size
-     *               Then parse all keys, and check condition ->  % for adding
      *
-     * Method check each entrySet from HashMap Bonus.
-     *               if % = 100 => all bonuses will be added by default.
-     *               if % < 100 => each set will be checked on condition.
-     *               if random num <= chance for adding bonus => Bonus will be added
-     *
-     *               All Successful bonuses will be add in successfulBonuses
-     *
-     * TODO: Make method as Protected
-     * TODO: SomeTimes bonuses nod added. Example NatureCard01; need debug
-    * */
+     * @param bonus take Object from enum BonusesInCards and Integer -> bonus size
+     *              Then parse all keys, and check condition ->  % for adding
+     *              <p>
+     *              Method check each entrySet from HashMap Bonus.
+     *              if % = 100 => all bonuses will be added by default.
+     *              if % < 100 => each set will be checked on condition.
+     *              if random num <= chance for adding bonus => Bonus will be added
+     *              <p>
+     *              All Successful bonuses will be add in successfulBonuses
+     *              <p>
+     *              TODO: Make method as Protected
+     *              TODO: SomeTimes bonuses nod added. Example NatureCard01; need debug
+     */
     @Override
     public void addBonus(HashMap<BonusesInCards, Integer> bonus) {
         System.out.println("CHANGE FOR BONUS SUCCESS " + chanceForBonusSuccess);
@@ -116,7 +117,7 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
      * @return successfulBonuses
      * Firstly all this bonuses will be checked on "Success Percent" in method addBonus()
      * If bonus fail check in addBonus, he will not be added in successfulBonuses
-     * */
+     */
     @Override
     public HashMap<BonusesInCards, Integer> getSuccessfulBonuses() {
         System.out.println("ADDED " + successfulBonuses.size() + " BONUSES");
@@ -125,12 +126,13 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
 
     /**
      * Converter for Enums
+     *
      * @param bonusesInCards take enum and convert it in String
      * @return bonusType in String.
-     *
+     * <p>
      * it's will be need in System Logic.
      * When user play card -> it take enums and convert them to Bonuses
-     * */
+     */
     public String bonusesType(BonusesInCards bonusesInCards) {
         String bonusType = bonusesInCards.toString();
         System.out.println(bonusType);
@@ -140,8 +142,9 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
     /**
      * Method check HashMap with bonuses
      * If Card has some bonuses (or som change to get bonus)
+     *
      * @return boolean with existing bonus in card
-     * */
+     */
     public boolean isHasBonus() {
         if (!successfulBonuses.isEmpty()) {
             hasBonus = true;
@@ -149,14 +152,13 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
         return hasBonus;
     }
 
-/*************************************** DefenseCardsType CARDS METHODS AND FIELDS Implementation ***********************/
+    /*************************************** DefenseCardsType CARDS METHODS AND FIELDS Implementation ***********************/
 
     protected int defense = 0;
 
     /**
      * @return Bonus for Defense
-     *
-     * */
+     */
     @Override
     public int cardDefense() {
         return defense;

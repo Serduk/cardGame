@@ -8,7 +8,7 @@ import java.util.Map;
 /**
  * Describe all Properties for characters
  * Armor, AttackPower, Resources
- *
+ * <p>
  * TODO: Solve problems with user cards were us bonus -> Ignore Armor
  * TODO: How parse Cards with Poisons or Freeze, Reflect (Maby add few fields with this, and add all this bonuses to Attack)
  * TODO: REGENERATION FEATURE, FIX
@@ -40,11 +40,12 @@ public class SimpleCharacters {
 
     /**
      * Method Make Attack to Enemy
+     *
      * @param cardDamage take attack count from card
-     * then Add attackPower to getCardDamage;
-     * Then decrease attack power by one (After each Attack should be lesser by 1)
+     *                   then Add attackPower to getCardDamage;
+     *                   Then decrease attack power by one (After each Attack should be lesser by 1)
      * @return total damage (attackPower + Damage From card);
-     * */
+     */
     public int attack(int cardDamage) {
         int damage = attackPower + cardDamage;
         if (attackPower > 0) {
@@ -55,25 +56,27 @@ public class SimpleCharacters {
 
     /**
      * Method for work with receiving damage from Attacker
+     *
      * @param damageReceive -> get damage int
-     * @param debuff -> check debufs.
-     *                  ex: Attack may be with poison or freeze
-     *
-     * Firstly: system should check armor count, and recalculate damage with armor
-     *          if debuf has ignore armor -> recalculate clear damage
-     *
-     * TODO: add condition for hasArmor
-     * TODO: Add condition for debuf: ignore armor, poison, freeze, etc
-     * */
+     * @param debuff        -> check debufs.
+     *                      ex: Attack may be with poison or freeze
+     *                      <p>
+     *                      Firstly: system should check armor count, and recalculate damage with armor
+     *                      if debuf has ignore armor -> recalculate clear damage
+     *                      <p>
+     *                      TODO: add condition for hasArmor
+     *                      TODO: Add condition for debuf: ignore armor, poison, freeze, etc
+     */
     public void takeDamage(int damageReceive, BonusesInCards debuff) {
 
     }
 /*------------------------------------------- GET BASE PARAMS -----------------------------------------------------*/
+
     /**
      * @return total attackPower
      * needed for describing on GUI
      * Or for some check in some another places
-     * */
+     */
     public int getAttackPower() {
         return attackPower;
     }
@@ -89,7 +92,7 @@ public class SimpleCharacters {
      * @return total health
      * needed for describing on GUI
      * Or for some check in some another places
-     * */
+     */
     public int getHealth() {
         return health;
     }
@@ -105,7 +108,7 @@ public class SimpleCharacters {
      * @return total armor
      * needed for describing on GUI
      * Or for some check in some another places
-     * */
+     */
     public int getArmor() {
         return armor;
     }
@@ -119,7 +122,7 @@ public class SimpleCharacters {
 
     /**
      * @return boolean for attack ignore Armor or ignore Armor
-     * */
+     */
     public boolean isIgnoreArmorAttack() {
         return ignoreArmorAttack;
     }
@@ -130,7 +133,7 @@ public class SimpleCharacters {
 
     /**
      * @return boolean for attack Freeze or Not Freeze
-     * */
+     */
     public boolean isFreezeAttack() {
         return freezeAttack;
     }
@@ -141,7 +144,7 @@ public class SimpleCharacters {
 
     /**
      * @return boolean for attack Poisoned or Poisoned
-     * */
+     */
     public boolean isPoisonAttack() {
         return poisonAttack;
     }
@@ -186,9 +189,10 @@ public class SimpleCharacters {
 
     /**
      * Method change TempleCount
+     *
      * @param templeModification send modification for temple counts
-     * Modification can add temple or Destroy it
-     * */
+     *                           Modification can add temple or Destroy it
+     */
     private void setTempleCount(BonusesInCards templeType, int templeModification) {
         switch (templeType) {
             case BUILD_TEMPLE_FIRE_MY_SELF:
@@ -223,9 +227,8 @@ public class SimpleCharacters {
      *                           first and second params unite
      *                           if totally temple count will be lesser then 1
      *                           method set currentTempleCount = 1
-     *
      * @return currentTempleCount (1 or more)
-     * */
+     */
     private int templeCountChecker(int currentTempleCount, int templeModification) {
         currentTempleCount += templeModification;
         if (currentTempleCount < 1) {
@@ -236,9 +239,10 @@ public class SimpleCharacters {
 
     /**
      * Method change TempleCount
+     *
      * @param resourceCount send modification for temple counts
-     * Modification can add temple or Destroy it
-     * */
+     *                      Modification can add temple or Destroy it
+     */
     private void setResourceCount(BonusesInCards resourceType, int resourceCount) {
         switch (resourceType) {
             case RESOURCE_EARTH:
@@ -266,12 +270,11 @@ public class SimpleCharacters {
      *
      * @param currentResourceCount take current state of resources
      * @param resourceModification take data from card
-     *                           first and second params unite
-     *                           if totally temple count will be lesser then 1
-     *                           method set currentTempleCount = 1
-     *
+     *                             first and second params unite
+     *                             if totally temple count will be lesser then 1
+     *                             method set currentTempleCount = 1
      * @return currentResourceCount (0 or more)
-     * */
+     */
     private int resourceCountChecker(int currentResourceCount, int resourceModification) {
         currentResourceCount += resourceModification;
         if (currentResourceCount < 0) {
@@ -281,20 +284,20 @@ public class SimpleCharacters {
     }
 
     /*---------------------------------------- INCOME BONUSES PARSER ------------------------------------------------*/
+
     /**
      * Method parse all income bonuses from cards.
      * Check it all.
      * And, add all bonuses to Characters
      *
      * @param bonusList -> all data income in hashMap
-     *                   key -> Bonus Type
-     *                   value -> Count Of this Bonus
-     *                   example: ARMOR_ADD_MY_SELF, 1
-     *                   armor + 1 on Character
-     *
-     * */
+     *                  key -> Bonus Type
+     *                  value -> Count Of this Bonus
+     *                  example: ARMOR_ADD_MY_SELF, 1
+     *                  armor + 1 on Character
+     */
     public void addBonusFromCards(HashMap<BonusesInCards, Integer> bonusList) {
-        for(Map.Entry<BonusesInCards, Integer> entry : bonusList.entrySet()) {
+        for (Map.Entry<BonusesInCards, Integer> entry : bonusList.entrySet()) {
 
             BonusesInCards key = entry.getKey();
             int value = entry.getValue();
@@ -305,7 +308,7 @@ public class SimpleCharacters {
             } else if (keyParser.contains("RESOURCE")) {
                 setResourceCount(key, value);
             } else if (keyParser.contains("ADD_HEALTH")) {
-            setHealth(value);
+                setHealth(value);
             } else if (keyParser.contains("ARMOR_ADD")) {
                 setArmor(value);
             } else if (keyParser.contains("ATTACK_ADD")) {
