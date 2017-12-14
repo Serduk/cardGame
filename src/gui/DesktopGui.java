@@ -122,14 +122,19 @@ public class DesktopGui extends CardLogic {
             clearUserCardDeck();
             clearEnemyCardDeck();
 
+//            if (!userCardDeckGUI.isEmpty() || !enemyCardDeckGUI.isEmpty()) {
+//                userCardDeckGUI.clear();
+//                enemyCardDeckGUI.clear();
+//            }
+
+            userCardDeckPanel.updateUI();
+            gamePanel.updateUI();
+
             setMainCardsDeck();
             showEnemyCardDeck();
             showUserCardsDeck();
             drawCardDeckForUser();
             drawCardDeckForEnemy();
-//            for (JButton anUserCardDeckGUI : userCardDeckGUI) {
-//                userCardDeckPanel.add(anUserCardDeckGUI);
-//            }
             userCardDeckPanel.updateUI();
             gamePanel.updateUI();
         }

@@ -54,6 +54,7 @@ public class CardLogic implements UseCards {
      * */
     public void clearMainCardsDeck() {
         cardsCollection.clear();
+        System.out.println("cardsCollection successfully cleared. Size is " + cardsCollection.size());
     }
 
     /**
@@ -61,6 +62,7 @@ public class CardLogic implements UseCards {
      * */
     public void clearUserCardDeck() {
         userCardDeck.clear();
+        System.out.println("userCardDeck successfully cleared. Size is " + userCardDeck.size());
     }
 
     /**
@@ -68,6 +70,7 @@ public class CardLogic implements UseCards {
      * */
     public void clearEnemyCardDeck() {
         enemyCardDeck.clear();
+        System.out.println("enemyCardDeck successfully cleared. Size is " + enemyCardDeck.size());
     }
 
     /**
@@ -82,12 +85,11 @@ public class CardLogic implements UseCards {
         System.out.println("CARDS COLLECTION SIZE IS: " + cardsCollection.size());
 //        TODO: Solve problem, which loop will be better in this situation
         userCardDeck.clear();
+        clearUserCardDeck();
+        clearEnemyCardDeck();
         while (userCardDeck.size() < cardsDeckInUserHandCount) {
             getCardInHandsFromMainDeck();
         }
-//        for (int i = 0; i < cardsDeckInUserHandCount; i++) {
-//            getCardInHandsFromMainDeck();
-//        }
     }
 
     /**
