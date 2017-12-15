@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * <p>
  * Created by sserdiuk on 7/3/17.
  */
-public class DesktopGui extends CardLogic {
+public class DesktopGui extends CardLogic implements GUIInterface {
     private SimpleCharacters character1;
     private SimpleCharacters character2;
 
@@ -119,21 +119,31 @@ public class DesktopGui extends CardLogic {
     private class NewGame implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            clearMainCardsDeck();
-            clearUserCardDeck();
-            clearEnemyCardDeck();
+            newGame();
+        }
+    }
 
-            setMainCardsDeck();
-            showEnemyCardDeck();
-            showUserCardsDeck();
-            drawCardDeckForUser();
-            drawCardDeckForEnemy();
+
+    @Override
+    public void newGame() {
+        clearMainCardsDeck();
+        clearUserCardDeck();
+        clearEnemyCardDeck();
+
+        repaintDesk();
+
+        setMainCardsDeck();
+        showEnemyCardDeck();
+        showUserCardsDeck();
+        drawCardDeckForUser();
+        drawCardDeckForEnemy();
+
+        repaintDesk();
 //            for (JButton anUserCardDeckGUI : userCardDeckGUI) {
 //                userCardDeckPanel.add(anUserCardDeckGUI);
 //            }
-            userCardDeckPanel.updateUI();
-            gamePanel.updateUI();
-        }
+        userCardDeckPanel.updateUI();
+        gamePanel.updateUI();
     }
 
     private class clickOnLabel implements ActionListener {
@@ -152,7 +162,7 @@ public class DesktopGui extends CardLogic {
      * <p>
      * BEFORE USE THIS METHOD: YOU SHOULD USE METHOD setMainCardsDeck(), FOR SETUP MAIN CARD DECK;
      */
-    private void showUserCardsDeck() {
+    public void showUserCardsDeck() {
         clearMainCardsDeck();
         setMainCardsDeck();
         getCardsDeckInHand();
@@ -169,7 +179,7 @@ public class DesktopGui extends CardLogic {
      * This method will clear all user card deck from Desk
      * clear ALL user cardsDeck
      */
-    private void clearUserCardsDeck() {
+    public void clearUserCardsDeck() {
         if (userCardDeckGUI.isEmpty()) {
             System.out.println("No cards in deck!");
         } else {
@@ -178,12 +188,11 @@ public class DesktopGui extends CardLogic {
         }
     }
 
-
     /**
      * This Method will show all enemy cards deck from CardLogic Method
      * All Cards will be shown with Card Sheet
      */
-    private void showEnemyCardDeck() {
+    public void showEnemyCardDeck() {
         enemyCardDeckGUI = new ArrayList<JButton>();
         for (int i = 0; i < cardsDeckInUserHandCount; i++) {
             JButton jButton = new JButton(new ImageIcon(PathsAndRoutes.zeroCard));
@@ -198,28 +207,46 @@ public class DesktopGui extends CardLogic {
     private class Repaint implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            frame.repaint();
+            repaintDesk();
         }
+    }
+
+    @Override
+    public void repaintDesk() {
+        userCardDeckPanel.updateUI();
+        userCardDeckPanel.repaint();
+        enemyCardDeckPanel.updateUI();
+        enemyCardDeckPanel.repaint();
+        frame.repaint();
+        gamePanel.repaint();
     }
 
     private class PlayClickedButton implements ActionListener {
         protected PlayClickedButton(int clickedButtonNum) {
             this.clickedButtonNum = clickedButtonNum;
+            playClickedButton(clickedButtonNum);
         }
 
         int clickedButtonNum;
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            playClickedButton(clickedButtonNum);
             System.out.println("CLICKED!");
             System.out.println("BUTTON NUMBER IS: " + clickedButtonNum);
         }
     }
 
+
+    @Override
+    public void playClickedButton(int button) {
+
+    }
+
     /**
      * Method add to user card list all new cards from userCardDeck
      */
-    private void drawCardDeckForUser() {
+    public void drawCardDeckForUser() {
         for (JButton anUserCardDeckGUI : userCardDeckGUI) {
             userCardDeckPanel.add(anUserCardDeckGUI);
         }
@@ -228,7 +255,7 @@ public class DesktopGui extends CardLogic {
     /**
      * Method add to enemy card list all new cards from enemyCardDeck
      */
-    private void drawCardDeckForEnemy() {
+    public void drawCardDeckForEnemy() {
         for (JButton anUserCardDeckGUI : enemyCardDeckGUI) {
             enemyCardDeckPanel.add(anUserCardDeckGUI);
         }
