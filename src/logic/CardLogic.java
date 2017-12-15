@@ -81,7 +81,6 @@ public class CardLogic implements UseCards {
     public void getCardsDeckInHand() {
         System.out.println("CARDS COLLECTION SIZE IS: " + cardsCollection.size());
 //        TODO: Solve problem, which loop will be better in this situation
-        userCardDeck.clear();
         while (userCardDeck.size() < cardsDeckInUserHandCount) {
             getCardInHandsFromMainDeck();
         }

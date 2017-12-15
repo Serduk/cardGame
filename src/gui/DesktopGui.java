@@ -21,6 +21,8 @@ public class DesktopGui extends CardLogic implements GUIInterface {
     private SimpleCharacters character1;
     private SimpleCharacters character2;
 
+    private int startNewGameCount = 0;
+
     /**
      * In this constructor we send 2 characters and redraw them on GUI
      *
@@ -74,7 +76,7 @@ public class DesktopGui extends CardLogic implements GUIInterface {
 //         * Here we will add on panel GUI card deck
 //         * */
 //        showUserCardsDeck();
-//        showEnemyCardDeck();
+//        showEnemyCardsDeck();
 
 
         flowLayout = new FlowLayout();
@@ -126,6 +128,11 @@ public class DesktopGui extends CardLogic implements GUIInterface {
 
     @Override
     public void newGame() {
+        if (startNewGameCount > 0) {
+            System.out.println("It's not new game, cards will be redrawed");
+            clearUserCardsDeckGUI();
+            clearEnemyCardsDeckGUI();
+        }
         clearMainCardsDeck();
         clearUserCardDeck();
         clearEnemyCardDeck();
@@ -133,17 +140,15 @@ public class DesktopGui extends CardLogic implements GUIInterface {
         repaintDesk();
 
         setMainCardsDeck();
-        showEnemyCardDeck();
+        showEnemyCardsDeck();
         showUserCardsDeck();
         drawCardDeckForUser();
         drawCardDeckForEnemy();
 
         repaintDesk();
-//            for (JButton anUserCardDeckGUI : userCardDeckGUI) {
-//                userCardDeckPanel.add(anUserCardDeckGUI);
-//            }
         userCardDeckPanel.updateUI();
         gamePanel.updateUI();
+        startNewGameCount++;
     }
 
     private class clickOnLabel implements ActionListener {
@@ -179,7 +184,7 @@ public class DesktopGui extends CardLogic implements GUIInterface {
      * This method will clear all user card deck from Desk
      * clear ALL user cardsDeck
      */
-    public void clearUserCardsDeck() {
+    public void clearUserCardsDeckGUI() {
         if (userCardDeckGUI.isEmpty()) {
             System.out.println("No cards in deck!");
         } else {
@@ -192,11 +197,24 @@ public class DesktopGui extends CardLogic implements GUIInterface {
      * This Method will show all enemy cards deck from CardLogic Method
      * All Cards will be shown with Card Sheet
      */
-    public void showEnemyCardDeck() {
+    public void showEnemyCardsDeck() {
         enemyCardDeckGUI = new ArrayList<JButton>();
         for (int i = 0; i < cardsDeckInUserHandCount; i++) {
             JButton jButton = new JButton(new ImageIcon(PathsAndRoutes.zeroCard));
             enemyCardDeckGUI.add(jButton);
+        }
+    }
+
+    /**
+     * This method will clear all user card deck from Desk
+     * clear ALL user cardsDeck
+     */
+    public void clearEnemyCardsDeckGUI() {
+        if (enemyCardDeckGUI.isEmpty()) {
+            System.out.println("No cards in deck!");
+        } else {
+            enemyCardDeckGUI.clear();
+            enemyCardDeckPanel.updateUI();
         }
     }
 
@@ -236,7 +254,6 @@ public class DesktopGui extends CardLogic implements GUIInterface {
             System.out.println("BUTTON NUMBER IS: " + clickedButtonNum);
         }
     }
-
 
     @Override
     public void playClickedButton(int button) {

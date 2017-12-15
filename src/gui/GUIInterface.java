@@ -27,13 +27,19 @@ public interface GUIInterface {
      * This Method will show all enemy cards deck from CardLogic Method
      * All Cards will be shown with Card Sheet
      */
-    void showEnemyCardDeck();
+    void showEnemyCardsDeck();
 
     /**
      * This method will clear all user card deck from Desk
      * clear ALL user cardsDeck
      */
-    void clearUserCardsDeck();
+    void clearUserCardsDeckGUI();
+
+    /**
+     * This method will clear all enemy card deck from Desk
+     * clear ALL user cardsDeck
+     */
+    void clearEnemyCardsDeckGUI();
 
     /**
      * Anonymous class for start game
