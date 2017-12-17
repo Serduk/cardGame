@@ -72,29 +72,12 @@ public class DesktopGui extends CardLogic implements GUIInterface {
 //        button2.setSize(25, 25);
 //        button2.addActionListener(new clickOnLabel());
 
-//        /**
-//         * Here we will add on panel GUI card deck
-//         * */
-//        showUserCardsDeck();
-//        showEnemyCardsDeck();
-
-
         flowLayout = new FlowLayout();
         userCardDeckPanel = new JPanel(flowLayout);
         enemyCardDeckPanel = new JPanel(flowLayout);
 
         layout = new BorderLayout();
         gamePanel = new JPanel(layout);
-
-        /**
-         * Draw Card Deck for user
-         * */
-//        drawCardDeckForUser();
-
-        /**
-         * Draw card deck for enemy
-         * */
-//        drawCardDeckForEnemy();
 
         userCardDeckPanel.add(buttonStartGame);
 
@@ -108,7 +91,6 @@ public class DesktopGui extends CardLogic implements GUIInterface {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(50, 50, 1500, 600);
         frame.setVisible(true);
-
     }
 
     /**
