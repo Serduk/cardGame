@@ -14,22 +14,25 @@ import java.util.ArrayList;
 /**
  * This class for describe main window,
  * and main game navigation
- *
+ * <p>
  * Created by sserdiuk on 7/3/17.
  */
-public class DesktopGui extends CardLogic {
+public class DesktopGui extends CardLogic implements GUIInterface {
     private SimpleCharacters character1;
     private SimpleCharacters character2;
 
+    private int startNewGameCount = 0;
+
     /**
      * In this constructor we send 2 characters and redraw them on GUI
+     *
      * @param character1 => receive main character (your character)
      * @param character2 => receive EnemyCharacter
-     *
-     * With this classes will work main card logic.
+     *                   <p>
+     *                   With this classes will work main card logic.
      *                   set them parameters, health, etc
-     * */
-    public DesktopGui (SimpleCharacters character1, SimpleCharacters character2) {
+     */
+    public DesktopGui(SimpleCharacters character1, SimpleCharacters character2) {
         this.character1 = character1;
         this.character2 = character2;
     }
@@ -62,19 +65,12 @@ public class DesktopGui extends CardLogic {
 //        ImageIcon iconScalable = new ImageIcon(new ImageIcon(PathsAndRoutes.iconIMG).getImage().getScaledInstance(10, 10, Image.SCALE_DEFAULT));
 //        JButton buttonScalable = new JButton(iconScalable);
 
-        buttonStartGame = new JButton( "new Game", webIcon);
+        buttonStartGame = new JButton("new Game", webIcon);
         buttonStartGame.addActionListener(new NewGame());
 
 //        button2 = new JButton(icon2);
 //        button2.setSize(25, 25);
 //        button2.addActionListener(new clickOnLabel());
-
-//        /**
-//         * Here we will add on panel GUI card deck
-//         * */
-//        showUserCardsDeck();
-//        showEnemyCardDeck();
-
 
         flowLayout = new FlowLayout();
         userCardDeckPanel = new JPanel(flowLayout);
@@ -82,16 +78,6 @@ public class DesktopGui extends CardLogic {
 
         layout = new BorderLayout();
         gamePanel = new JPanel(layout);
-
-        /**
-         * Draw Card Deck for user
-         * */
-//        drawCardDeckForUser();
-
-        /**
-         * Draw card deck for enemy
-         * */
-//        drawCardDeckForEnemy();
 
         userCardDeckPanel.add(buttonStartGame);
 
@@ -105,39 +91,46 @@ public class DesktopGui extends CardLogic {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(50, 50, 1500, 600);
         frame.setVisible(true);
-
     }
 
     /**
      * Anonymous class for start game
      * Change screen on Table with Cards
      * Add cards for each player
-     *
+     * <p>
      * TODO: Fix problem with new game cards redisplayng
-     * */
+     */
     private class NewGame implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            clearMainCardsDeck();
-            clearUserCardDeck();
-            clearEnemyCardDeck();
-
-//            if (!userCardDeckGUI.isEmpty() || !enemyCardDeckGUI.isEmpty()) {
-//                userCardDeckGUI.clear();
-//                enemyCardDeckGUI.clear();
-//            }
-
-            userCardDeckPanel.updateUI();
-            gamePanel.updateUI();
-
-            setMainCardsDeck();
-            showEnemyCardDeck();
-            showUserCardsDeck();
-            drawCardDeckForUser();
-            drawCardDeckForEnemy();
-            userCardDeckPanel.updateUI();
-            gamePanel.updateUI();
+            newGame();
         }
+    }
+
+
+    @Override
+    public void newGame() {
+        if (startNewGameCount > 0) {
+            System.out.println("It's not new game, cards will be redrawed");
+            clearUserCardsDeckGUI();
+            clearEnemyCardsDeckGUI();
+        }
+        clearMainCardsDeck();
+        clearUserCardDeck();
+        clearEnemyCardDeck();
+
+        repaintDesk();
+
+        setMainCardsDeck();
+        showEnemyCardsDeck();
+        showUserCardsDeck();
+        drawCardDeckForUser();
+        drawCardDeckForEnemy();
+
+        repaintDesk();
+        userCardDeckPanel.updateUI();
+        gamePanel.updateUI();
+        startNewGameCount++;
     }
 
     private class clickOnLabel implements ActionListener {
@@ -150,13 +143,13 @@ public class DesktopGui extends CardLogic {
     /**
      * This method will get all user cards deck from CardLogic Method
      * and show cards img on GUI
-     *
+     * <p>
      * All cards will be put in ArrayList.
      * All images (routes for cards img) will be taken from basic Card class
-     *
+     * <p>
      * BEFORE USE THIS METHOD: YOU SHOULD USE METHOD setMainCardsDeck(), FOR SETUP MAIN CARD DECK;
-     * */
-    private void showUserCardsDeck() {
+     */
+    public void showUserCardsDeck() {
         clearMainCardsDeck();
         setMainCardsDeck();
         getCardsDeckInHand();
@@ -172,8 +165,8 @@ public class DesktopGui extends CardLogic {
     /**
      * This method will clear all user card deck from Desk
      * clear ALL user cardsDeck
-     * */
-    private void clearUserCardsDeck() {
+     */
+    public void clearUserCardsDeckGUI() {
         if (userCardDeckGUI.isEmpty()) {
             System.out.println("No cards in deck!");
         } else {
@@ -182,12 +175,11 @@ public class DesktopGui extends CardLogic {
         }
     }
 
-
     /**
      * This Method will show all enemy cards deck from CardLogic Method
      * All Cards will be shown with Card Sheet
-     * */
-    private void showEnemyCardDeck() {
+     */
+    public void showEnemyCardsDeck() {
         enemyCardDeckGUI = new ArrayList<JButton>();
         for (int i = 0; i < cardsDeckInUserHandCount; i++) {
             JButton jButton = new JButton(new ImageIcon(PathsAndRoutes.zeroCard));
@@ -196,34 +188,64 @@ public class DesktopGui extends CardLogic {
     }
 
     /**
+     * This method will clear all user card deck from Desk
+     * clear ALL user cardsDeck
+     */
+    public void clearEnemyCardsDeckGUI() {
+        if (enemyCardDeckGUI.isEmpty()) {
+            System.out.println("No cards in deck!");
+        } else {
+            enemyCardDeckGUI.clear();
+            enemyCardDeckPanel.updateUI();
+        }
+    }
+
+    /**
      * Anonymous class for help repaint all actions on card desk
      * After some actions
-     * */
+     */
     private class Repaint implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            frame.repaint();
+            repaintDesk();
         }
+    }
+
+    @Override
+    public void repaintDesk() {
+        userCardDeckPanel.updateUI();
+        userCardDeckPanel.repaint();
+        enemyCardDeckPanel.updateUI();
+        enemyCardDeckPanel.repaint();
+        frame.repaint();
+        gamePanel.repaint();
     }
 
     private class PlayClickedButton implements ActionListener {
         protected PlayClickedButton(int clickedButtonNum) {
             this.clickedButtonNum = clickedButtonNum;
+            playClickedButton(clickedButtonNum);
         }
 
         int clickedButtonNum;
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            playClickedButton(clickedButtonNum);
             System.out.println("CLICKED!");
             System.out.println("BUTTON NUMBER IS: " + clickedButtonNum);
         }
     }
 
+    @Override
+    public void playClickedButton(int button) {
+
+    }
+
     /**
      * Method add to user card list all new cards from userCardDeck
-     * */
-    private void drawCardDeckForUser() {
+     */
+    public void drawCardDeckForUser() {
         for (JButton anUserCardDeckGUI : userCardDeckGUI) {
             userCardDeckPanel.add(anUserCardDeckGUI);
         }
@@ -231,8 +253,8 @@ public class DesktopGui extends CardLogic {
 
     /**
      * Method add to enemy card list all new cards from enemyCardDeck
-     * */
-    private void drawCardDeckForEnemy() {
+     */
+    public void drawCardDeckForEnemy() {
         for (JButton anUserCardDeckGUI : enemyCardDeckGUI) {
             enemyCardDeckPanel.add(anUserCardDeckGUI);
         }
