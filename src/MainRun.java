@@ -1,9 +1,4 @@
-import cards.SimpleCard;
-import characters.SimpleCharacters;
-import gui.DesktopGui;
-import logic.CardLogic;
-
-import java.util.List;
+import gui.guiFX.GamePanelFX_GUI;
 
 
 /**
@@ -13,12 +8,9 @@ import java.util.List;
  */
 public class MainRun {
     public static void main(String[] args) {
-        SimpleCharacters character = new SimpleCharacters();
-        SimpleCharacters enemy = new SimpleCharacters();
+//        new DesktopGui(character, enemy).drawGui();
+        new GamePanelFX_GUI().launch(GamePanelFX_GUI.class, args);
 
-        new DesktopGui(character, enemy).drawGui();
-
-//
 //        CardLogic logic = new CardLogic();
 //
 //        logic.setMainCardsDeck();
