@@ -1,3 +1,5 @@
+import characters.SimpleCharacters;
+import gui.DesktopGui;
 import gui.guiFX.GamePanelFX_GUI;
 
 
@@ -8,8 +10,11 @@ import gui.guiFX.GamePanelFX_GUI;
  */
 public class MainRun {
     public static void main(String[] args) {
-//        new DesktopGui(character, enemy).drawGui();
-        new GamePanelFX_GUI().launch(GamePanelFX_GUI.class, args);
+        SimpleCharacters character = new SimpleCharacters();
+        SimpleCharacters enemy = new SimpleCharacters();
+
+        new DesktopGui(character, enemy).drawGui();
+//        new GamePanelFX_GUI().launch(GamePanelFX_GUI.class, args);
 
 //        CardLogic logic = new CardLogic();
 //

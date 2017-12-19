@@ -100,6 +100,10 @@ public class GamePanelFX_GUI extends Application implements GUIInterface {
 
     }
 
+    @Override
+    public void clearCurrentGameData() {
+
+    }
 
 
     /**

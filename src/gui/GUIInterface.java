@@ -2,9 +2,9 @@ package gui;
 
 /**
  * Interface should describe methods for GUI drawing on all OS types
- *
+ * <p>
  * Should be implemented on mobile and desktop
- *
+ * <p>
  * <p>
  * Created by sserdiuk on 12/15/17.
  */
@@ -59,10 +59,10 @@ public interface GUIInterface {
     /**
      * Played clicked card
      * This card should be:
-     *            1. Removed from enemy or player deck
-     *            2. Showed on "play field"
-     *            3. Moved to trash after playing
-     * */
+     * 1. Removed from enemy or player deck
+     * 2. Showed on "play field"
+     * 3. Moved to trash after playing
+     */
     void playClickedButton(int button);
 
     /**
@@ -74,4 +74,10 @@ public interface GUIInterface {
      * Method add to enemy card list all new cards from enemyCardDeck
      */
     void drawCardDeckForEnemy();
+
+    /**
+     * Method should delete all data for enemy and user data
+     * Like: health, cards, basic resources
+     * */
+    void clearCurrentGameData();
 }

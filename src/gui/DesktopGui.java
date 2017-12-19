@@ -22,6 +22,7 @@ public class DesktopGui extends CardLogic implements GUIInterface {
     private SimpleCharacters character2;
 
     private int startNewGameCount = 0;
+    private String userButtonName = "userButtonName";
 
     /**
      * In this constructor we send 2 characters and redraw them on GUI
@@ -42,6 +43,9 @@ public class DesktopGui extends CardLogic implements GUIInterface {
     private JPanel gamePanel;
     private JPanel userCardDeckPanel;
     private JPanel enemyCardDeckPanel;
+    private JPanel userDataPanel;
+    private JPanel enemyDataPanel;
+    private JPanel battleFieldPanel;
     private JPanel chatPanel;
 
     private ArrayList<JButton> userCardDeckGUI;
@@ -75,15 +79,18 @@ public class DesktopGui extends CardLogic implements GUIInterface {
         flowLayout = new FlowLayout();
         userCardDeckPanel = new JPanel(flowLayout);
         enemyCardDeckPanel = new JPanel(flowLayout);
+        userDataPanel = new JPanel(flowLayout);
+        enemyDataPanel = new JPanel(flowLayout);
+        battleFieldPanel = new JPanel(flowLayout);
 
         layout = new BorderLayout();
         gamePanel = new JPanel(layout);
 
-        userCardDeckPanel.add(buttonStartGame);
-
+        battleFieldPanel.add(buttonStartGame);
 
         gamePanel.add(BorderLayout.SOUTH, userCardDeckPanel);
         gamePanel.add(BorderLayout.NORTH, enemyCardDeckPanel);
+        gamePanel.add(BorderLayout.CENTER, battleFieldPanel);
 
         frame.add(gamePanel);
 
@@ -114,22 +121,19 @@ public class DesktopGui extends CardLogic implements GUIInterface {
             System.out.println("It's not new game, cards will be redrawed");
             clearUserCardsDeckGUI();
             clearEnemyCardsDeckGUI();
+            clearCurrentGameData();
+            repaintDesk();
         }
         clearMainCardsDeck();
         clearUserCardDeck();
         clearEnemyCardDeck();
-
-        repaintDesk();
-
+        
         setMainCardsDeck();
         showEnemyCardsDeck();
         showUserCardsDeck();
         drawCardDeckForUser();
         drawCardDeckForEnemy();
 
-        repaintDesk();
-        userCardDeckPanel.updateUI();
-        gamePanel.updateUI();
         startNewGameCount++;
     }
 
@@ -155,7 +159,10 @@ public class DesktopGui extends CardLogic implements GUIInterface {
         getCardsDeckInHand();
         userCardDeckGUI = new ArrayList<JButton>();
         for (int i = 0; i < cardsDeckInUserHandCount; i++) {
-            JButton jButton = new JButton(new ImageIcon(showCardsInHands().get(i).pathToCardIMG));
+            JButton jButton = new JButton(userButtonName + i);
+            jButton.setHorizontalTextPosition(AbstractButton.CENTER);
+            jButton.setVerticalTextPosition(AbstractButton.BOTTOM);
+            jButton.setIcon(new ImageIcon(showCardsInHands().get(i).pathToCardIMG));
             jButton.addActionListener(new PlayClickedButton(i));
             userCardDeckGUI.add(jButton);
         }
@@ -213,18 +220,27 @@ public class DesktopGui extends CardLogic implements GUIInterface {
 
     @Override
     public void repaintDesk() {
-        userCardDeckPanel.updateUI();
+        userCardDeckPanel.revalidate();
+        enemyCardDeckPanel.revalidate();
+        userDataPanel.revalidate();
+        enemyDataPanel.revalidate();
+        battleFieldPanel.revalidate();
+
         userCardDeckPanel.repaint();
-        enemyCardDeckPanel.updateUI();
         enemyCardDeckPanel.repaint();
-        frame.repaint();
-        gamePanel.repaint();
+        userDataPanel.repaint();
+        enemyDataPanel.repaint();
+        battleFieldPanel.repaint();
+
+//        frame.revalidate();
+//        frame.repaint();
+//        gamePanel.revalidate();
+//        gamePanel.repaint();
     }
 
     private class PlayClickedButton implements ActionListener {
         protected PlayClickedButton(int clickedButtonNum) {
             this.clickedButtonNum = clickedButtonNum;
-            playClickedButton(clickedButtonNum);
         }
 
         int clickedButtonNum;
@@ -232,14 +248,17 @@ public class DesktopGui extends CardLogic implements GUIInterface {
         @Override
         public void actionPerformed(ActionEvent e) {
             playClickedButton(clickedButtonNum);
-            System.out.println("CLICKED!");
-            System.out.println("BUTTON NUMBER IS: " + clickedButtonNum);
         }
     }
 
     @Override
-    public void playClickedButton(int button) {
-
+    public void playClickedButton(int clickedButtonNum) {
+        System.out.println("BUTTON NUMBER IS: " + clickedButtonNum);
+        userCardDeckGUI.remove(clickedButtonNum);
+        userCardDeckPanel.remove(clickedButtonNum);
+        userCardDeckPanel.revalidate();
+        userCardDeckPanel.repaint();
+        System.out.println("USER CARD SIZE = " + userCardDeckGUI.size());
     }
 
     /**
@@ -249,6 +268,8 @@ public class DesktopGui extends CardLogic implements GUIInterface {
         for (JButton anUserCardDeckGUI : userCardDeckGUI) {
             userCardDeckPanel.add(anUserCardDeckGUI);
         }
+        userCardDeckPanel.revalidate();
+        userCardDeckPanel.repaint();
     }
 
     /**
@@ -258,5 +279,15 @@ public class DesktopGui extends CardLogic implements GUIInterface {
         for (JButton anUserCardDeckGUI : enemyCardDeckGUI) {
             enemyCardDeckPanel.add(anUserCardDeckGUI);
         }
+        enemyCardDeckPanel.revalidate();
+        enemyCardDeckPanel.repaint();
+    }
+
+    public void clearCurrentGameData() {
+        userCardDeckPanel.removeAll();
+        enemyCardDeckPanel.removeAll();
+        userDataPanel.removeAll();
+        enemyDataPanel.removeAll();
+//        battleFieldPanel.removeAll();
     }
 }
