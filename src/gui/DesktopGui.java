@@ -48,6 +48,8 @@ public class DesktopGui extends CardLogic implements GUIInterface {
     private JPanel battleFieldPanel;
     private JPanel chatPanel;
 
+//    TODO: Move all JBUTTON TO ARRAY LIST. REASON:
+// WHEN USER PLAY CARD WE GOT TO MANY PROBLEMS
     private ArrayList<JButton> userCardDeckGUI;
     private ArrayList<JButton> enemyCardDeckGUI;
 
@@ -105,7 +107,6 @@ public class DesktopGui extends CardLogic implements GUIInterface {
      * Change screen on Table with Cards
      * Add cards for each player
      * <p>
-     * TODO: Fix problem with new game cards redisplayng
      */
     private class NewGame implements ActionListener {
         @Override
