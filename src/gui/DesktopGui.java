@@ -1,6 +1,6 @@
 package gui;
 
-import characters.SimpleCharacters;
+import characters.Character;
 import configuration.NamingAndDescription;
 import configuration.PathsAndRoutes;
 import logic.CardLogic;
@@ -18,8 +18,8 @@ import java.util.ArrayList;
  * Created by sserdiuk on 7/3/17.
  */
 public class DesktopGui extends CardLogic implements GUIInterface {
-    private SimpleCharacters character1;
-    private SimpleCharacters character2;
+    private Character character1;
+    private Character character2;
 
     private int startNewGameCount = 0;
     private String userButtonName = "userButtonName";
@@ -33,7 +33,7 @@ public class DesktopGui extends CardLogic implements GUIInterface {
      *                   With this classes will work main card logic.
      *                   set them parameters, health, etc
      */
-    public DesktopGui(SimpleCharacters character1, SimpleCharacters character2) {
+    public DesktopGui(Character character1, Character character2) {
         this.character1 = character1;
         this.character2 = character2;
     }

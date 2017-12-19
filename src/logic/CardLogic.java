@@ -6,7 +6,7 @@ import cards.cardsList.fireCards.FireCard01;
 import cards.cardsList.natureCards.NatureCard01;
 import cards.cardsList.waterCards.WaterCard01;
 import cards.enumsCards.BonusesInCards;
-import characters.SimpleCharacters;
+import characters.Character;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,9 +27,9 @@ public class CardLogic implements UseCards {
     protected List<SimpleCard> enemyCardDeck = new ArrayList<>();
 
     //    character class init
-    SimpleCharacters character = new SimpleCharacters();
+    Character character = new Character();
     //    enemy character class init
-    SimpleCharacters characterEnemy = new SimpleCharacters();
+    Character characterEnemy = new Character();
 
 
     protected int cardsDeckInUserHandCount = 5;

@@ -1,6 +1,5 @@
-import characters.SimpleCharacters;
+import characters.Character;
 import gui.DesktopGui;
-import gui.guiFX.GamePanelFX_GUI;
 
 
 /**
@@ -10,8 +9,8 @@ import gui.guiFX.GamePanelFX_GUI;
  */
 public class MainRun {
     public static void main(String[] args) {
-        SimpleCharacters character = new SimpleCharacters();
-        SimpleCharacters enemy = new SimpleCharacters();
+        Character character = new Character();
+        Character enemy = new Character();
 
         new DesktopGui(character, enemy).drawGui();
 //        new GamePanelFX_GUI().launch(GamePanelFX_GUI.class, args);

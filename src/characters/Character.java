@@ -14,7 +14,7 @@ import java.util.Map;
  * TODO: REGENERATION FEATURE, FIX
  * Created by sserdiuk on 7/13/17.
  */
-public class SimpleCharacters {
+public class Character {
     private int attackPower = 0;
     private int health = 100;
     private int armor = 0;
