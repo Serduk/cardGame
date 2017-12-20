@@ -13,7 +13,6 @@ public class MainRun {
         Character enemy = new Character();
 
         new DesktopGui(character, enemy).drawGui();
-//        new GamePanelFX_GUI().launch(GamePanelFX_GUI.class, args);
 
 //        CardLogic logic = new CardLogic();
 //

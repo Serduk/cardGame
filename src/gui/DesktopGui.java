@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * This class for describe main window,
@@ -52,6 +53,9 @@ public class DesktopGui extends CardLogic implements GUIInterface {
 // WHEN USER PLAY CARD WE GOT TO MANY PROBLEMS
     private ArrayList<JButton> userCardDeckGUI;
     private ArrayList<JButton> enemyCardDeckGUI;
+
+    private HashMap<Integer, JButton> userCardDeckGUI_;
+    private HashMap<Integer, JButton> enemyCardDeckGUI_;
 
     private JButton buttonStartGame;
     private JButton buttonRefresh;
@@ -158,16 +162,19 @@ public class DesktopGui extends CardLogic implements GUIInterface {
         clearMainCardsDeck();
         setMainCardsDeck();
         getCardsDeckInHand();
-        userCardDeckGUI = new ArrayList<JButton>();
+//        userCardDeckGUI = new ArrayList<JButton>();
+        userCardDeckGUI_ = new HashMap<>();
         for (int i = 0; i < cardsDeckInUserHandCount; i++) {
             JButton jButton = new JButton(userButtonName + i);
             jButton.setHorizontalTextPosition(AbstractButton.CENTER);
             jButton.setVerticalTextPosition(AbstractButton.BOTTOM);
             jButton.setIcon(new ImageIcon(showCardsInHands().get(i).pathToCardIMG));
             jButton.addActionListener(new PlayClickedButton(i));
-            userCardDeckGUI.add(jButton);
+            userCardDeckGUI_.put(i, jButton);
+//            userCardDeckGUI.add(jButton);
         }
-        System.out.println("DESKTOP GUI: USER HAS " + userCardDeckGUI.size() + " Card IMAGES");
+//        System.out.println("DESKTOP GUI: USER HAS " + userCardDeckGUI.size() + " Card IMAGES");
+        System.out.println("DESKTOP GUI: USER HAS " + userCardDeckGUI_.size() + " Card IMAGES");
     }
 
     /**
@@ -175,10 +182,16 @@ public class DesktopGui extends CardLogic implements GUIInterface {
      * clear ALL user cardsDeck
      */
     public void clearUserCardsDeckGUI() {
-        if (userCardDeckGUI.isEmpty()) {
+//        if (userCardDeckGUI.isEmpty()) {
+//            System.out.println("No cards in deck!");
+//        } else {
+//            userCardDeckGUI.clear();
+//            userCardDeckPanel.updateUI();
+//        }
+        if (userCardDeckGUI_.isEmpty()) {
             System.out.println("No cards in deck!");
         } else {
-            userCardDeckGUI.clear();
+            userCardDeckGUI_.clear();
             userCardDeckPanel.updateUI();
         }
     }
@@ -188,10 +201,12 @@ public class DesktopGui extends CardLogic implements GUIInterface {
      * All Cards will be shown with Card Sheet
      */
     public void showEnemyCardsDeck() {
-        enemyCardDeckGUI = new ArrayList<JButton>();
+//        enemyCardDeckGUI = new ArrayList<JButton>();
+        enemyCardDeckGUI_ = new HashMap<>();
         for (int i = 0; i < cardsDeckInUserHandCount; i++) {
             JButton jButton = new JButton(new ImageIcon(PathsAndRoutes.zeroCard));
-            enemyCardDeckGUI.add(jButton);
+//            enemyCardDeckGUI.add(jButton);
+            enemyCardDeckGUI_.put(i, jButton);
         }
     }
 
@@ -200,11 +215,17 @@ public class DesktopGui extends CardLogic implements GUIInterface {
      * clear ALL user cardsDeck
      */
     public void clearEnemyCardsDeckGUI() {
-        if (enemyCardDeckGUI.isEmpty()) {
+//        if (enemyCardDeckGUI.isEmpty()) {
+//            System.out.println("No cards in deck!");
+//        } else {
+//            enemyCardDeckGUI.clear();
+//            enemyCardDeckPanel.updateUI();
+//        }
+        if (enemyCardDeckGUI_.isEmpty()) {
             System.out.println("No cards in deck!");
         } else {
-            enemyCardDeckGUI.clear();
-            enemyCardDeckPanel.updateUI();
+            enemyCardDeckGUI_.clear();
+            userCardDeckPanel.updateUI();
         }
     }
 
@@ -255,19 +276,26 @@ public class DesktopGui extends CardLogic implements GUIInterface {
     @Override
     public void playClickedButton(int clickedButtonNum) {
         System.out.println("BUTTON NUMBER IS: " + clickedButtonNum);
-        userCardDeckGUI.remove(clickedButtonNum);
+//        userCardDeckGUI.remove(clickedButtonNum);
+        userCardDeckGUI_.remove(clickedButtonNum);
         userCardDeckPanel.remove(clickedButtonNum);
         userCardDeckPanel.revalidate();
         userCardDeckPanel.repaint();
-        System.out.println("USER CARD SIZE = " + userCardDeckGUI.size());
+//        System.out.println("USER CARD SIZE = " + userCardDeckGUI.size());
+        System.out.println("USER CARD SIZE = " + userCardDeckGUI_.size());
     }
 
     /**
      * Method add to user card list all new cards from userCardDeck
      */
     public void drawCardDeckForUser() {
-        for (JButton anUserCardDeckGUI : userCardDeckGUI) {
-            userCardDeckPanel.add(anUserCardDeckGUI);
+//        for (JButton anUserCardDeckGUI : userCardDeckGUI) {
+//            userCardDeckPanel.add(anUserCardDeckGUI);
+//        }
+//        userCardDeckPanel.revalidate();
+//        userCardDeckPanel.repaint();
+        for (int i = 0; i < userCardDeckGUI_.size(); i++) {
+            userCardDeckPanel.add(userCardDeckGUI_.get(i));
         }
         userCardDeckPanel.revalidate();
         userCardDeckPanel.repaint();
@@ -277,8 +305,14 @@ public class DesktopGui extends CardLogic implements GUIInterface {
      * Method add to enemy card list all new cards from enemyCardDeck
      */
     public void drawCardDeckForEnemy() {
-        for (JButton anUserCardDeckGUI : enemyCardDeckGUI) {
-            enemyCardDeckPanel.add(anUserCardDeckGUI);
+//        for (JButton anUserCardDeckGUI : enemyCardDeckGUI) {
+//            enemyCardDeckPanel.add(anUserCardDeckGUI);
+//        }
+//        enemyCardDeckPanel.revalidate();
+//        enemyCardDeckPanel.repaint();
+
+        for (int i = 0; i < enemyCardDeckGUI_.size(); i++) {
+            enemyCardDeckPanel.add(enemyCardDeckGUI_.get(i));
         }
         enemyCardDeckPanel.revalidate();
         enemyCardDeckPanel.repaint();
@@ -290,5 +324,11 @@ public class DesktopGui extends CardLogic implements GUIInterface {
         userDataPanel.removeAll();
         enemyDataPanel.removeAll();
 //        battleFieldPanel.removeAll();
+    }
+
+//    TODO: add method to interface
+    public void repaintCart(int repaingCard) {
+        replaceCardInHandsFromMainDeck(repaingCard);
+
     }
 }
