@@ -19,6 +19,8 @@ import java.util.Random;
  * Created by sserdiuk on 7/13/17.
  */
 public class CardLogic implements UseCards {
+    boolean isCardsShouldBeDisplayed = false;
+
     //    All cards in total Deck
     protected List<SimpleCard> cardsCollection = new ArrayList<>();
     //    Cards deck for user
@@ -149,5 +151,14 @@ public class CardLogic implements UseCards {
         int num = random.nextInt(mainCardsDeckCollectionSize);
         System.out.println("GET RANDOM CARD ON INDEX: " + num);
         userCardDeck.set(cardPosition, cardsCollection.get(num));
+    }
+
+    /************************* New METHODS MOVED FROM GUI*****************************/
+    public ArrayList getCardsGUI() {
+        return null;
+    }
+
+    public ArrayList getEnemyShit() {
+        return null;
     }
 }

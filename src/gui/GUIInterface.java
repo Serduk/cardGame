@@ -9,6 +9,7 @@ package gui;
  * Created by sserdiuk on 12/15/17.
  */
 
+@Deprecated
 public interface GUIInterface {
     void drawGui();
 

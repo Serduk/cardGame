@@ -1,4 +1,5 @@
 import characters.Character;
+import gui.DescktopGUI;
 import gui.DesktopGui;
 
 
@@ -12,7 +13,8 @@ public class MainRun {
         Character character = new Character();
         Character enemy = new Character();
 
-        new DesktopGui(character, enemy).drawGui();
+//        new DesktopGui(character, enemy).drawGui();
+        new DescktopGUI().drawGUI();
 
 //        CardLogic logic = new CardLogic();
 //

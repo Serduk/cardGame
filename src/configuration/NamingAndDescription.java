@@ -21,4 +21,10 @@ public final class NamingAndDescription {
     public final static String resourceAvailableTultipe = "Resources";
     public final static String parametersTultipe = "Parameters";
     public final static String appVersionTultiope = "App Version";
+
+    /*
+    * Text on Buttons
+    * */
+    public final static String newGame = "New Game";
+
 }

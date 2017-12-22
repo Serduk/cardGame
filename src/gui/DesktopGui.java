@@ -18,6 +18,7 @@ import java.util.HashMap;
  * <p>
  * Created by sserdiuk on 7/3/17.
  */
+@Deprecated
 public class DesktopGui extends CardLogic implements GUIInterface {
     private Character character1;
     private Character character2;
@@ -49,7 +50,6 @@ public class DesktopGui extends CardLogic implements GUIInterface {
     private JPanel battleFieldPanel;
     private JPanel chatPanel;
 
-//    TODO: Move all JBUTTON TO ARRAY LIST. REASON:
 // WHEN USER PLAY CARD WE GOT TO MANY PROBLEMS
     private ArrayList<JButton> userCardDeckGUI;
     private ArrayList<JButton> enemyCardDeckGUI;
