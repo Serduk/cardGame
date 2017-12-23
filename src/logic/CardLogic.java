@@ -7,6 +7,9 @@ import cards.cardsList.natureCards.NatureCard01;
 import cards.cardsList.waterCards.WaterCard01;
 import cards.enumsCards.BonusesInCards;
 import characters.Character;
+import configuration.ErrorMessages;
+import configuration.NamingAndDescription;
+import logic.botActionLogic.BotUseCardLogic;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +22,12 @@ import java.util.Random;
  * Created by sserdiuk on 7/13/17.
  */
 public class CardLogic implements UseCards {
-    boolean isCardsShouldBeDisplayed = false;
+    public CardLogic(boolean isPlayWithBot) {
+        this.isPlayWithBot = isPlayWithBot;
+    }
+
+    private boolean isCardsShouldBeDisplayed = false;
+    private boolean isPlayWithBot = false;
 
     //    All cards in total Deck
     protected List<SimpleCard> cardsCollection = new ArrayList<>();
@@ -29,9 +37,17 @@ public class CardLogic implements UseCards {
     protected List<SimpleCard> enemyCardDeck = new ArrayList<>();
 
     //    character class init
-    Character character = new Character();
+    private Character character = new Character();
     //    enemy character class init
-    Character characterEnemy = new Character();
+    private Character characterEnemy = new Character();
+    BotUseCardLogic botLogic;
+
+    //    TODO: Setup botLogicGame style
+    private void botLogicGame(boolean isPlayWithBot) {
+        if (isPlayWithBot) {
+            BotUseCardLogic botLogic = new BotUseCardLogic();
+        }
+    }
 
 
     protected int cardsDeckInUserHandCount = 5;
@@ -123,8 +139,6 @@ public class CardLogic implements UseCards {
         if (userCardDeck.get(card).isHasBonus()) {
             character.addBonusFromCards(userCardDeck.get(card).getSuccessfulBonuses());
         }
-//        TODO: we don't need remove card from list, just replace it and redraw;
-//        userCardDeck.remove(card);
         replaceCardInHandsFromMainDeck(card);
     }
 
@@ -158,7 +172,36 @@ public class CardLogic implements UseCards {
         return null;
     }
 
-    public ArrayList getEnemyShit() {
+    public ArrayList getEnemyCardsGUI() {
+        if (isCardsShouldBeDisplayed) {
+            return null;
+        }
         return null;
+    }
+
+    public boolean setCardsGUI() {
+        if (!cardsCollection.isEmpty()) {
+            getCardInHandsFromMainDeck();
+            System.out.println(NamingAndDescription.setMainCardsDeckSuccess);
+            return true;
+        } else {
+            System.out.println(NamingAndDescription.setMainCardsDeckError);
+            return false;
+        }
+    }
+
+    public boolean newGame(boolean isFirstGame) {
+        if (!isFirstGame) {
+            clearMainCardsDeck();
+            clearUserCardDeck();
+            clearEnemyCardDeck();
+        }
+
+        setMainCardsDeck();
+        character.setCardsInHands((ArrayList) showCardsInHands());
+        characterEnemy.setCardsInHands((ArrayList) showCardsInHands());
+
+
+        return true;
     }
 }

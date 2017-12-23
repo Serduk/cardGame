@@ -35,9 +35,8 @@ public class DesktopGui extends CardLogic implements GUIInterface {
      *                   With this classes will work main card logic.
      *                   set them parameters, health, etc
      */
-    public DesktopGui(Character character1, Character character2) {
-        this.character1 = character1;
-        this.character2 = character2;
+    public DesktopGui() {
+        super(true);
     }
 
     private JFrame frame;

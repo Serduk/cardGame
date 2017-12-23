@@ -27,4 +27,12 @@ public final class NamingAndDescription {
     * */
     public final static String newGame = "New Game";
 
+    /*
+    * Error messages
+    * And Warning notification
+    * */
+    public static final String setMainCardsDeckError = "Please set main cards deck first";
+    public static final String setMainCardsDeckSuccess = "Main cards deck successfully setup";
+
+
 }

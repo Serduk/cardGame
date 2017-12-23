@@ -3,6 +3,7 @@ package gui;
 
 import configuration.NamingAndDescription;
 import configuration.PathsAndRoutes;
+import logic.CardLogic;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +18,10 @@ import java.util.ArrayList;
  * Created by sserdiuk on 7/3/17.
  */
 
-public class DescktopGUI {
+public class DesktopGUI {
+//    replace with choosing play with bot or with another user
+    CardLogic logic = new CardLogic(true);
+    private boolean isFirstGame = true;
 
     private JFrame frame;
     private JPanel gamePanel;
@@ -82,6 +86,7 @@ public class DescktopGUI {
      */
     private void displayUserCards() {
 
+
     }
 
     /**
@@ -128,7 +133,8 @@ public class DescktopGUI {
     }
 
     /**
-    * UI should be unclicable
+    * UI should be unClickable
+     * While next user complete his turn
     * */
     public void lockUI() {
 
@@ -146,6 +152,7 @@ public class DescktopGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("new game");
+
         }
     }
 }

@@ -2,6 +2,7 @@ package characters;
 
 import cards.enumsCards.BonusesInCards;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,6 +16,8 @@ import java.util.Map;
  * Created by sserdiuk on 7/13/17.
  */
 public class Character {
+    private ArrayList cardsInHands;
+
     private int attackPower = 0;
     private int health = 100;
     private int armor = 0;
@@ -37,6 +40,31 @@ public class Character {
     private int resourceFireCount = 5;
     private int resourceWaterCount = 5;
     private int resourceNatureCount = 5;
+
+    /**
+     * Methods should add save cards in hands character
+     *
+     * @param cardsInHands take List from CardLogic and save to list
+     *
+     * */
+    public void setCardsInHands(ArrayList cardsInHands) {
+        this.cardsInHands = cardsInHands;
+    }
+
+    /**
+     * @return arrayList with cards in hands
+     * */
+    public ArrayList getCardsInHands() {
+        return cardsInHands;
+    }
+
+//    TODO: Need investigate Probably, this method not actual. we always updateCardList by setCardsInHands method.
+//    public boolean replaceCardInHands(int cardNum, Ca) {
+//        if (cardsInHands.size() >= cardNum) {
+//            cardsInHands.set(cardNum, )
+//            return true;
+//        }
+//    }
 
     /**
      * Method Make Attack to Enemy
@@ -81,7 +109,7 @@ public class Character {
         return attackPower;
     }
 
-    public void setAttackPower(int Modification) {
+    private void setAttackPower(int Modification) {
         attackPower += Modification;
         if (attackPower < 0) {
             attackPower = 0;
@@ -97,7 +125,7 @@ public class Character {
         return health;
     }
 
-    public void setHealth(int Modification) {
+    private void setHealth(int Modification) {
         health += Modification;
         if (health < 0) {
             health = 0;
@@ -113,7 +141,7 @@ public class Character {
         return armor;
     }
 
-    public void setArmor(int Modification) {
+    private void setArmor(int Modification) {
         armor += Modification;
         if (armor < 0) {
             armor = 0;
@@ -127,7 +155,7 @@ public class Character {
         return ignoreArmorAttack;
     }
 
-    public void setIgnoreArmorAttack(boolean setBoolean) {
+    private void setIgnoreArmorAttack(boolean setBoolean) {
         ignoreArmorAttack = setBoolean;
     }
 
@@ -138,7 +166,7 @@ public class Character {
         return freezeAttack;
     }
 
-    public void setFreezeAttack(boolean setBoolean) {
+    private void setFreezeAttack(boolean setBoolean) {
         freezeAttack = setBoolean;
     }
 
@@ -149,7 +177,7 @@ public class Character {
         return poisonAttack;
     }
 
-    public void setPoisonedAttack(boolean setBoolean) {
+    private void setPoisonedAttack(boolean setBoolean) {
         poisonAttack = setBoolean;
     }
 
