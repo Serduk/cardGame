@@ -19,7 +19,7 @@ import java.util.HashMap;
  * Created by sserdiuk on 7/3/17.
  */
 @Deprecated
-public class DesktopGui extends CardLogic implements GUIInterface {
+public class DesktopGui_ extends CardLogic implements GUIInterface {
     private Character character1;
     private Character character2;
 
