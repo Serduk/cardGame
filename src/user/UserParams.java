@@ -5,6 +5,8 @@ package user;
  *
  * Created by serdyuk on 7/3/17.
  */
+
+@Deprecated
 public class UserParams {
     protected String name;
     protected  int health;

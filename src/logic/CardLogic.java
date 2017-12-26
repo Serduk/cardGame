@@ -1,12 +1,10 @@
 package logic;
 
+import cards.CardsDeck;
 import cards.SimpleCard;
-import cards.cardsList.earthCards.EarthCard01;
-import cards.cardsList.fireCards.FireCard01;
-import cards.cardsList.natureCards.NatureCard01;
-import cards.cardsList.waterCards.WaterCard01;
 import cards.enumsCards.BonusesInCards;
 import characters.Character;
+import configuration.PathsAndRoutes;
 import logic.botActionLogic.BotUseCardLogic;
 
 import java.util.ArrayList;
@@ -23,15 +21,16 @@ public class CardLogic implements UseCards {
         this.isPlayWithBot = isPlayWithBot;
     }
 
+    private CardsDeck cardsDeck = new CardsDeck();
+
+    private ArrayList<SimpleCard> cardsCollection = cardsDeck.getCardsCollection();
+    //    Cards deck for user
+    private ArrayList<SimpleCard> userCardDeck = cardsDeck.getCardsDeckInHand();
+    //    cards deck for enemy
+    private ArrayList<SimpleCard> enemyCardDeck = cardsDeck.getCardsDeckInHand();
+
     private boolean isCardsShouldBeDisplayed = false;
     private boolean isPlayWithBot = false;
-
-    //    All cards in total Deck
-    protected ArrayList<SimpleCard> cardsCollection = new ArrayList<>();
-    //    Cards deck for user
-    protected ArrayList<SimpleCard> userCardDeck = new ArrayList<>();
-    //    cards deck for enemy
-    protected ArrayList<SimpleCard> enemyCardDeck = new ArrayList<>();
 
     //    character class init
     private Character character = new Character();
@@ -46,35 +45,10 @@ public class CardLogic implements UseCards {
         }
     }
 
-
-    protected int cardsDeckInUserHandCount = 5;
-    protected int mainCardsDeckCollectionSize;
-
-    /**
-     * In this method automatically init all cards
-     * Cards will be added in main deck collection
-     * TODO: Probably move to constructor?
-     */
-    public void setMainCardsDeck() {
-        cardsCollection.add(new EarthCard01());
-        cardsCollection.add(new FireCard01());
-        cardsCollection.add(new WaterCard01());
-        cardsCollection.add(new NatureCard01());
-
-        mainCardsDeckCollectionSize = cardsCollection.size();
-    }
-
-    /**
-     * Method will clear main cards deck collection
-     */
-    public void clearMainCardsDeck() {
-        cardsCollection.clear();
-    }
-
     /**
      * will clear USER cards deck collection
      */
-    public void clearUserCardDeck() {
+    private void clearUserCardDeck() {
         userCardDeck.clear();
         character.setCardsInHands(userCardDeck);
     }
@@ -82,26 +56,12 @@ public class CardLogic implements UseCards {
     /**
      * will clear ENEMY cards deck collection
      */
-    public void clearEnemyCardDeck() {
+    private void clearEnemyCardDeck() {
         enemyCardDeck.clear();
         characterEnemy.setCardsInHands(enemyCardDeck);
     }
 
-    /**
-     * Init all cards for user.
-     * Create Cards Deck for player
-     * get max deck size for player
-     * get max deck size in total
-     * get random card from MAIN DECK,
-     * and put it to player Deck
-     */
-    public void getCardsDeckInHand() {
-        System.out.println("CARDS COLLECTION SIZE IS: " + cardsCollection.size());
-//        TODO: Solve problem, which loop will be better in this situation
-        while (userCardDeck.size() < cardsDeckInUserHandCount) {
-            getCardInHandsFromMainDeck();
-        }
-    }
+
 
     /**
      * @return userCardDeck
@@ -139,16 +99,6 @@ public class CardLogic implements UseCards {
         getCardsGUI();
     }
 
-    /**
-     * Method try get card random card from main deck,
-     * and put it in character deck
-     */
-    protected void getCardInHandsFromMainDeck() {
-        Random random = new Random();
-        int num = random.nextInt(mainCardsDeckCollectionSize);
-        System.out.println("GET RANDOM CARD ON INDEX: " + num);
-        userCardDeck.add(cardsCollection.get(num));
-    }
 
     /**
      * Method replace card in user hands
@@ -157,19 +107,27 @@ public class CardLogic implements UseCards {
      * @param cardPosition set place in hands
      *                     new random card, from main deck, will be placed instead card in hands
      */
-    protected void replaceCardInHandsFromMainDeck(int cardPosition) {
+    private void replaceCardInHandsFromMainDeck(int cardPosition) {
         Random random = new Random();
-        int num = random.nextInt(mainCardsDeckCollectionSize);
+        int num = random.nextInt(CardsDeck.mainCardsDeckCollectionSize);
         System.out.println("GET RANDOM CARD ON INDEX: " + num);
         userCardDeck.set(cardPosition, cardsCollection.get(num));
     }
 
     /************************* New METHODS MOVED FROM GUI*****************************/
     public ArrayList getEnemyCardsGUI() {
+        ArrayList<String> cardsImg = new ArrayList<>();
+
         if (isCardsShouldBeDisplayed) {
-            return null;
+            for (SimpleCard card : enemyCardDeck) {
+                cardsImg.add(card.pathToCardIMG);
+            }
+        } else {
+            for (int i = 0; i < enemyCardDeck.size(); i++) {
+                cardsImg.add(PathsAndRoutes.zeroCard);
+            }
         }
-        return null;
+        return cardsImg;
     }
 
     /**
@@ -178,14 +136,10 @@ public class CardLogic implements UseCards {
      *
      * */
     public ArrayList getCardsGUI() {
-        if (character.getCardsInHands().isEmpty()) {
-            getCardInHandsFromMainDeck();
-        }
-
         ArrayList<String> cardsImg = new ArrayList<>();
 
-        for (int i = 0; i < character.getCardsInHands().size(); i++) {
-            SimpleCard card = (SimpleCard) character.getCardsInHands().get(i);
+        for (int i = 0; i < userCardDeck.size(); i++) {
+            SimpleCard card = userCardDeck.get(i);
             cardsImg.add(card.pathToCardIMG);
         }
 
@@ -194,14 +148,16 @@ public class CardLogic implements UseCards {
 
     public boolean newGame(boolean isFirstGame) {
         if (!isFirstGame) {
-            clearMainCardsDeck();
+            CardsDeck.clearMainCardsDeck();
             clearUserCardDeck();
             clearEnemyCardDeck();
         }
 
-        setMainCardsDeck();
+        System.out.println("Main Deck Size is: " + CardsDeck.getCardsCollection().size());
         character.setCardsInHands(showCardsInHands());
+        System.out.println("User Deck Size is: " + character.getCardsInHands().size());
         characterEnemy.setCardsInHands(showCardsInHands());
+        System.out.println("Enemy Deck Size is: " + characterEnemy.getCardsInHands().size());
 
         return true;
     }
