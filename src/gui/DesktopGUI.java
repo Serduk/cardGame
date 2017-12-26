@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class DesktopGUI {
 //    replace with choosing play with bot or with another user
-    CardLogic logic = new CardLogic(true);
+    CardLogic cardLogic = new CardLogic(true);
     private boolean isFirstGame = true;
 
     private JFrame frame;
@@ -85,8 +85,18 @@ public class DesktopGUI {
      * BEFORE USE THIS METHOD: YOU SHOULD USE METHOD setMainCardsDeck(), FOR SETUP MAIN CARD DECK;
      */
     private void displayUserCards() {
-
-
+        userCardDeckGUI = new ArrayList<>();
+        for (int i = 0; i < cardLogic.getCardsGUI().size(); i++) {
+            JButton jButton = new JButton("userButtonName" + i);
+            jButton.setHorizontalTextPosition(AbstractButton.CENTER);
+            jButton.setVerticalTextPosition(AbstractButton.BOTTOM);
+            System.out.println("cardLogic.getCardsGUI().get(i) " + cardLogic.getCardsGUI().get(i));
+            jButton.setIcon(new ImageIcon((String) cardLogic.getCardsGUI().get(i)));
+            jButton.addActionListener(new ClickedCardListener(i));
+            userCardDeckGUI.add(jButton);
+            userCardDeckPanel.add(userCardDeckGUI.get(i));
+        }
+        repaintCards();
     }
 
     /**
@@ -94,7 +104,17 @@ public class DesktopGUI {
      * All Cards will be shown with Card Sheet
      */
     private void displayEnemyCards() {
-
+        enemyCardDeckGUI = new ArrayList<>();
+        for (int i = 0; i < cardLogic.getEnemyCardsGUI().size(); i++) {
+            JButton jButton = new JButton("enemyButtonName" + i);
+            jButton.setHorizontalTextPosition(AbstractButton.CENTER);
+            jButton.setVerticalTextPosition(AbstractButton.BOTTOM);
+            jButton.setIcon(new ImageIcon((String) cardLogic.getEnemyCardsGUI().get(i)));
+            jButton.addActionListener(new ClickedCardListener(i));
+            enemyCardDeckGUI.add(jButton);
+            enemyCardDeckPanel.add(enemyCardDeckGUI.get(i));
+        }
+        repaintCards();
     }
 
     private void displayUserData() {
@@ -121,11 +141,34 @@ public class DesktopGUI {
      * 3. Moved to trash after playing
      */
     public void playClickedCard(int button) {
+        cardLogic.playCard(button);
+        displayPlayedCardOnBattleField();
+        cardLogic.getCardsGUI();
+        repaintCards();
+    }
+
+    private void displayPlayedCardOnBattleField() {
+        System.out.println("Played card displayed on battlefield");
 
     }
 
-    public void repaintCards() {
+    private void repaintCards() {
+        userCardDeckPanel.revalidate();
+        enemyCardDeckPanel.revalidate();
+        userDataPanel.revalidate();
+        enemyDataPanel.revalidate();
+        battleFieldPanel.revalidate();
 
+        userCardDeckPanel.repaint();
+        enemyCardDeckPanel.repaint();
+        userDataPanel.repaint();
+        enemyDataPanel.repaint();
+        battleFieldPanel.repaint();
+
+//        frame.revalidate();
+//        frame.repaint();
+//        gamePanel.revalidate();
+//        gamePanel.repaint();
     }
 
     public void repaintBattleField() {
@@ -140,8 +183,6 @@ public class DesktopGUI {
 
     }
 
-
-
     /**
      * Anonymous class for start game
      * Change screen on Table with Cards
@@ -152,7 +193,22 @@ public class DesktopGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("new game");
+            cardLogic.newGame(isFirstGame);
+            displayUserCards();
+            displayEnemyCards();
+            repaintCards();
 
+        }
+    }
+
+    private class ClickedCardListener implements ActionListener {
+        private int clickedButton;
+        private ClickedCardListener(int clickedButton) {
+            this.clickedButton = clickedButton;
+        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.out.println("Clicked Button" + clickedButton);
         }
     }
 }
