@@ -7,12 +7,9 @@ import cards.cardsList.natureCards.NatureCard01;
 import cards.cardsList.waterCards.WaterCard01;
 import cards.enumsCards.BonusesInCards;
 import characters.Character;
-import configuration.ErrorMessages;
-import configuration.NamingAndDescription;
 import logic.botActionLogic.BotUseCardLogic;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -30,11 +27,11 @@ public class CardLogic implements UseCards {
     private boolean isPlayWithBot = false;
 
     //    All cards in total Deck
-    protected List<SimpleCard> cardsCollection = new ArrayList<>();
+    protected ArrayList<SimpleCard> cardsCollection = new ArrayList<>();
     //    Cards deck for user
-    protected List<SimpleCard> userCardDeck = new ArrayList<>();
+    protected ArrayList<SimpleCard> userCardDeck = new ArrayList<>();
     //    cards deck for enemy
-    protected List<SimpleCard> enemyCardDeck = new ArrayList<>();
+    protected ArrayList<SimpleCard> enemyCardDeck = new ArrayList<>();
 
     //    character class init
     private Character character = new Character();
@@ -79,6 +76,7 @@ public class CardLogic implements UseCards {
      */
     public void clearUserCardDeck() {
         userCardDeck.clear();
+        character.setCardsInHands(userCardDeck);
     }
 
     /**
@@ -86,6 +84,7 @@ public class CardLogic implements UseCards {
      */
     public void clearEnemyCardDeck() {
         enemyCardDeck.clear();
+        characterEnemy.setCardsInHands(enemyCardDeck);
     }
 
     /**
@@ -102,16 +101,13 @@ public class CardLogic implements UseCards {
         while (userCardDeck.size() < cardsDeckInUserHandCount) {
             getCardInHandsFromMainDeck();
         }
-//        for (int i = 0; i < cardsDeckInUserHandCount; i++) {
-//            getCardInHandsFromMainDeck();
-//        }
     }
 
     /**
      * @return userCardDeck
      * show all cards in hands of player
      */
-    public List<SimpleCard> showCardsInHands() {
+    public ArrayList<SimpleCard> showCardsInHands() {
         return userCardDeck;
     }
 
@@ -140,6 +136,7 @@ public class CardLogic implements UseCards {
             character.addBonusFromCards(userCardDeck.get(card).getSuccessfulBonuses());
         }
         replaceCardInHandsFromMainDeck(card);
+        getCardsGUI();
     }
 
     /**
@@ -168,10 +165,6 @@ public class CardLogic implements UseCards {
     }
 
     /************************* New METHODS MOVED FROM GUI*****************************/
-    public ArrayList getCardsGUI() {
-        return null;
-    }
-
     public ArrayList getEnemyCardsGUI() {
         if (isCardsShouldBeDisplayed) {
             return null;
@@ -179,15 +172,24 @@ public class CardLogic implements UseCards {
         return null;
     }
 
-    public boolean setCardsGUI() {
-        if (!cardsCollection.isEmpty()) {
+    /**
+     * Method get from user cards all images;
+     * @return ArrayList with path to images for user cards
+     *
+     * */
+    public ArrayList getCardsGUI() {
+        if (character.getCardsInHands().isEmpty()) {
             getCardInHandsFromMainDeck();
-            System.out.println(NamingAndDescription.setMainCardsDeckSuccess);
-            return true;
-        } else {
-            System.out.println(NamingAndDescription.setMainCardsDeckError);
-            return false;
         }
+
+        ArrayList<String> cardsImg = new ArrayList<>();
+
+        for (int i = 0; i < character.getCardsInHands().size(); i++) {
+            SimpleCard card = (SimpleCard) character.getCardsInHands().get(i);
+            cardsImg.add(card.pathToCardIMG);
+        }
+
+        return cardsImg;
     }
 
     public boolean newGame(boolean isFirstGame) {
@@ -198,9 +200,8 @@ public class CardLogic implements UseCards {
         }
 
         setMainCardsDeck();
-        character.setCardsInHands((ArrayList) showCardsInHands());
-        characterEnemy.setCardsInHands((ArrayList) showCardsInHands());
-
+        character.setCardsInHands(showCardsInHands());
+        characterEnemy.setCardsInHands(showCardsInHands());
 
         return true;
     }

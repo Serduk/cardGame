@@ -1,5 +1,6 @@
 package characters;
 
+import cards.SimpleCard;
 import cards.enumsCards.BonusesInCards;
 
 import java.util.ArrayList;
@@ -58,13 +59,15 @@ public class Character {
         return cardsInHands;
     }
 
-//    TODO: Need investigate Probably, this method not actual. we always updateCardList by setCardsInHands method.
-//    public boolean replaceCardInHands(int cardNum, Ca) {
-//        if (cardsInHands.size() >= cardNum) {
-//            cardsInHands.set(cardNum, )
-//            return true;
-//        }
-//    }
+    public boolean replaceCardInHands(int cardNum, SimpleCard card) {
+        if (cardsInHands.size() >= cardNum) {
+            cardsInHands.set(cardNum, card);
+            System.out.println("Card Successfully replaced");
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     /**
      * Method Make Attack to Enemy
