@@ -193,11 +193,12 @@ public class DesktopGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("new game");
-            cardLogic.newGame(isFirstGame);
+            cardLogic.newGame();
             displayUserCards();
             displayEnemyCards();
             repaintCards();
-
+            isFirstGame = false;
+            cardLogic.setIsFirstGame(isFirstGame);
         }
     }
 
