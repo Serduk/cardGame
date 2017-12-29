@@ -5,6 +5,7 @@ import cards.SimpleCard;
 import cards.enumsCards.BonusesInCards;
 import characters.Character;
 import configuration.PathsAndRoutes;
+import java.util.List;
 import logic.botActionLogic.BotUseCardLogic;
 
 import java.util.ArrayList;
@@ -23,11 +24,11 @@ public class CardLogic implements UseCards {
 
     private CardsDeck cardsDeck = new CardsDeck();
 
-    private ArrayList<SimpleCard> cardsCollection = cardsDeck.getCardsCollection();
+    private List<SimpleCard> cardsCollection = cardsDeck.getCardsCollection();
     //    Cards deck for user
-    private ArrayList<SimpleCard> userCardDeck = cardsDeck.getCardsDeckInHand();
+    private List<SimpleCard> userCardDeck = cardsDeck.getCardsDeckInHand();
     //    cards deck for enemy
-    private ArrayList<SimpleCard> enemyCardDeck = cardsDeck.getCardsDeckInHand();
+    private List<SimpleCard> enemyCardDeck = cardsDeck.getCardsDeckInHand();
 
     private boolean isCardsShouldBeDisplayed = false;
     private boolean isPlayWithBot = false;
@@ -68,7 +69,7 @@ public class CardLogic implements UseCards {
      * @return userCardDeck
      * show all cards in hands of player
      */
-    public ArrayList<SimpleCard> showCardsInHands() {
+    public List<SimpleCard> showCardsInHands() {
         return userCardDeck;
     }
 
@@ -116,8 +117,8 @@ public class CardLogic implements UseCards {
     }
 
     /************************* New METHODS MOVED FROM GUI*****************************/
-    public ArrayList getEnemyCardsGUI() {
-        ArrayList<String> cardsImg = new ArrayList<>();
+    public List getEnemyCardsGUI() {
+        List<String> cardsImg = new ArrayList<>();
 
         if (isCardsShouldBeDisplayed) {
             for (SimpleCard card : enemyCardDeck) {
@@ -136,8 +137,8 @@ public class CardLogic implements UseCards {
      * @return ArrayList with path to images for user cards
      *
      * */
-    public ArrayList getCardsGUI() {
-        ArrayList<String> cardsImg = new ArrayList<>();
+    public List getCardsGUI() {
+        List<String> cardsImg = new ArrayList<>();
 
 //        for (int i = 0; i < userCardDeck.size(); i++) {
 //            SimpleCard card = userCardDeck.get(i);

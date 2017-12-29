@@ -3,13 +3,18 @@ package gui;
 
 import configuration.NamingAndDescription;
 import configuration.PathsAndRoutes;
-import logic.CardLogic;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.AbstractButton;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import logic.CardLogic;
 
 /**
  * This class for describe main window,
@@ -19,7 +24,7 @@ import java.util.ArrayList;
  */
 
 public class DesktopGUI {
-//    replace with choosing play with bot or with another user
+    //    replace with choosing play with bot or with another user
     CardLogic cardLogic = new CardLogic(true);
     private boolean isFirstGame = true;
 
@@ -32,8 +37,8 @@ public class DesktopGUI {
     private JPanel battleFieldPanel;
     private JPanel chatPanel;
 
-    private ArrayList<JButton> userCardDeckGUI;
-    private ArrayList<JButton> enemyCardDeckGUI;
+    private List<JButton> userCardDeckGUI;
+    private List<JButton> enemyCardDeckGUI;
 
     private JButton buttonNewGame;
     private JButton buttonRefreshGame;
@@ -83,12 +88,13 @@ public class DesktopGUI {
      * All images (routes for cards img) will be taken from basic Card class
      * <p>
      * BEFORE USE THIS METHOD: YOU SHOULD USE METHOD setMainCardsDeck(), FOR SETUP MAIN CARD DECK;
-     *
+     * <p>
      * TODO: we should move IF and All FOR in separate method. I think, we should use some ENUM for switching, were we should clear buttons
      */
     private void displayUserCards() {
         userCardDeckGUI = new ArrayList<>();
         if (!isFirstGame) {
+//            TODO: Replace iterator
             for (int i = 0; i < cardLogic.getCardsGUI().size(); i++) {
                 if (userCardDeckPanel == null) {
                     break;
@@ -197,9 +203,9 @@ public class DesktopGUI {
     }
 
     /**
-    * UI should be unClickable
+     * UI should be unClickable
      * While next user complete his turn
-    * */
+     */
     public void lockUI() {
 
     }
@@ -225,9 +231,11 @@ public class DesktopGUI {
 
     private class ClickedCardListener implements ActionListener {
         private int clickedButton;
+
         private ClickedCardListener(int clickedButton) {
             this.clickedButton = clickedButton;
         }
+
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Clicked Button" + clickedButton);

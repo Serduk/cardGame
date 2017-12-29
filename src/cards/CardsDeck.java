@@ -6,14 +6,15 @@ import cards.cardsList.natureCards.NatureCard01;
 import cards.cardsList.waterCards.WaterCard01;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class CardsDeck {
     public CardsDeck() {
         setMainCardsDeck();
     }
-    private static ArrayList cardsCollection = new ArrayList();
-    private ArrayList userCardDeck = new ArrayList();
+    private static List cardsCollection = new ArrayList();
+    private List userCardDeck = new ArrayList();
 
 
     public final static int cardsDeckInUserHandCount = 5;
@@ -34,7 +35,7 @@ public class CardsDeck {
         mainCardsDeckCollectionSize = cardsCollection.size();
     }
 
-    public static ArrayList getCardsCollection() {
+    public static List getCardsCollection() {
         return cardsCollection;
     }
 
@@ -65,7 +66,7 @@ public class CardsDeck {
      * get random card from MAIN DECK,
      * and put it to player Deck
      */
-    public ArrayList getCardsDeckInHand() {
+    public List getCardsDeckInHand() {
         System.out.println("CARDS COLLECTION SIZE IS: " + cardsCollection.size());
         while (userCardDeck.size() < CardsDeck.cardsDeckInUserHandCount) {
             getCardInHandsFromMainDeck();

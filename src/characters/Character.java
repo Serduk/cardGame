@@ -3,8 +3,8 @@ package characters;
 import cards.SimpleCard;
 import cards.enumsCards.BonusesInCards;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,7 +17,7 @@ import java.util.Map;
  * Created by sserdiuk on 7/13/17.
  */
 public class Character {
-    private ArrayList cardsInHands;
+    private List cardsInHands;
 
     private int attackPower = 0;
     private int health = 100;
@@ -48,14 +48,14 @@ public class Character {
      * @param cardsInHands take List from CardLogic and save to list
      *
      * */
-    public void setCardsInHands(ArrayList cardsInHands) {
+    public void setCardsInHands(List cardsInHands) {
         this.cardsInHands = cardsInHands;
     }
 
     /**
      * @return arrayList with cards in hands
      * */
-    public ArrayList getCardsInHands() {
+    public List getCardsInHands() {
         return cardsInHands;
     }
 
