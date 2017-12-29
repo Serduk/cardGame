@@ -31,6 +31,7 @@ public class CardLogic implements UseCards {
 
     private boolean isCardsShouldBeDisplayed = false;
     private boolean isPlayWithBot = false;
+    private boolean isFirstGame = true;
 
     //    character class init
     private Character character = new Character();
@@ -138,27 +139,44 @@ public class CardLogic implements UseCards {
     public ArrayList getCardsGUI() {
         ArrayList<String> cardsImg = new ArrayList<>();
 
-        for (int i = 0; i < userCardDeck.size(); i++) {
-            SimpleCard card = userCardDeck.get(i);
+//        for (int i = 0; i < userCardDeck.size(); i++) {
+//            SimpleCard card = userCardDeck.get(i);
+//            cardsImg.add(card.pathToCardIMG);
+//        }
+
+        for (SimpleCard card : userCardDeck) {
             cardsImg.add(card.pathToCardIMG);
         }
 
         return cardsImg;
     }
 
-    public boolean newGame(boolean isFirstGame) {
+    public boolean newGame() {
         if (!isFirstGame) {
-            CardsDeck.clearMainCardsDeck();
+            System.out.println("clear cards in decks");
             clearUserCardDeck();
             clearEnemyCardDeck();
         }
 
-        System.out.println("Main Deck Size is: " + CardsDeck.getCardsCollection().size());
+        userCardDeck = cardsDeck.getCardsDeckInHand();
         character.setCardsInHands(showCardsInHands());
-        System.out.println("User Deck Size is: " + character.getCardsInHands().size());
         characterEnemy.setCardsInHands(showCardsInHands());
+
+        System.out.println("Main Deck Size is: " + CardsDeck.getCardsCollection().size());
+        System.out.println("User Deck Size is: " + character.getCardsInHands().size());
         System.out.println("Enemy Deck Size is: " + characterEnemy.getCardsInHands().size());
 
         return true;
+    }
+
+    /**
+     * Method set boolean to true or false
+     * Check, first game or not
+     * Usable in @method newGame()
+     * @param isFirstGame set to false => method newGame clear all data on deck for user, enemy and main deck
+     *
+     * */
+    public void setIsFirstGame(boolean isFirstGame) {
+        this.isFirstGame = isFirstGame;
     }
 }

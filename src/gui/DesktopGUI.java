@@ -83,9 +83,20 @@ public class DesktopGUI {
      * All images (routes for cards img) will be taken from basic Card class
      * <p>
      * BEFORE USE THIS METHOD: YOU SHOULD USE METHOD setMainCardsDeck(), FOR SETUP MAIN CARD DECK;
+     *
+     * TODO: we should move IF and All FOR in separate method. I think, we should use some ENUM for switching, were we should clear buttons
      */
     private void displayUserCards() {
         userCardDeckGUI = new ArrayList<>();
+        if (!isFirstGame) {
+            for (int i = 0; i < cardLogic.getCardsGUI().size(); i++) {
+                if (userCardDeckPanel == null) {
+                    break;
+                }
+                userCardDeckPanel.remove(0);
+            }
+        }
+
         for (int i = 0; i < cardLogic.getCardsGUI().size(); i++) {
             JButton jButton = new JButton("userButtonName" + i);
             jButton.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -96,7 +107,7 @@ public class DesktopGUI {
             userCardDeckGUI.add(jButton);
             userCardDeckPanel.add(userCardDeckGUI.get(i));
         }
-        repaintCards();
+//        repaintCards();
     }
 
     /**
@@ -105,6 +116,15 @@ public class DesktopGUI {
      */
     private void displayEnemyCards() {
         enemyCardDeckGUI = new ArrayList<>();
+        if (!isFirstGame) {
+            for (int i = 0; i < cardLogic.getCardsGUI().size(); i++) {
+                if (enemyCardDeckPanel == null) {
+                    break;
+                }
+                enemyCardDeckPanel.remove(0);
+            }
+        }
+
         for (int i = 0; i < cardLogic.getEnemyCardsGUI().size(); i++) {
             JButton jButton = new JButton("enemyButtonName" + i);
             jButton.setHorizontalTextPosition(AbstractButton.CENTER);
@@ -114,7 +134,7 @@ public class DesktopGUI {
             enemyCardDeckGUI.add(jButton);
             enemyCardDeckPanel.add(enemyCardDeckGUI.get(i));
         }
-        repaintCards();
+//        repaintCards();
     }
 
     private void displayUserData() {
@@ -143,7 +163,8 @@ public class DesktopGUI {
     public void playClickedCard(int button) {
         cardLogic.playCard(button);
         displayPlayedCardOnBattleField();
-        cardLogic.getCardsGUI();
+        displayUserCards();
+        displayEnemyCards();
         repaintCards();
     }
 
@@ -193,11 +214,12 @@ public class DesktopGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("new game");
-            cardLogic.newGame(isFirstGame);
+            cardLogic.newGame();
             displayUserCards();
             displayEnemyCards();
             repaintCards();
-
+            isFirstGame = false;
+            cardLogic.setIsFirstGame(isFirstGame);
         }
     }
 
@@ -209,6 +231,7 @@ public class DesktopGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Clicked Button" + clickedButton);
+            playClickedCard(clickedButton);
         }
     }
 }
