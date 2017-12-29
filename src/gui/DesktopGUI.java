@@ -163,7 +163,8 @@ public class DesktopGUI {
     public void playClickedCard(int button) {
         cardLogic.playCard(button);
         displayPlayedCardOnBattleField();
-        cardLogic.getCardsGUI();
+        displayUserCards();
+        displayEnemyCards();
         repaintCards();
     }
 
@@ -230,6 +231,7 @@ public class DesktopGUI {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("Clicked Button" + clickedButton);
+            playClickedCard(clickedButton);
         }
     }
 }
