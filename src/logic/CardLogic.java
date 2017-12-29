@@ -139,8 +139,12 @@ public class CardLogic implements UseCards {
     public ArrayList getCardsGUI() {
         ArrayList<String> cardsImg = new ArrayList<>();
 
-        for (int i = 0; i < userCardDeck.size(); i++) {
-            SimpleCard card = userCardDeck.get(i);
+//        for (int i = 0; i < userCardDeck.size(); i++) {
+//            SimpleCard card = userCardDeck.get(i);
+//            cardsImg.add(card.pathToCardIMG);
+//        }
+
+        for (SimpleCard card : userCardDeck) {
             cardsImg.add(card.pathToCardIMG);
         }
 
@@ -154,6 +158,7 @@ public class CardLogic implements UseCards {
             clearEnemyCardDeck();
         }
 
+        userCardDeck = cardsDeck.getCardsDeckInHand();
         character.setCardsInHands(showCardsInHands());
         characterEnemy.setCardsInHands(showCardsInHands());
 
