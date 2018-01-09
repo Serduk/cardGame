@@ -184,7 +184,16 @@ public class Character {
         poisonAttack = setBoolean;
     }
 
-/*------------------------------------------- GET TEMPLE DATA -----------------------------------------------------*/
+    /********************************************* GET POISONED AND FREEZED DATA *************************************/
+    public int getPoisoneRoundsCount() {
+        return poisoneRounds;
+    }
+
+    public int getFreezeRoundsCount() {
+        return freezeRounds;
+    }
+
+    /*------------------------------------------- GET TEMPLE DATA -----------------------------------------------------*/
 
     public int getTempleEarth() {
         return templeEarth;

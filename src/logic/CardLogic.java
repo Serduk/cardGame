@@ -4,8 +4,11 @@ import cards.CardsDeck;
 import cards.SimpleCard;
 import cards.enumsCards.BonusesInCards;
 import characters.Character;
+import characters.CharacterAttributes;
 import configuration.PathsAndRoutes;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import logic.botActionLogic.BotUseCardLogic;
 
 import java.util.ArrayList;
@@ -29,6 +32,9 @@ public class CardLogic implements UseCards {
     private List<SimpleCard> userCardDeck = cardsDeck.getCardsDeckInHand();
     //    cards deck for enemy
     private List<SimpleCard> enemyCardDeck = cardsDeck.getCardsDeckInHand();
+
+    private Map<CharacterAttributes, Integer> characterData = new HashMap<>();
+    private Map<CharacterAttributes, Integer> enemyCharacterData = new HashMap<>();
 
     private boolean isCardsShouldBeDisplayed = false;
     private boolean isPlayWithBot = false;
@@ -150,6 +156,62 @@ public class CardLogic implements UseCards {
         }
 
         return cardsImg;
+    }
+
+    /* ****************************** METHODS FOR CHARACTERS (USER/ENEMY) *************************************/
+
+    private void setCharacterData() {
+        characterData.put(CharacterAttributes.ATTACK_POWER, character.getAttackPower());
+        characterData.put(CharacterAttributes.HEALTH, character.getHealth());
+        characterData.put(CharacterAttributes.ARMOR, character.getArmor());
+        characterData.put(CharacterAttributes.POISONED_ROUNDS, character.getPoisoneRoundsCount());
+        characterData.put(CharacterAttributes.FREEZED_ROUNDS, character.getFreezeRoundsCount());
+
+        characterData.put(CharacterAttributes.TEMPLE_EARTH, character.getTempleEarth());
+        characterData.put(CharacterAttributes.TEMPLE_FIRE, character.getTempleFire());
+        characterData.put(CharacterAttributes.TEMPLE_NATURE, character.getTempleNature());
+        characterData.put(CharacterAttributes.TEMPLE_WATER, character.getTempleWater());
+
+        characterData.put(CharacterAttributes.RESOURCE_EARTH_COUNT, character.getResourceEarthCount());
+        characterData.put(CharacterAttributes.RESOURCE_FIRE_COUNT, character.getResourceFireCount());
+        characterData.put(CharacterAttributes.RESOURCE_NATURE_COUNT, character.getResourceNatureCount());
+        characterData.put(CharacterAttributes.RESOURCE_WATER_COUNT, character.getResourceWaterCount());
+    }
+
+    /**
+     * @return map with main data about character
+     * */
+    public Map getCharacterData() {
+        setCharacterData();
+
+        return characterData;
+    }
+
+    private void setEnemyCharacterData() {
+        enemyCharacterData.put(CharacterAttributes.ATTACK_POWER, characterEnemy.getAttackPower());
+        enemyCharacterData.put(CharacterAttributes.HEALTH, characterEnemy.getHealth());
+        enemyCharacterData.put(CharacterAttributes.ARMOR, characterEnemy.getArmor());
+        enemyCharacterData.put(CharacterAttributes.POISONED_ROUNDS, characterEnemy.getPoisoneRoundsCount());
+        enemyCharacterData.put(CharacterAttributes.FREEZED_ROUNDS, characterEnemy.getFreezeRoundsCount());
+
+        enemyCharacterData.put(CharacterAttributes.TEMPLE_EARTH, characterEnemy.getTempleEarth());
+        enemyCharacterData.put(CharacterAttributes.TEMPLE_FIRE, characterEnemy.getTempleFire());
+        enemyCharacterData.put(CharacterAttributes.TEMPLE_NATURE, characterEnemy.getTempleNature());
+        enemyCharacterData.put(CharacterAttributes.TEMPLE_WATER, characterEnemy.getTempleWater());
+
+        enemyCharacterData.put(CharacterAttributes.RESOURCE_EARTH_COUNT, characterEnemy.getResourceEarthCount());
+        enemyCharacterData.put(CharacterAttributes.RESOURCE_FIRE_COUNT, characterEnemy.getResourceFireCount());
+        enemyCharacterData.put(CharacterAttributes.RESOURCE_NATURE_COUNT, characterEnemy.getResourceNatureCount());
+        enemyCharacterData.put(CharacterAttributes.RESOURCE_WATER_COUNT, characterEnemy.getResourceWaterCount());
+    }
+
+    /**
+     * @return map with main data about enemy Character
+     * */
+    public Map getEnemyCharacterData() {
+        setEnemyCharacterData();
+
+        return enemyCharacterData;
     }
 
     public boolean newGame() {

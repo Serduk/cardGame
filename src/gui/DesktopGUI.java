@@ -143,12 +143,20 @@ public class DesktopGUI {
 //        repaintCards();
     }
 
+    /**
+     * Mehtod get all actual data about user character in Card logic
+     * */
     private void displayUserData() {
-
+//        TODO ADD VIEW FOR ALL ELEMENTS FROM HASHMAP
+        cardLogic.getCharacterData();
     }
 
+    /**
+     * Method Get all actual data about Enemy character in card logic
+     * */
     private void displayEnemyData() {
-
+//        TODO ADD VIEW FOR ALL ELEMENTS FROM HASHMAP
+        cardLogic.getEnemyCharacterData();
     }
 
     private void displayBattleField() {
