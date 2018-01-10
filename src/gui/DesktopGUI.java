@@ -39,6 +39,8 @@ public class DesktopGUI {
 
     private List<JButton> userCardDeckGUI;
     private List<JButton> enemyCardDeckGUI;
+    private List<JButton> userCharacterParamsData;
+    private List<JButton> enemyCharacterParamsData;
 
     private JButton buttonNewGame;
     private JButton buttonRefreshGame;
@@ -71,6 +73,8 @@ public class DesktopGUI {
         gamePanel.add(BorderLayout.SOUTH, userCardDeckPanel);
         gamePanel.add(BorderLayout.NORTH, enemyCardDeckPanel);
         gamePanel.add(BorderLayout.CENTER, battleFieldPanel);
+        gamePanel.add(BorderLayout.WEST, userDataPanel);
+        gamePanel.add(BorderLayout.EAST, enemyDataPanel);
 
         frame.add(gamePanel);
 
