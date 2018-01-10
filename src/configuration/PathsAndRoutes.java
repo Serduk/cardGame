@@ -22,12 +22,12 @@ public final class PathsAndRoutes {
     public static final String pathToNatureIMG = pathToResourcesIMG + "";
 
     private static final String pathToBufsAndDebufsIMG = "resources/img/buffsAndDebuffsIMG/";
-    public static final String pathToHealthActive = pathToBufsAndDebufsIMG + "";
-    public static final String pathToHealthInActive = pathToBufsAndDebufsIMG + "";
+    public static final String pathToHealthRestoreActive = pathToBufsAndDebufsIMG + "param_icon_1_active.jpg";
+    public static final String pathToHealthRestoreInActive = pathToBufsAndDebufsIMG + "param_icon_1_inactive.jpg";
     public static final String pathToReflectActive = pathToBufsAndDebufsIMG + "";
     public static final String pathToReflectInActive = pathToBufsAndDebufsIMG + "";
     public static final String pathToIsPoisonedActive = pathToBufsAndDebufsIMG + "";
     public static final String pathToIsPoisonedInActive = pathToBufsAndDebufsIMG + "";
-    public static final String pathToIsFreezedActive = pathToBufsAndDebufsIMG + "";
-    public static final String pathToIsFreezedInActive = pathToBufsAndDebufsIMG + "";
+    public static final String pathToIsFreezedActive = pathToBufsAndDebufsIMG + "param_icon_3_active.jpg";
+    public static final String pathToIsFreezedInActive = pathToBufsAndDebufsIMG + "param_icon_3_inactive.jpg";
 }

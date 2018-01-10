@@ -1,6 +1,7 @@
 package gui;
 
 
+import characters.CharacterAttributes;
 import configuration.NamingAndDescription;
 import configuration.PathsAndRoutes;
 import java.awt.BorderLayout;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,26 +29,33 @@ public class DesktopGUI {
     //    replace with choosing play with bot or with another user
     CardLogic cardLogic = new CardLogic(true);
     private boolean isFirstGame = true;
+    private boolean isUserTurn;
 
     private JFrame frame;
     private JPanel gamePanel;
     private JPanel userCardDeckPanel;
     private JPanel enemyCardDeckPanel;
-    private JPanel userDataPanel;
-    private JPanel enemyDataPanel;
     private JPanel battleFieldPanel;
     private JPanel chatPanel;
 
+    private JPanel userDataPanel;
+    private JPanel userBuffsAndDebuffsPanel;
+    private JPanel userResourcesPanel;
+
+    private JPanel enemyDataPanel;
+    private JPanel enemyBuffsAndDebuffsPanel;
+    private JPanel enemyResourcesPanel;
+
     private List<JButton> userCardDeckGUI;
     private List<JButton> enemyCardDeckGUI;
-    private List<JButton> userCharacterParamsData;
-    private List<JButton> enemyCharacterParamsData;
+    private List<JButton> userCharacterParamsDataGUI;
+    private List<JButton> enemyCharacterParamsDataGUI;
 
     private JButton buttonNewGame;
     private JButton buttonRefreshGame;
     private JButton buttonScore;
 
-    private BorderLayout layout;
+    private BorderLayout borderLayout;
     private FlowLayout flowLayout;
 
     public void drawGUI() {
@@ -59,14 +68,29 @@ public class DesktopGUI {
         buttonNewGame.addActionListener(new NewGame());
 
         flowLayout = new FlowLayout();
+        borderLayout = new BorderLayout();
+
         userCardDeckPanel = new JPanel(flowLayout);
         enemyCardDeckPanel = new JPanel(flowLayout);
-        userDataPanel = new JPanel(flowLayout);
-        enemyDataPanel = new JPanel(flowLayout);
         battleFieldPanel = new JPanel(flowLayout);
 
-        layout = new BorderLayout();
-        gamePanel = new JPanel(layout);
+        userDataPanel = new JPanel(flowLayout);
+        userBuffsAndDebuffsPanel = new JPanel(flowLayout);
+        userResourcesPanel = new JPanel(flowLayout);
+
+        userDataPanel.add(BorderLayout.NORTH, userBuffsAndDebuffsPanel);
+        userDataPanel.add(BorderLayout.SOUTH, userResourcesPanel);
+
+
+        enemyDataPanel = new JPanel(flowLayout);
+        enemyBuffsAndDebuffsPanel = new JPanel(flowLayout);
+        enemyResourcesPanel = new JPanel(flowLayout);
+
+        enemyDataPanel.add(BorderLayout.NORTH, enemyBuffsAndDebuffsPanel);
+        enemyDataPanel.add(BorderLayout.SOUTH, enemyResourcesPanel);
+
+
+        gamePanel = new JPanel(borderLayout);
 
         battleFieldPanel.add(buttonNewGame);
 
@@ -152,15 +176,91 @@ public class DesktopGUI {
      * */
     private void displayUserData() {
 //        TODO ADD VIEW FOR ALL ELEMENTS FROM HASHMAP
-        cardLogic.getCharacterData();
+//        TODO: MOVE STRINGS AND ALL CONDITIONS TO NEW METHOD. AND USE THIS METHOD HERE
+        Map<CharacterAttributes, Integer> userData = cardLogic.getCharacterData();
+        userCharacterParamsDataGUI = new ArrayList<>();
+
+        String pathToFreeze;
+        String pathToHealth = "";
+        String pathToPoisoned = "";
+        String pathToReflection = "";
+
+        if (userData.get(CharacterAttributes.FREEZED_ROUNDS) > 0) {
+            pathToFreeze = PathsAndRoutes.pathToIsFreezedActive;
+        } else {
+            pathToFreeze = PathsAndRoutes.pathToIsFreezedInActive;
+        }
+
+        if (userData.get(CharacterAttributes.POISONED_ROUNDS) > 0) {
+            pathToPoisoned = PathsAndRoutes.pathToIsPoisonedActive;
+        } else {
+            pathToPoisoned = PathsAndRoutes.pathToIsPoisonedInActive;
+        }
+
+        if (userData.get(CharacterAttributes.REGENERATION_ROUNDS) > 0) {
+            pathToHealth = PathsAndRoutes.pathToHealthRestoreActive;
+        } else {
+            pathToHealth = PathsAndRoutes.pathToHealthRestoreInActive;
+        }
+
+        if (userData.get(CharacterAttributes.REFLECTION_ROUNDS) > 0) {
+            pathToReflection = PathsAndRoutes.pathToReflectActive;
+        } else {
+            pathToReflection = PathsAndRoutes.pathToReflectInActive;
+        }
+
+        JButton freeze = new JButton("freeze");
+        freeze.setHorizontalTextPosition(AbstractButton.CENTER);
+        freeze.setVerticalTextPosition(AbstractButton.BOTTOM);
+        freeze.setIcon(new ImageIcon(pathToFreeze));
+//        freeze.setEnabled(false);
+        userBuffsAndDebuffsPanel.add(freeze);
+
+        JButton reflect = new JButton();
+        JButton restoreHealth = new JButton();
+        JButton poisoned = new JButton();
+
     }
 
     /**
      * Method Get all actual data about Enemy character in card logic
      * */
     private void displayEnemyData() {
-//        TODO ADD VIEW FOR ALL ELEMENTS FROM HASHMAP
-        cardLogic.getEnemyCharacterData();
+//        TODO: ADD VIEW FOR ALL ELEMENTS FROM HASHMAP
+//        TODO: MOVE STRINGS AND ALL CONDITIONS TO NEW METHOD. AND USE THIS METHOD HERE
+        Map<CharacterAttributes, Integer> userData = cardLogic.getEnemyCharacterData();
+        enemyCharacterParamsDataGUI = new ArrayList<>();
+
+
+        String pathToFreeze;
+        String pathToHealth = "";
+        String pathToPoisoned = "";
+        String pathToReflection = "";
+
+        if (userData.get(CharacterAttributes.FREEZED_ROUNDS) > 0) {
+            pathToFreeze = PathsAndRoutes.pathToIsFreezedActive;
+        } else {
+            pathToFreeze = PathsAndRoutes.pathToIsFreezedInActive;
+        }
+
+        if (userData.get(CharacterAttributes.POISONED_ROUNDS) > 0) {
+            pathToPoisoned = PathsAndRoutes.pathToIsPoisonedActive;
+        } else {
+            pathToPoisoned = PathsAndRoutes.pathToIsPoisonedInActive;
+        }
+
+        if (userData.get(CharacterAttributes.REGENERATION_ROUNDS) > 0) {
+            pathToHealth = PathsAndRoutes.pathToHealthRestoreActive;
+        } else {
+            pathToHealth = PathsAndRoutes.pathToHealthRestoreInActive;
+        }
+
+        if (userData.get(CharacterAttributes.REFLECTION_ROUNDS) > 0) {
+            pathToReflection = PathsAndRoutes.pathToReflectActive;
+        } else {
+            pathToReflection = PathsAndRoutes.pathToReflectInActive;
+        }
+
     }
 
     private void displayBattleField() {
@@ -235,6 +335,10 @@ public class DesktopGUI {
             cardLogic.newGame();
             displayUserCards();
             displayEnemyCards();
+
+            displayUserData();
+            displayEnemyData();
+
             repaintCards();
             isFirstGame = false;
             cardLogic.setIsFirstGame(isFirstGame);

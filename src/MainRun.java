@@ -29,6 +29,6 @@ public class MainRun {
 //        System.out.println("ARMOR BEFORE = " + character.getArmor());
 //        character.addBonusFromCards(cardsInHands.get(0).getSuccessfulBonuses());
 //        System.out.println("ARMOR AFTER = " + character.getArmor());
-//        System.out.println("HEALTH AFTER = " + character.getHealth());
+//        System.out.println("REGENERATION_ROUNDS AFTER = " + character.getHealth());
     }
 }

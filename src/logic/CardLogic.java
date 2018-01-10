@@ -162,10 +162,14 @@ public class CardLogic implements UseCards {
 
     private void setCharacterData() {
         characterData.put(CharacterAttributes.ATTACK_POWER, character.getAttackPower());
-        characterData.put(CharacterAttributes.HEALTH, character.getHealth());
+        characterData.put(CharacterAttributes.REGENERATION_ROUNDS, character.getHealth());
         characterData.put(CharacterAttributes.ARMOR, character.getArmor());
         characterData.put(CharacterAttributes.POISONED_ROUNDS, character.getPoisoneRoundsCount());
         characterData.put(CharacterAttributes.FREEZED_ROUNDS, character.getFreezeRoundsCount());
+
+//        TODO: Realise this methods;
+//        characterData.put(CharacterAttributes.REGENERATION_POINTS, character.getRegenerationPoints);
+//        characterData.put(CharacterAttributes.REFLECTION_POINTS, character.getReflectionPoints);
 
         characterData.put(CharacterAttributes.TEMPLE_EARTH, character.getTempleEarth());
         characterData.put(CharacterAttributes.TEMPLE_FIRE, character.getTempleFire());
@@ -189,7 +193,7 @@ public class CardLogic implements UseCards {
 
     private void setEnemyCharacterData() {
         enemyCharacterData.put(CharacterAttributes.ATTACK_POWER, characterEnemy.getAttackPower());
-        enemyCharacterData.put(CharacterAttributes.HEALTH, characterEnemy.getHealth());
+        enemyCharacterData.put(CharacterAttributes.REGENERATION_ROUNDS, characterEnemy.getHealth());
         enemyCharacterData.put(CharacterAttributes.ARMOR, characterEnemy.getArmor());
         enemyCharacterData.put(CharacterAttributes.POISONED_ROUNDS, characterEnemy.getPoisoneRoundsCount());
         enemyCharacterData.put(CharacterAttributes.FREEZED_ROUNDS, characterEnemy.getFreezeRoundsCount());
