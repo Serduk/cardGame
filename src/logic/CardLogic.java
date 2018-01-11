@@ -96,7 +96,7 @@ public class CardLogic implements UseCards {
 //            TODO: fix data with debuffs
             character.takeDamage(character.attack(userCardDeck.get(card).getCardDamage()), BonusesInCards.ATTACK_ADD_MY_SELF);
         }
-        if (userCardDeck.get(card).isHasDebufOnCard()) {
+        if (userCardDeck.get(card).isHasDebuffOnCard()) {
 //            TODO: SET DEBUFF ON CHARACTER
         }
 
@@ -162,14 +162,16 @@ public class CardLogic implements UseCards {
 
     private void setCharacterData() {
         characterData.put(CharacterAttributes.ATTACK_POWER, character.getAttackPower());
-        characterData.put(CharacterAttributes.REGENERATION_ROUNDS, character.getHealth());
+        characterData.put(CharacterAttributes.HEALTH, character.getRegenerationRounds());
         characterData.put(CharacterAttributes.ARMOR, character.getArmor());
-        characterData.put(CharacterAttributes.POISONED_ROUNDS, character.getPoisoneRoundsCount());
-        characterData.put(CharacterAttributes.FREEZED_ROUNDS, character.getFreezeRoundsCount());
+        characterData.put(CharacterAttributes.FREEZED_ROUNDS, character.getFreezeRounds());
 
-//        TODO: Realise this methods;
-//        characterData.put(CharacterAttributes.REGENERATION_POINTS, character.getRegenerationPoints);
-//        characterData.put(CharacterAttributes.REFLECTION_POINTS, character.getReflectionPoints);
+        characterData.put(CharacterAttributes.REGENERATION_POINTS, character.getRegenerationPoints());
+        characterData.put(CharacterAttributes.REGENERATION_ROUNDS, character.getRegenerationRounds());
+        characterData.put(CharacterAttributes.REFLECTION_POINTS, character.getReflectionPoints());
+        characterData.put(CharacterAttributes.REFLECTION_ROUNDS, character.getReflectionRounds());
+        characterData.put(CharacterAttributes.POISONED_ROUNDS, character.getPoisoneRoundsCount());
+        characterData.put(CharacterAttributes.POISONED_POINTS, character.getPoisoneRoundsCount());
 
         characterData.put(CharacterAttributes.TEMPLE_EARTH, character.getTempleEarth());
         characterData.put(CharacterAttributes.TEMPLE_FIRE, character.getTempleFire());
@@ -192,21 +194,7 @@ public class CardLogic implements UseCards {
     }
 
     private void setEnemyCharacterData() {
-        enemyCharacterData.put(CharacterAttributes.ATTACK_POWER, characterEnemy.getAttackPower());
-        enemyCharacterData.put(CharacterAttributes.REGENERATION_ROUNDS, characterEnemy.getHealth());
-        enemyCharacterData.put(CharacterAttributes.ARMOR, characterEnemy.getArmor());
-        enemyCharacterData.put(CharacterAttributes.POISONED_ROUNDS, characterEnemy.getPoisoneRoundsCount());
-        enemyCharacterData.put(CharacterAttributes.FREEZED_ROUNDS, characterEnemy.getFreezeRoundsCount());
-
-        enemyCharacterData.put(CharacterAttributes.TEMPLE_EARTH, characterEnemy.getTempleEarth());
-        enemyCharacterData.put(CharacterAttributes.TEMPLE_FIRE, characterEnemy.getTempleFire());
-        enemyCharacterData.put(CharacterAttributes.TEMPLE_NATURE, characterEnemy.getTempleNature());
-        enemyCharacterData.put(CharacterAttributes.TEMPLE_WATER, characterEnemy.getTempleWater());
-
-        enemyCharacterData.put(CharacterAttributes.RESOURCE_EARTH_COUNT, characterEnemy.getResourceEarthCount());
-        enemyCharacterData.put(CharacterAttributes.RESOURCE_FIRE_COUNT, characterEnemy.getResourceFireCount());
-        enemyCharacterData.put(CharacterAttributes.RESOURCE_NATURE_COUNT, characterEnemy.getResourceNatureCount());
-        enemyCharacterData.put(CharacterAttributes.RESOURCE_WATER_COUNT, characterEnemy.getResourceWaterCount());
+//        TODO: Realise this methods;
     }
 
     /**

@@ -24,9 +24,15 @@ public class Character {
     private int armor = 0;
 
     private int poisonedDamage = 0;
-    private int poisoneRounds = 0;
+    private int poisonedRounds = 0;
 
     private int freezeRounds = 0;
+
+    private int regenerationPoints = 0;
+    private int regenerationRounds = 0;
+
+    private int reflectionPoints = 0;
+    private int reflectionRounds = 0;
 
     private boolean poisonAttack = false;
     private boolean freezeAttack = false;
@@ -186,14 +192,31 @@ public class Character {
 
     /********************************************* GET POISONED AND FREEZED DATA *************************************/
     public int getPoisoneRoundsCount() {
-        return poisoneRounds;
+        return poisonedRounds;
     }
 
-    public int getFreezeRoundsCount() {
+    public int getFreezeRounds() {
         return freezeRounds;
     }
 
-    /*------------------------------------------- GET TEMPLE DATA -----------------------------------------------------*/
+//    TODO: Implement feature with debuffs to user. add debuffs in switcher and etc
+    public int getReflectionRounds() {
+        return reflectionRounds;
+    }
+
+    public int getRegenerationRounds() {
+        return regenerationRounds;
+    }
+
+    public int getRegenerationPoints() {
+        return regenerationPoints;
+    }
+
+    public int getReflectionPoints() {
+        return reflectionPoints;
+    }
+
+    /*------------------------------------------- GET TEMPLE DATA ----------------------------------------------------*/
 
     public int getTempleEarth() {
         return templeEarth;

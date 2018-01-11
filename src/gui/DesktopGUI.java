@@ -39,10 +39,12 @@ public class DesktopGUI {
     private JPanel chatPanel;
 
     private JPanel userDataPanel;
+    private JPanel userAttributesPanel;
     private JPanel userBuffsAndDebuffsPanel;
     private JPanel userResourcesPanel;
 
     private JPanel enemyDataPanel;
+    private JPanel enemyAttributesPanel;
     private JPanel enemyBuffsAndDebuffsPanel;
     private JPanel enemyResourcesPanel;
 
@@ -74,19 +76,24 @@ public class DesktopGUI {
         enemyCardDeckPanel = new JPanel(flowLayout);
         battleFieldPanel = new JPanel(flowLayout);
 
-        userDataPanel = new JPanel(flowLayout);
+        userDataPanel = new JPanel(new BorderLayout());
+        userAttributesPanel = new JPanel(flowLayout);
         userBuffsAndDebuffsPanel = new JPanel(flowLayout);
         userResourcesPanel = new JPanel(flowLayout);
 
-        userDataPanel.add(BorderLayout.NORTH, userBuffsAndDebuffsPanel);
+
+        userDataPanel.add(BorderLayout.NORTH, userAttributesPanel);
+        userDataPanel.add(BorderLayout.CENTER, userBuffsAndDebuffsPanel);
         userDataPanel.add(BorderLayout.SOUTH, userResourcesPanel);
 
 
-        enemyDataPanel = new JPanel(flowLayout);
+        enemyDataPanel = new JPanel(new BorderLayout());
+        enemyAttributesPanel = new JPanel(flowLayout);
         enemyBuffsAndDebuffsPanel = new JPanel(flowLayout);
         enemyResourcesPanel = new JPanel(flowLayout);
 
-        enemyDataPanel.add(BorderLayout.NORTH, enemyBuffsAndDebuffsPanel);
+        enemyDataPanel.add(BorderLayout.NORTH, enemyAttributesPanel);
+        enemyDataPanel.add(BorderLayout.CENTER, enemyBuffsAndDebuffsPanel);
         enemyDataPanel.add(BorderLayout.SOUTH, enemyResourcesPanel);
 
 
@@ -175,15 +182,14 @@ public class DesktopGUI {
      * Mehtod get all actual data about user character in Card logic
      * */
     private void displayUserData() {
-//        TODO ADD VIEW FOR ALL ELEMENTS FROM HASHMAP
 //        TODO: MOVE STRINGS AND ALL CONDITIONS TO NEW METHOD. AND USE THIS METHOD HERE
         Map<CharacterAttributes, Integer> userData = cardLogic.getCharacterData();
         userCharacterParamsDataGUI = new ArrayList<>();
 
         String pathToFreeze;
-        String pathToHealth = "";
-        String pathToPoisoned = "";
-        String pathToReflection = "";
+        String pathToRegeneration;
+        String pathToPoisoned;
+        String pathToReflection;
 
         if (userData.get(CharacterAttributes.FREEZED_ROUNDS) > 0) {
             pathToFreeze = PathsAndRoutes.pathToIsFreezedActive;
@@ -198,9 +204,9 @@ public class DesktopGUI {
         }
 
         if (userData.get(CharacterAttributes.REGENERATION_ROUNDS) > 0) {
-            pathToHealth = PathsAndRoutes.pathToHealthRestoreActive;
+            pathToRegeneration = PathsAndRoutes.pathToHealthRestoreActive;
         } else {
-            pathToHealth = PathsAndRoutes.pathToHealthRestoreInActive;
+            pathToRegeneration = PathsAndRoutes.pathToHealthRestoreInActive;
         }
 
         if (userData.get(CharacterAttributes.REFLECTION_ROUNDS) > 0) {
@@ -209,58 +215,175 @@ public class DesktopGUI {
             pathToReflection = PathsAndRoutes.pathToReflectInActive;
         }
 
+        JButton health = new JButton("health");
+        health.setHorizontalTextPosition(AbstractButton.CENTER);
+        health.setVerticalTextPosition(AbstractButton.BOTTOM);
+        health.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        userAttributesPanel.add(health);
+
+        JButton attackPower = new JButton("attackPower");
+        attackPower.setHorizontalTextPosition(AbstractButton.CENTER);
+        attackPower.setVerticalTextPosition(AbstractButton.BOTTOM);
+        attackPower.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        userAttributesPanel.add(attackPower);
+
+        JButton defence = new JButton("defence");
+        defence.setHorizontalTextPosition(AbstractButton.CENTER);
+        defence.setVerticalTextPosition(AbstractButton.BOTTOM);
+        defence.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        userAttributesPanel.add(defence);
+
         JButton freeze = new JButton("freeze");
         freeze.setHorizontalTextPosition(AbstractButton.CENTER);
         freeze.setVerticalTextPosition(AbstractButton.BOTTOM);
         freeze.setIcon(new ImageIcon(pathToFreeze));
-//        freeze.setEnabled(false);
         userBuffsAndDebuffsPanel.add(freeze);
 
-        JButton reflect = new JButton();
-        JButton restoreHealth = new JButton();
-        JButton poisoned = new JButton();
+        JButton regeneration = new JButton("regeneration");
+        regeneration.setHorizontalTextPosition(AbstractButton.CENTER);
+        regeneration.setVerticalTextPosition(AbstractButton.BOTTOM);
+        regeneration.setIcon(new ImageIcon(pathToRegeneration));
+        userBuffsAndDebuffsPanel.add(regeneration);
 
+        JButton poisoned = new JButton("poisoned");
+        poisoned.setHorizontalTextPosition(AbstractButton.CENTER);
+        poisoned.setVerticalTextPosition(AbstractButton.BOTTOM);
+        poisoned.setIcon(new ImageIcon(pathToPoisoned));
+        userBuffsAndDebuffsPanel.add(poisoned);
+
+        JButton reflect = new JButton("reflect");
+        reflect.setHorizontalTextPosition(AbstractButton.CENTER);
+        reflect.setVerticalTextPosition(AbstractButton.BOTTOM);
+        reflect.setIcon(new ImageIcon(pathToReflection));
+        userBuffsAndDebuffsPanel.add(reflect);
+
+        JButton earthResource = new JButton("earthResource");
+        earthResource.setHorizontalTextPosition(AbstractButton.CENTER);
+        earthResource.setVerticalTextPosition(AbstractButton.BOTTOM);
+        earthResource.setIcon(new ImageIcon(PathsAndRoutes.pathToEarthIMG));
+        userResourcesPanel.add(earthResource);
+
+        JButton fireResource = new JButton("fireResource");
+        fireResource.setHorizontalTextPosition(AbstractButton.CENTER);
+        fireResource.setVerticalTextPosition(AbstractButton.BOTTOM);
+        fireResource.setIcon(new ImageIcon(PathsAndRoutes.pathToFireIMG));
+        userResourcesPanel.add(fireResource);
+
+        JButton natureResource = new JButton("natureResource");
+        natureResource.setHorizontalTextPosition(AbstractButton.CENTER);
+        natureResource.setVerticalTextPosition(AbstractButton.BOTTOM);
+        natureResource.setIcon(new ImageIcon(PathsAndRoutes.pathToNatureIMG));
+        userResourcesPanel.add(natureResource);
+
+        JButton waterResource = new JButton("waterResource");
+        waterResource.setHorizontalTextPosition(AbstractButton.CENTER);
+        waterResource.setVerticalTextPosition(AbstractButton.BOTTOM);
+        waterResource.setIcon(new ImageIcon(PathsAndRoutes.pathToWaterIMG));
+        userResourcesPanel.add(waterResource);
     }
 
     /**
      * Method Get all actual data about Enemy character in card logic
      * */
     private void displayEnemyData() {
-//        TODO: ADD VIEW FOR ALL ELEMENTS FROM HASHMAP
 //        TODO: MOVE STRINGS AND ALL CONDITIONS TO NEW METHOD. AND USE THIS METHOD HERE
-        Map<CharacterAttributes, Integer> userData = cardLogic.getEnemyCharacterData();
+        Map<CharacterAttributes, Integer> enemyData = cardLogic.getCharacterData();
         enemyCharacterParamsDataGUI = new ArrayList<>();
 
-
         String pathToFreeze;
-        String pathToHealth = "";
-        String pathToPoisoned = "";
-        String pathToReflection = "";
+        String pathToRegeneration;
+        String pathToPoisoned;
+        String pathToReflection;
 
-        if (userData.get(CharacterAttributes.FREEZED_ROUNDS) > 0) {
+        if (enemyData.get(CharacterAttributes.FREEZED_ROUNDS) > 0) {
             pathToFreeze = PathsAndRoutes.pathToIsFreezedActive;
         } else {
             pathToFreeze = PathsAndRoutes.pathToIsFreezedInActive;
         }
 
-        if (userData.get(CharacterAttributes.POISONED_ROUNDS) > 0) {
+        if (enemyData.get(CharacterAttributes.POISONED_ROUNDS) > 0) {
             pathToPoisoned = PathsAndRoutes.pathToIsPoisonedActive;
         } else {
             pathToPoisoned = PathsAndRoutes.pathToIsPoisonedInActive;
         }
 
-        if (userData.get(CharacterAttributes.REGENERATION_ROUNDS) > 0) {
-            pathToHealth = PathsAndRoutes.pathToHealthRestoreActive;
+        if (enemyData.get(CharacterAttributes.REGENERATION_ROUNDS) > 0) {
+            pathToRegeneration = PathsAndRoutes.pathToHealthRestoreActive;
         } else {
-            pathToHealth = PathsAndRoutes.pathToHealthRestoreInActive;
+            pathToRegeneration = PathsAndRoutes.pathToHealthRestoreInActive;
         }
 
-        if (userData.get(CharacterAttributes.REFLECTION_ROUNDS) > 0) {
+        if (enemyData.get(CharacterAttributes.REFLECTION_ROUNDS) > 0) {
             pathToReflection = PathsAndRoutes.pathToReflectActive;
         } else {
             pathToReflection = PathsAndRoutes.pathToReflectInActive;
         }
 
+        JButton health = new JButton("health");
+        health.setHorizontalTextPosition(AbstractButton.CENTER);
+        health.setVerticalTextPosition(AbstractButton.BOTTOM);
+        health.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        enemyAttributesPanel.add(health);
+
+        JButton attackPower = new JButton("attackPower");
+        attackPower.setHorizontalTextPosition(AbstractButton.CENTER);
+        attackPower.setVerticalTextPosition(AbstractButton.BOTTOM);
+        attackPower.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        enemyAttributesPanel.add(attackPower);
+
+        JButton defence = new JButton("defence");
+        defence.setHorizontalTextPosition(AbstractButton.CENTER);
+        defence.setVerticalTextPosition(AbstractButton.BOTTOM);
+        defence.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        enemyAttributesPanel.add(defence);
+
+        JButton freeze = new JButton("freeze");
+        freeze.setHorizontalTextPosition(AbstractButton.CENTER);
+        freeze.setVerticalTextPosition(AbstractButton.BOTTOM);
+        freeze.setIcon(new ImageIcon(pathToFreeze));
+        enemyBuffsAndDebuffsPanel.add(freeze);
+
+        JButton regeneration = new JButton("regeneration");
+        regeneration.setHorizontalTextPosition(AbstractButton.CENTER);
+        regeneration.setVerticalTextPosition(AbstractButton.BOTTOM);
+        regeneration.setIcon(new ImageIcon(pathToRegeneration));
+        enemyBuffsAndDebuffsPanel.add(regeneration);
+
+        JButton poisoned = new JButton("poisoned");
+        poisoned.setHorizontalTextPosition(AbstractButton.CENTER);
+        poisoned.setVerticalTextPosition(AbstractButton.BOTTOM);
+        poisoned.setIcon(new ImageIcon(pathToPoisoned));
+        enemyBuffsAndDebuffsPanel.add(poisoned);
+
+        JButton reflect = new JButton("reflect");
+        reflect.setHorizontalTextPosition(AbstractButton.CENTER);
+        reflect.setVerticalTextPosition(AbstractButton.BOTTOM);
+        reflect.setIcon(new ImageIcon(pathToReflection));
+        enemyBuffsAndDebuffsPanel.add(reflect);
+
+        JButton earthResource = new JButton("earthResource");
+        earthResource.setHorizontalTextPosition(AbstractButton.CENTER);
+        earthResource.setVerticalTextPosition(AbstractButton.BOTTOM);
+        earthResource.setIcon(new ImageIcon(PathsAndRoutes.pathToEarthIMG));
+        enemyResourcesPanel.add(earthResource);
+
+        JButton fireResource = new JButton("fireResource");
+        fireResource.setHorizontalTextPosition(AbstractButton.CENTER);
+        fireResource.setVerticalTextPosition(AbstractButton.BOTTOM);
+        fireResource.setIcon(new ImageIcon(PathsAndRoutes.pathToFireIMG));
+        enemyResourcesPanel.add(fireResource);
+
+        JButton natureResource = new JButton("natureResource");
+        natureResource.setHorizontalTextPosition(AbstractButton.CENTER);
+        natureResource.setVerticalTextPosition(AbstractButton.BOTTOM);
+        natureResource.setIcon(new ImageIcon(PathsAndRoutes.pathToNatureIMG));
+        enemyResourcesPanel.add(natureResource);
+
+        JButton waterResource = new JButton("waterResource");
+        waterResource.setHorizontalTextPosition(AbstractButton.CENTER);
+        waterResource.setVerticalTextPosition(AbstractButton.BOTTOM);
+        waterResource.setIcon(new ImageIcon(PathsAndRoutes.pathToWaterIMG));
+        enemyResourcesPanel.add(waterResource);
     }
 
     private void displayBattleField() {
