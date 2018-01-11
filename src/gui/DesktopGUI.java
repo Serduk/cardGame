@@ -182,6 +182,23 @@ public class DesktopGUI {
      * Mehtod get all actual data about user character in Card logic
      * */
     private void displayUserData() {
+//      TODO: move to table from buttons  https://docs.oracle.com/javase/tutorial/uiswing/components/table.html
+        if (userAttributesPanel != null || userBuffsAndDebuffsPanel != null || userResourcesPanel != null) {
+
+            userAttributesPanel.removeAll();
+            userAttributesPanel.revalidate();
+            userAttributesPanel.repaint();
+
+            userBuffsAndDebuffsPanel.removeAll();
+            userBuffsAndDebuffsPanel.revalidate();
+            userBuffsAndDebuffsPanel.repaint();
+
+            userResourcesPanel.removeAll();
+            userResourcesPanel.revalidate();
+            userResourcesPanel.repaint();
+        }
+
+
 //        TODO: MOVE STRINGS AND ALL CONDITIONS TO NEW METHOD. AND USE THIS METHOD HERE
         Map<CharacterAttributes, Integer> userData = cardLogic.getCharacterData();
         userCharacterParamsDataGUI = new ArrayList<>();
@@ -286,7 +303,21 @@ public class DesktopGUI {
      * Method Get all actual data about Enemy character in card logic
      * */
     private void displayEnemyData() {
-//        TODO: MOVE STRINGS AND ALL CONDITIONS TO NEW METHOD. AND USE THIS METHOD HERE
+        if (enemyAttributesPanel != null || enemyBuffsAndDebuffsPanel != null || enemyResourcesPanel != null) {
+
+            enemyAttributesPanel.removeAll();
+            enemyAttributesPanel.revalidate();
+            enemyAttributesPanel.repaint();
+
+            enemyBuffsAndDebuffsPanel.removeAll();
+            enemyBuffsAndDebuffsPanel.revalidate();
+            enemyBuffsAndDebuffsPanel.repaint();
+
+            enemyResourcesPanel.removeAll();
+            enemyResourcesPanel.revalidate();
+            enemyResourcesPanel.repaint();
+        }
+
         Map<CharacterAttributes, Integer> enemyData = cardLogic.getCharacterData();
         enemyCharacterParamsDataGUI = new ArrayList<>();
 
