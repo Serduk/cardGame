@@ -4,7 +4,11 @@ import cards.CardsDeck;
 import cards.SimpleCard;
 import cards.enumsCards.BonusesInCards;
 import characters.Character;
+import characters.CharacterAttributes;
 import configuration.PathsAndRoutes;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import logic.botActionLogic.BotUseCardLogic;
 
 import java.util.ArrayList;
@@ -23,11 +27,14 @@ public class CardLogic implements UseCards {
 
     private CardsDeck cardsDeck = new CardsDeck();
 
-    private ArrayList<SimpleCard> cardsCollection = cardsDeck.getCardsCollection();
+    private List<SimpleCard> cardsCollection = cardsDeck.getCardsCollection();
     //    Cards deck for user
-    private ArrayList<SimpleCard> userCardDeck = cardsDeck.getCardsDeckInHand();
+    private List<SimpleCard> userCardDeck = cardsDeck.getCardsDeckInHand();
     //    cards deck for enemy
-    private ArrayList<SimpleCard> enemyCardDeck = cardsDeck.getCardsDeckInHand();
+    private List<SimpleCard> enemyCardDeck = cardsDeck.getCardsDeckInHand();
+
+    private Map<CharacterAttributes, Integer> characterData = new HashMap<>();
+    private Map<CharacterAttributes, Integer> enemyCharacterData = new HashMap<>();
 
     private boolean isCardsShouldBeDisplayed = false;
     private boolean isPlayWithBot = false;
@@ -68,7 +75,7 @@ public class CardLogic implements UseCards {
      * @return userCardDeck
      * show all cards in hands of player
      */
-    public ArrayList<SimpleCard> showCardsInHands() {
+    public List<SimpleCard> showCardsInHands() {
         return userCardDeck;
     }
 
@@ -89,7 +96,7 @@ public class CardLogic implements UseCards {
 //            TODO: fix data with debuffs
             character.takeDamage(character.attack(userCardDeck.get(card).getCardDamage()), BonusesInCards.ATTACK_ADD_MY_SELF);
         }
-        if (userCardDeck.get(card).isHasDebufOnCard()) {
+        if (userCardDeck.get(card).isHasDebuffOnCard()) {
 //            TODO: SET DEBUFF ON CHARACTER
         }
 
@@ -116,8 +123,8 @@ public class CardLogic implements UseCards {
     }
 
     /************************* New METHODS MOVED FROM GUI*****************************/
-    public ArrayList getEnemyCardsGUI() {
-        ArrayList<String> cardsImg = new ArrayList<>();
+    public List getEnemyCardsGUI() {
+        List<String> cardsImg = new ArrayList<>();
 
         if (isCardsShouldBeDisplayed) {
             for (SimpleCard card : enemyCardDeck) {
@@ -136,8 +143,8 @@ public class CardLogic implements UseCards {
      * @return ArrayList with path to images for user cards
      *
      * */
-    public ArrayList getCardsGUI() {
-        ArrayList<String> cardsImg = new ArrayList<>();
+    public List getCardsGUI() {
+        List<String> cardsImg = new ArrayList<>();
 
 //        for (int i = 0; i < userCardDeck.size(); i++) {
 //            SimpleCard card = userCardDeck.get(i);
@@ -149,6 +156,54 @@ public class CardLogic implements UseCards {
         }
 
         return cardsImg;
+    }
+
+    /* ****************************** METHODS FOR CHARACTERS (USER/ENEMY) *************************************/
+
+    private void setCharacterData() {
+        characterData.put(CharacterAttributes.ATTACK_POWER, character.getAttackPower());
+        characterData.put(CharacterAttributes.HEALTH, character.getRegenerationRounds());
+        characterData.put(CharacterAttributes.ARMOR, character.getArmor());
+        characterData.put(CharacterAttributes.FREEZED_ROUNDS, character.getFreezeRounds());
+
+        characterData.put(CharacterAttributes.REGENERATION_POINTS, character.getRegenerationPoints());
+        characterData.put(CharacterAttributes.REGENERATION_ROUNDS, character.getRegenerationRounds());
+        characterData.put(CharacterAttributes.REFLECTION_POINTS, character.getReflectionPoints());
+        characterData.put(CharacterAttributes.REFLECTION_ROUNDS, character.getReflectionRounds());
+        characterData.put(CharacterAttributes.POISONED_ROUNDS, character.getPoisoneRoundsCount());
+        characterData.put(CharacterAttributes.POISONED_POINTS, character.getPoisoneRoundsCount());
+
+        characterData.put(CharacterAttributes.TEMPLE_EARTH, character.getTempleEarth());
+        characterData.put(CharacterAttributes.TEMPLE_FIRE, character.getTempleFire());
+        characterData.put(CharacterAttributes.TEMPLE_NATURE, character.getTempleNature());
+        characterData.put(CharacterAttributes.TEMPLE_WATER, character.getTempleWater());
+
+        characterData.put(CharacterAttributes.RESOURCE_EARTH_COUNT, character.getResourceEarthCount());
+        characterData.put(CharacterAttributes.RESOURCE_FIRE_COUNT, character.getResourceFireCount());
+        characterData.put(CharacterAttributes.RESOURCE_NATURE_COUNT, character.getResourceNatureCount());
+        characterData.put(CharacterAttributes.RESOURCE_WATER_COUNT, character.getResourceWaterCount());
+    }
+
+    /**
+     * @return map with main data about character
+     * */
+    public Map getCharacterData() {
+        setCharacterData();
+
+        return characterData;
+    }
+
+    private void setEnemyCharacterData() {
+//        TODO: Realise this methods;
+    }
+
+    /**
+     * @return map with main data about enemy Character
+     * */
+    public Map getEnemyCharacterData() {
+        setEnemyCharacterData();
+
+        return enemyCharacterData;
     }
 
     public boolean newGame() {

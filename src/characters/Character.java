@@ -3,8 +3,8 @@ package characters;
 import cards.SimpleCard;
 import cards.enumsCards.BonusesInCards;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,16 +17,22 @@ import java.util.Map;
  * Created by sserdiuk on 7/13/17.
  */
 public class Character {
-    private ArrayList cardsInHands;
+    private List cardsInHands;
 
     private int attackPower = 0;
     private int health = 100;
     private int armor = 0;
 
     private int poisonedDamage = 0;
-    private int poisoneRounds = 0;
+    private int poisonedRounds = 0;
 
     private int freezeRounds = 0;
+
+    private int regenerationPoints = 0;
+    private int regenerationRounds = 0;
+
+    private int reflectionPoints = 0;
+    private int reflectionRounds = 0;
 
     private boolean poisonAttack = false;
     private boolean freezeAttack = false;
@@ -48,14 +54,14 @@ public class Character {
      * @param cardsInHands take List from CardLogic and save to list
      *
      * */
-    public void setCardsInHands(ArrayList cardsInHands) {
+    public void setCardsInHands(List cardsInHands) {
         this.cardsInHands = cardsInHands;
     }
 
     /**
      * @return arrayList with cards in hands
      * */
-    public ArrayList getCardsInHands() {
+    public List getCardsInHands() {
         return cardsInHands;
     }
 
@@ -184,7 +190,33 @@ public class Character {
         poisonAttack = setBoolean;
     }
 
-/*------------------------------------------- GET TEMPLE DATA -----------------------------------------------------*/
+    /********************************************* GET POISONED AND FREEZED DATA *************************************/
+    public int getPoisoneRoundsCount() {
+        return poisonedRounds;
+    }
+
+    public int getFreezeRounds() {
+        return freezeRounds;
+    }
+
+//    TODO: Implement feature with debuffs to user. add debuffs in switcher and etc
+    public int getReflectionRounds() {
+        return reflectionRounds;
+    }
+
+    public int getRegenerationRounds() {
+        return regenerationRounds;
+    }
+
+    public int getRegenerationPoints() {
+        return regenerationPoints;
+    }
+
+    public int getReflectionPoints() {
+        return reflectionPoints;
+    }
+
+    /*------------------------------------------- GET TEMPLE DATA ----------------------------------------------------*/
 
     public int getTempleEarth() {
         return templeEarth;

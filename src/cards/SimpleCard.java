@@ -24,10 +24,10 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
     //    boolean for checking. Has card damage or not. If has -> set bool to true, and set damage in CardLogic class
     protected boolean hasDamageOnCard = false;
 
-    //    boolean for checking. Has card debuf or not. if has -> set bool to true, and set debuf in CardLogic
-    protected boolean hasDebufOnCard = false;
+    //    boolean for checking. Has card debuff or not. if has -> set bool to true, and set debuf in CardLogic
+    protected boolean hasDebuffOnCard = false;
 
-    /********************************************* BASIC CARDS PROPERTIES *************************************************/
+    /********************************************* BASIC CARDS PROPERTIES *********************************************/
 
     public int getResourceCountNeed() {
         return resourceCountNeed;
@@ -37,8 +37,8 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
         return hasDamageOnCard;
     }
 
-    public boolean isHasDebufOnCard() {
-        return hasDebufOnCard;
+    public boolean isHasDebuffOnCard() {
+        return hasDebuffOnCard;
     }
 
     public String getResourceTypeNeed() {
@@ -53,7 +53,7 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
         return cardsType.toString().toLowerCase();
     }
 
-    /********************************* AggressiveCardsType CARDS METHODS AND FIELDS Implementation ***********************/
+    /****************************** AggressiveCardsType CARDS METHODS AND FIELDS Implementation ***********************/
     protected int damage = 0;
 
     @Override
@@ -152,7 +152,7 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
         return hasBonus;
     }
 
-    /*************************************** DefenseCardsType CARDS METHODS AND FIELDS Implementation ***********************/
+    /******************************** DefenseCardsType CARDS METHODS AND FIELDS Implementation ***********************/
 
     protected int defense = 0;
 
@@ -162,5 +162,32 @@ public class SimpleCard implements AggressiveCardsType, BonusCardsType, DefenseC
     @Override
     public int cardDefense() {
         return defense;
+    }
+
+    /********************************* BUFFS AND DEBUFFS Descrtiption and implementation ******************************/
+    protected int freezeRounds = 0;
+    protected int poisonRounds = 0;
+    protected int countOfPoisonDamage = 0;
+    protected int regenerationRounds = 0;
+    protected int countOfRegeneration = 0;
+
+    public int getFreezeRounds() {
+        return freezeRounds;
+    }
+
+    public int getPoisonRounds() {
+        return poisonRounds;
+    }
+
+    public int getCountOfPoisonDamage() {
+        return countOfPoisonDamage;
+    }
+
+    public int getRegenerationRounds() {
+        return regenerationRounds;
+    }
+
+    public int getCountOfRegeneration() {
+        return countOfRegeneration;
     }
 }
