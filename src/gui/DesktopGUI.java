@@ -179,10 +179,13 @@ public class DesktopGUI {
     }
 
     /**
-     * Mehtod get all actual data about user character in Card logic
+     * Method get all actual data about user character from Card logic in Map
+     * Each time method check state of all panels.
+     * If Panels not null - we clear all items. and add all buttons again
+     *
+     * TODO: move to table from buttons  https://docs.oracle.com/javase/tutorial/uiswing/components/table.html
      * */
     private void displayUserData() {
-//      TODO: move to table from buttons  https://docs.oracle.com/javase/tutorial/uiswing/components/table.html
         if (userAttributesPanel != null || userBuffsAndDebuffsPanel != null || userResourcesPanel != null) {
 
             userAttributesPanel.removeAll();
@@ -197,7 +200,6 @@ public class DesktopGUI {
             userResourcesPanel.revalidate();
             userResourcesPanel.repaint();
         }
-
 
 //        TODO: MOVE STRINGS AND ALL CONDITIONS TO NEW METHOD. AND USE THIS METHOD HERE
         Map<CharacterAttributes, Integer> userData = cardLogic.getCharacterData();
@@ -301,6 +303,7 @@ public class DesktopGUI {
 
     /**
      * Method Get all actual data about Enemy character in card logic
+     * Same logic as in displayUserData (Above)
      * */
     private void displayEnemyData() {
         if (enemyAttributesPanel != null || enemyBuffsAndDebuffsPanel != null || enemyResourcesPanel != null) {
@@ -421,6 +424,9 @@ public class DesktopGUI {
 
     }
 
+    /**
+     * Simple chat format between Bot/Enemy
+     * */
     public void chatWorker() {
 
     }

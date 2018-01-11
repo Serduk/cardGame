@@ -24,12 +24,10 @@ public final class PathsAndRoutes {
     private static final String pathToBufsAndDebufsIMG = "resources/img/buffsAndDebuffsIMG/";
     public static final String pathToHealthRestoreActive = pathToBufsAndDebufsIMG + "param_icon_1_active.jpg";
     public static final String pathToHealthRestoreInActive = pathToBufsAndDebufsIMG + "param_icon_1_inactive.jpg";
-//    public static final String pathToReflectActive = pathToBufsAndDebufsIMG + "param_icon_2_active.jpg";
-    public static final String pathToReflectActive = pathToGameCards + "card_00.png"; //TMP path. should be removed after getting real card
+    public static final String pathToReflectActive = pathToBufsAndDebufsIMG + "param_icon_2_active.jpg";
     public static final String pathToReflectInActive = pathToBufsAndDebufsIMG + "param_icon_2_inactive.jpg";
     public static final String pathToIsPoisonedActive = pathToBufsAndDebufsIMG + "param_icon_4_active.jpg";
     public static final String pathToIsPoisonedInActive = pathToBufsAndDebufsIMG + "param_icon_4_inactive.jpg";
-//    public static final String pathToIsFreezedActive = pathToBufsAndDebufsIMG + "param_icon_3_active.jpg";
-    public static final String pathToIsFreezedActive = pathToGameCards + "card_00.png"; //TMP path. should be removed after getting real card
+    public static final String pathToIsFreezedActive = pathToBufsAndDebufsIMG + "param_icon_3_active.jpg";
     public static final String pathToIsFreezedInActive = pathToBufsAndDebufsIMG + "param_icon_3_inactive.jpg";
 }
