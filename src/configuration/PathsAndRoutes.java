@@ -16,7 +16,7 @@ public final class PathsAndRoutes {
     private static final String pathToAttributes = "resources/img/characterAttributes/";
     public static final String pathToHealthIMG = pathToAttributes + "health.png";
     public static final String pathToArmorIMG = pathToAttributes + "armor.png";
-    public static final String pathToAttackPowerIMG = pathToAttributes + "atackPower.png";
+    public static final String pathToAttackPowerIMG = pathToAttributes + "attackPower.png";
 
     public static final String pathNatureCards = pathToGameCards + "nature/school_1_card_";
     public static final String pathFireCards = pathToGameCards + "fire/school_2_card_";
@@ -29,13 +29,13 @@ public final class PathsAndRoutes {
     public static final String pathToWaterIMG = pathToResourcesIMG + "resource_4_water.png";
     public static final String pathToNatureIMG = pathToResourcesIMG + "resource_1_nature.png";
 
-    private static final String pathToBufsAndDebufsIMG = "resources/img/buffsAndDebuffsIMG/";
-    public static final String pathToHealthRestoreActive = pathToBufsAndDebufsIMG + "param_icon_1_active.jpg";
-    public static final String pathToHealthRestoreInActive = pathToBufsAndDebufsIMG + "param_icon_1_inactive.jpg";
-    public static final String pathToReflectActive = pathToBufsAndDebufsIMG + "param_icon_2_active.jpg";
-    public static final String pathToReflectInActive = pathToBufsAndDebufsIMG + "param_icon_2_inactive.jpg";
-    public static final String pathToIsPoisonedActive = pathToBufsAndDebufsIMG + "param_icon_4_active.jpg";
-    public static final String pathToIsPoisonedInActive = pathToBufsAndDebufsIMG + "param_icon_4_inactive.jpg";
-    public static final String pathToIsFreezedActive = pathToBufsAndDebufsIMG + "param_icon_3_active.jpg";
-    public static final String pathToIsFreezedInActive = pathToBufsAndDebufsIMG + "param_icon_3_inactive.jpg";
+    private static final String pathToBuffsAndDebuffsIMG = "resources/img/buffsAndDeBuffsIMG/";
+    public static final String pathToHealthRestoreActive = pathToBuffsAndDebuffsIMG + "param_icon_1_active.jpg";
+    public static final String pathToHealthRestoreInActive = pathToBuffsAndDebuffsIMG + "param_icon_1_inactive.jpg";
+    public static final String pathToReflectActive = pathToBuffsAndDebuffsIMG + "param_icon_2_active.jpg";
+    public static final String pathToReflectInActive = pathToBuffsAndDebuffsIMG + "param_icon_2_inactive.jpg";
+    public static final String pathToIsPoisonedActive = pathToBuffsAndDebuffsIMG + "param_icon_4_active.jpg";
+    public static final String pathToIsPoisonedInActive = pathToBuffsAndDebuffsIMG + "param_icon_4_inactive.jpg";
+    public static final String pathToIsFreezedActive = pathToBuffsAndDebuffsIMG + "param_icon_3_active.jpg";
+    public static final String pathToIsFreezedInActive = pathToBuffsAndDebuffsIMG + "param_icon_3_inactive.jpg";
 }
