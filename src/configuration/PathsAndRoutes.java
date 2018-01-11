@@ -4,12 +4,20 @@ package configuration;
  * Describe all routes and paths:
  * saving files
  *
+ * Good picture resizer: http://picresize.com/
+ *
  * Created by sserdiuk on 7/3/17.
  */
 public final class PathsAndRoutes {
     private static final String pathToGameCards = "resources/img/cardsIMG/";
     public static final String iconIMG = pathToGameCards + "deck.jpg";
     public static final String zeroCard = pathToGameCards + "card_00.png";
+
+    private static final String pathToAttributes = "resources/img/characterAttributes/";
+    public static final String pathToHealthIMG = pathToAttributes + "health.png";
+    public static final String pathToArmorIMG = pathToAttributes + "armor.png";
+    public static final String pathToAttackPowerIMG = pathToAttributes + "atackPower.png";
+
     public static final String pathNatureCards = pathToGameCards + "nature/school_1_card_";
     public static final String pathFireCards = pathToGameCards + "fire/school_2_card_";
     public static final String pathEarthCards = pathToGameCards + "earth/school_3_card_";
