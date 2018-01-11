@@ -6,6 +6,7 @@ import configuration.NamingAndDescription;
 import configuration.PathsAndRoutes;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -237,19 +238,19 @@ public class DesktopGUI {
         JButton health = new JButton("health");
         health.setHorizontalTextPosition(AbstractButton.CENTER);
         health.setVerticalTextPosition(AbstractButton.BOTTOM);
-        health.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        health.setIcon(new ImageIcon(PathsAndRoutes.pathToHealthIMG));
         userAttributesPanel.add(health);
 
         JButton attackPower = new JButton("attackPower");
         attackPower.setHorizontalTextPosition(AbstractButton.CENTER);
         attackPower.setVerticalTextPosition(AbstractButton.BOTTOM);
-        attackPower.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        attackPower.setIcon(new ImageIcon(PathsAndRoutes.pathToAttackPowerIMG));
         userAttributesPanel.add(attackPower);
 
         JButton defence = new JButton("defence");
         defence.setHorizontalTextPosition(AbstractButton.CENTER);
         defence.setVerticalTextPosition(AbstractButton.BOTTOM);
-        defence.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        defence.setIcon(new ImageIcon(PathsAndRoutes.pathToArmorIMG));
         userAttributesPanel.add(defence);
 
         JButton freeze = new JButton("freeze");
@@ -356,19 +357,19 @@ public class DesktopGUI {
         JButton health = new JButton("health");
         health.setHorizontalTextPosition(AbstractButton.CENTER);
         health.setVerticalTextPosition(AbstractButton.BOTTOM);
-        health.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        health.setIcon(new ImageIcon(PathsAndRoutes.pathToHealthIMG));
         enemyAttributesPanel.add(health);
 
         JButton attackPower = new JButton("attackPower");
         attackPower.setHorizontalTextPosition(AbstractButton.CENTER);
         attackPower.setVerticalTextPosition(AbstractButton.BOTTOM);
-        attackPower.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        attackPower.setIcon(new ImageIcon(PathsAndRoutes.pathToAttackPowerIMG));
         enemyAttributesPanel.add(attackPower);
 
         JButton defence = new JButton("defence");
         defence.setHorizontalTextPosition(AbstractButton.CENTER);
         defence.setVerticalTextPosition(AbstractButton.BOTTOM);
-        defence.setIcon(new ImageIcon(PathsAndRoutes.zeroCard));
+        defence.setIcon(new ImageIcon(PathsAndRoutes.pathToArmorIMG));
         enemyAttributesPanel.add(defence);
 
         JButton freeze = new JButton("freeze");
